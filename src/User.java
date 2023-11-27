@@ -1,8 +1,13 @@
+import Inventory.Item;
+import Locations.Location;
+
 import java.util.List;
+import java.util.Stack;
 
 public class User {
     private Location location;
     private List<Item> items;
+    private Stack<Location> stack = new Stack<>();
 
     public User(Location location, List<Item> inventories) {
         this.location = location;

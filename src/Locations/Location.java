@@ -1,4 +1,6 @@
-import java.util.List;
+package Locations;
+import Inventory.Item;
+
 
 public class Location {
     private String name;

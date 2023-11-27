@@ -1,3 +1,5 @@
+package Inventory;
+
 public class Item {
     private String name;
     private String message;
