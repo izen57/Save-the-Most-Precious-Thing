@@ -2,11 +2,11 @@ import java.util.List;
 
 public class User {
     private Location location;
-    private List<Item> items;
+    private List<AbstractItem> abstractItems;
 
-    public User(Location location, List<Item> inventories) {
+    public User(Location location, List<AbstractItem> inventories) {
         this.location = location;
-        this.items = inventories;
+        this.abstractItems = inventories;
     }
 
     public Location getLocation() {
@@ -17,12 +17,12 @@ public class User {
         this.location = location;
     }
 
-    public List<Item> getInventories() {
-        return items;
+    public List<AbstractItem> getInventories() {
+        return abstractItems;
     }
 
-    public void setInventories(List<Item> inventories) {
-        this.items = inventories;
+    public void setInventories(List<AbstractItem> inventories) {
+        this.abstractItems = inventories;
     }
 }
 
