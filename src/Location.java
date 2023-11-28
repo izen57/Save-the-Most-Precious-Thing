@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Location {
     private String name;
     private Item item;
