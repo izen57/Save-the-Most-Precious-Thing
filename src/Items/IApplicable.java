@@ -1,3 +1,5 @@
+package Items;
+
 /**
  *  The interface to implement the conception of the appliance of an item.
  */

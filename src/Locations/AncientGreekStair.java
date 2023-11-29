@@ -1,4 +1,7 @@
-public class AncientGreekStair extends Location {
+package Locations;
+
+public class AncientGreekStair extends Location
+{
 
     public AncientGreekStair() {
         super("ancient greek stair", null, new AncientGreekGallery(),"Now you are facing the headless goddess of victory, " +

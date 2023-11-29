@@ -1,3 +1,7 @@
+package Locations;
+
+import Items.AbstractItem;
+
 public class Location {
     private String name;
     private AbstractItem abstractItem;

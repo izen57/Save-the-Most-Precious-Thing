@@ -1,3 +1,5 @@
+import Items.AbstractItem;
+
 import java.util.ArrayList;
 
 public class Inventory

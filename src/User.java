@@ -1,3 +1,6 @@
+import Items.AbstractItem;
+import Locations.Location;
+
 import java.util.List;
 
 public class User {

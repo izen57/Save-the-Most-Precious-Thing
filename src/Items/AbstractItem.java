@@ -1,3 +1,5 @@
+package Items;
+
 /**
  * The class for a general item representation. Use it for the general iteration.
  * An item can be an applicable one and non-applicable one.

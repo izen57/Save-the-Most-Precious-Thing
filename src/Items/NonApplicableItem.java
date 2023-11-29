@@ -1,3 +1,5 @@
+package Items;
+
 /**
  * An item which is not applicable to any other item.
  */
