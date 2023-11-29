@@ -4,6 +4,11 @@ public class Inventory
 {
     private ArrayList<AbstractItem> storage;
 
+    public Inventory()
+    {
+        storage = new ArrayList<>(100);
+    }
+
     public Inventory(ArrayList<AbstractItem> storage)
     {
         this.storage = storage;
@@ -21,6 +26,11 @@ public class Inventory
             storage.remove(item);
     }
 
+    /**
+     * Find an item by its name.
+     * @param itemName an item to find
+     * @return an abstract item if there is it in the inventory, <code>null</code> otherwise
+     */
     public AbstractItem findItemByName(String itemName)
     {
         for (AbstractItem i : storage)
