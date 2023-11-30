@@ -1,11 +1,15 @@
+import Inventory.Inventory;
+import Inventory.Item;
 import Inventory.Key;
 import Inventory.MuseumMap;
 import Locations.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    User user = new User(null, null);
+    User user = new User(new Inventory(new ArrayList<Item>()), null);
     AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
     AncientGreekStair ancientGreekStair = new AncientGreekStair();
     ApolloGallery apolloGallery = new ApolloGallery();
@@ -127,19 +131,21 @@ public class Game {
 
                         } else if (inputF.contains("left")) {
                             user.setCurrentLocation(apolloGallery);
-                            user.getLocationHistory().push(ancientGreekStair);
+                            user.addLocation(ancientGreekStair);
                             currentLocation = "apolloGallery";
                             System.out.println(apolloGallery.getMessage());
                             break;
 
                             //todo
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
-                           // user.takeItem(map);
+                            user.takeItem(map);
+                            //put the map into the user's inventory
+
                             System.out.println(map.getMessage());
 
                         } else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
                             currentLocation = String.valueOf(user.showLastLocation());
-                            user.setCurrentLocation(user.showLastLocation());
+                            user.setCurrentLocation(user.getCurrentLocation());
                             System.out.println(user.showLastLocation().getMessage());
                             user.removeLocation();
                             break;
@@ -166,7 +172,7 @@ public class Game {
                     } else if(inputG.contains("back") || inputG.contains("leave") || inputG.contains("return")){
                         user.setCurrentLocation(user.showLastLocation());
                         System.out.println(user.showLastLocation().getMessage());
-                        currentLocation = String.valueOf(user.showLastLocation());
+                        currentLocation = String.valueOf(user.getCurrentLocation());
                         user.removeLocation();
 
                     }else{

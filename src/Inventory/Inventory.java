@@ -1,15 +1,16 @@
 package Inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
-    private List<Item> items;
+    private ArrayList<Item> items;
 
-    public Inventory(List<Item> items) {
+    public Inventory(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public List<Item> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 

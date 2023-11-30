@@ -21,6 +21,8 @@ public class User extends Character {
     }
 
 
+//    @Override
+//    public Location
     @Override
     public void takeItem(Item itemFromLocation) {
         this.getInventory().addItem(itemFromLocation);
