@@ -1,11 +1,11 @@
 package Locations;
 
+import Inventory.Key;
 import Locations.ApolloGallery;
 
 public class ItalianPaintingCollections extends Location {
+    Key key = new Key();
     public ItalianPaintingCollections() {
-        super("Italian Painting Collections", null, new ApolloGallery(),"You quickly found Our Lady of the Rocks. Opposite was an independent house, " +
-                "and the door of the house was closed. At the same time, " +
-                "a staff member in the museum was lowering her head to organize something.");
+        super("Italian Painting Collections", null, new ApolloGallery(),"It is filled with paintings by Italian painters, Titian, Leonardo da Vinci, Caravaggio, but the important thing is that you need to find the location of the Mona Lisa.");
     }
 }

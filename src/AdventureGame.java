@@ -66,7 +66,7 @@ public class AdventureGame {
     public static void main(String[] args) {
         String currentLocation = "classroom"; // 初始位置设置为教室
 
-        while (true) { // 主循环
+        while (true) { // main loop
             switch (currentLocation) {
                 case "classroom":
                     System.out.println("You are in the classroom. You can go 'right' to the office or 'left' to the exit.");
