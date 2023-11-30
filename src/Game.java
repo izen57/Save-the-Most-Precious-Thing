@@ -275,7 +275,8 @@ public class Game {
                             break MAIN_LOOP;
                         }else{
                             System.out.println("It seems like this is not the correct direction...");
-                    }
+                        }
+                        break;
 
                 default:
                     System.out.println("You are lost.");
