@@ -1,4 +1,4 @@
-import Items.AbstractItem;
+package Inventory;
 
 import java.util.ArrayList;
 

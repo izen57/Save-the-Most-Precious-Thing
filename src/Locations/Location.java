@@ -1,6 +1,6 @@
 package Locations;
 
-import Items.AbstractItem;
+import Inventory.AbstractItem;
 
 public class Location {
     private String name;

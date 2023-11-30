@@ -1,4 +1,4 @@
-package Items;
+package Inventory;
 
 /**
  * An item which is not applicable to any other item.

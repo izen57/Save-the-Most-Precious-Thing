@@ -1,4 +1,4 @@
-import Items.AbstractItem;
+import Inventory.AbstractItem;
 import Locations.Location;
 
 import java.util.List;

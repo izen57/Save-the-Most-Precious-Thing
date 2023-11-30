@@ -1,4 +1,4 @@
-package Items;
+package Inventory;
 
 /**
  *  The interface to implement the conception of the appliance of an item.

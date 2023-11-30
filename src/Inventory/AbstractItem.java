@@ -1,4 +1,4 @@
-package Items;
+package Inventory;
 
 /**
  * The class for a general item representation. Use it for the general iteration.
