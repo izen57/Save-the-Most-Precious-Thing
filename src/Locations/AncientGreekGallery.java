@@ -1,5 +1,6 @@
 package Locations;
 
+
 public class AncientGreekGallery extends Location {
     public AncientGreekGallery() {
         super("ancientGreekGallery", null, "Now you have entered the Denon Hall and walked straight into the corridor filled with ancient Greek sculptures. " +

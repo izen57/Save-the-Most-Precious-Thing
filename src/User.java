@@ -21,12 +21,9 @@ public class User extends Character {
     }
 
 
-//    @Override
-//    public Location
     @Override
     public void takeItem(Item itemFromLocation) {
         this.getInventory().addItem(itemFromLocation);
-
     }
 
     @Override
@@ -60,6 +57,14 @@ public class User extends Character {
 
     }
 
+
+    public List<AbstractItem> getInventories() {
+        return abstractItems;
+    }
+
+    public void setInventories(List<AbstractItem> inventories) {
+        this.abstractItems = inventories;
+
     public String moveForward(Location current, Location last){
         this.setCurrentLocation(current);
         this.addLocation(last);
@@ -72,6 +77,7 @@ public class User extends Character {
         System.out.println(this.showLastLocation().getMessage());
         this.removeLocation();
         return this.getCurrentLocation();
+
     }
 }
 
