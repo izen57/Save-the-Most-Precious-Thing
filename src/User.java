@@ -1,24 +1,62 @@
-import Inventory.AbstractItem;
+import Inventory.Inventory;
+import Inventory.Item;
 import Locations.Location;
 
-import java.util.List;
+import java.util.Stack;
 
-public class User {
-    private Location location;
-    private List<AbstractItem> abstractItems;
+public class User extends Character {
+    private Stack<Location> locationHistory = new Stack<>();
 
-    public User(Location location, List<AbstractItem> inventories) {
-        this.location = location;
-        this.abstractItems = inventories;
+    public User(Inventory inventory, Location currentLocation) {
+        super(inventory, currentLocation);
     }
 
-    public Location getLocation() {
-        return location;
+
+    public Stack<Location> getLocationHistory() {
+        return locationHistory;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocationHistory(Stack<Location> locationHistory) {
+        this.locationHistory = locationHistory;
     }
+
+
+    @Override
+    public void takeItem(Item itemFromLocation) {
+        this.getInventory().addItem(itemFromLocation);
+    }
+
+    @Override
+    public void dropItem(Item item) {
+        this.getInventory().removeItem(item);
+
+    }
+
+    public String applyItem(Item item){
+        return item.getMessage();
+    }
+
+    public boolean checkItem(Item item){
+        if(this.getInventory().getItems().contains(item)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void addLocation(Location location){
+        this.locationHistory.push(location);
+    }
+
+    public void removeLocation(){
+        this.locationHistory.pop();
+    }
+
+    public Location showLastLocation(){
+        return this.locationHistory.peek();
+
+    }
+
 
     public List<AbstractItem> getInventories() {
         return abstractItems;
@@ -26,6 +64,20 @@ public class User {
 
     public void setInventories(List<AbstractItem> inventories) {
         this.abstractItems = inventories;
+
+    public String moveForward(Location current, Location last){
+        this.setCurrentLocation(current);
+        this.addLocation(last);
+        System.out.println(current.getMessage());
+        return current.getName();
+    }
+
+    public String moveBack(){
+        this.setCurrentLocation(this.showLastLocation());
+        System.out.println(this.showLastLocation().getMessage());
+        this.removeLocation();
+        return this.getCurrentLocation();
+
     }
 }
 

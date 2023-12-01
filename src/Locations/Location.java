@@ -23,6 +23,7 @@ public class Location {
         this.name = name;
     }
 
+
     public AbstractItem getItem() {
         return abstractItem;
     }
