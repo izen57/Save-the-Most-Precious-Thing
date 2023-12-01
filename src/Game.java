@@ -24,7 +24,7 @@ public class Game {
 
 
 
-    RoomOfMonalisa roomOfMonalisa = new RoomOfMonalisa();
+//    RoomOfMonalisa roomOfMonalisa = new RoomOfMonalisa();
     private static Scanner scanner = new Scanner(System.in);
 
     public void startGame(){
@@ -126,6 +126,7 @@ public class Game {
                             user.addLocation(ancientGreekStair);
                             currentLocation = "corridor";
                             System.out.println(corridor.getMessage());
+//                            currentLocation = user.moveForward(corridor, ancientGreekStair);
                             break;
 
 
@@ -136,17 +137,21 @@ public class Game {
                             System.out.println(apolloGallery.getMessage());
                             break;
 
-                            //todo
-                        } else if (inputF.contains("pick") || inputF.contains("take")) {
-                            user.takeItem(map);
-                            //put the map into the user's inventory
 
+                        } else if (inputF.contains("pick") || inputF.contains("take")) {
+                            //put the map into the user's inventory
+                            user.takeItem(map);
                             System.out.println(map.getMessage());
 
-                        } else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
-                            currentLocation = String.valueOf(user.showLastLocation());
-                            user.setCurrentLocation(user.getCurrentLocation());
-                            System.out.println(user.showLastLocation().getMessage());
+                        }else if (user.checkItem(map) && inputF.contains("read") || inputF.contains("map")  ) {
+                            System.out.println(map.getMessage());
+                        }
+                        else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
+                            user.setCurrentLocation(user.showLastLocation());
+                            System.out.println("You went back to the corridor filled with ancient Greek sculptures. " +
+                                    "On your right is the statue of Venus with a broken arm. She is at the end of the corridor,facing the corridor and " +
+                                            "quietly overlooking the countless worldly people passing by");
+                            currentLocation = user.getCurrentLocation();
                             user.removeLocation();
                             break;
 
@@ -159,113 +164,157 @@ public class Game {
 
                 case "apolloGallery":
 
-                    String inputG = scanner.nextLine().toLowerCase();
+                    while(true) {
 
-                    if(inputG.contains("right")){
-                        //set user's location to new location
-                        user.setCurrentLocation(frenchPaintingCollections);
-                        user.addLocation(apolloGallery);
-                        currentLocation = "frenchPaintingCollections";
-                        System.out.println(frenchPaintingCollections.getMessage());
+                        String inputG = scanner.nextLine().toLowerCase();
+
+                        if (inputG.contains("right")) {
+                            //set user's location to new location
+                            user.setCurrentLocation(frenchPaintingCollections);
+                            user.addLocation(apolloGallery);
+                            currentLocation = "frenchPaintingCollections";
+                            System.out.println(frenchPaintingCollections.getMessage());
+                            break;
 
 
-                    } else if(inputG.contains("back") || inputG.contains("leave") || inputG.contains("return")){
-                        user.setCurrentLocation(user.showLastLocation());
-                        System.out.println(user.showLastLocation().getMessage());
-                        currentLocation = String.valueOf(user.getCurrentLocation());
-                        user.removeLocation();
+                        } else if (inputG.contains("back") || inputG.contains("leave") || inputG.contains("return")) {
+//                            user.setCurrentLocation(user.showLastLocation());
+//                            System.out.println(user.showLastLocation().getMessage());
+//                            currentLocation = user.getCurrentLocation();
+//                            user.removeLocation();
+                            currentLocation = user.moveBack();
+                            break;
 
-                    }else{
-                        //print the direction is wrong, please try again
-                        System.out.println("It seems like this is not the correct direction...");
+                        } else if ( user.checkItem(map) && inputG.contains("read") || inputG.contains("map") && user.checkItem(map)) {
+                            System.out.println(map.getMessage());
+
+                        }else {
+                            //print the direction is wrong, please try again
+                            System.out.println("It seems like this is not the correct direction...");
+                        }
                     }
                     break;
 
                 case "corridor":
               //      System.out.println(corridor.getMessage());
-                    String inputH = scanner.nextLine().toLowerCase();
+                    while (true) {
+                        String inputH = scanner.nextLine().toLowerCase();
 
-                    if(inputH.contains("right")){
-                        //set user's location to new location
-                        user.setCurrentLocation(italianPaintingCollections);
-                        user.addLocation(corridor);
-                        currentLocation = "italianPaintingCollections";
-                        System.out.println(italianPaintingCollections.getMessage());
+                        if (inputH.contains("right")) {
+                            //set user's location to new location
+                            user.setCurrentLocation(italianPaintingCollections);
+                            user.addLocation(corridor);
+                            currentLocation = "italianPaintingCollections";
+                            System.out.println(italianPaintingCollections.getMessage());
+                            break;
 
-                    }else if(inputH.contains("left")){
-                         user.setCurrentLocation(frenchPaintingCollections);
-                         user.addLocation(corridor);
-                         currentLocation = "frenchPaintingCollections";
-                        System.out.println(frenchPaintingCollections.getMessage());
+                        } else if (inputH.contains("left")) {
+                            user.setCurrentLocation(frenchPaintingCollections);
+                            user.addLocation(corridor);
+                            currentLocation = "frenchPaintingCollections";
+                            System.out.println(frenchPaintingCollections.getMessage());
+                            break;
 
-                    }else if(inputH.contains("middle")){
-                        user.setCurrentLocation(spanishPaintingCollections);
-                        user.addLocation(corridor);
-                        currentLocation = "spanishPaintingCollections";
-                        System.out.println(spanishPaintingCollections.getMessage());
+                        } else if (inputH.contains("middle")) {
+                            user.setCurrentLocation(spanishPaintingCollections);
+                            user.addLocation(corridor);
+                            currentLocation = "spanishPaintingCollections";
+                            System.out.println(spanishPaintingCollections.getMessage());
+                            break;
 
-                    }else if(inputH.contains("back") || inputH.contains("leave") || inputH.contains("return")){
-                        System.out.println("There are people walking outside the corridor, you can't let people discover your whereabouts.");
-                    }else{
-                        //print the direction is wrong, please try again
-                        System.out.println("It seems like this is not the correct direction...");
+                        } else if (inputH.contains("back") || inputH.contains("leave") || inputH.contains("return")) {
+//                            System.out.println("There are people walking outside the corridor, you can't let people discover your whereabouts.");
+//                            currentLocation = user.moveBack();
+                            user.setCurrentLocation(user.showLastLocation());
+                            System.out.println(user.showLastLocation().getMessage());
+                            currentLocation = user.getCurrentLocation();
+                            user.removeLocation();
+                            break;
+
+                        } else if (user.checkItem(map) && inputH.contains("read") || inputH.contains("map")  ) {
+                            System.out.println(map.getMessage());
+
+                        }else {
+                            //print the direction is wrong, please try again
+                            System.out.println("It seems like this is not the correct direction...");
+                        }
                     }
                     break;
 
                 case "spanishPaintingCollections":
 //                    System.out.println(spanishPaintingCollections.getMessage());
-                    String inputI = scanner.nextLine().toLowerCase();
+                    while (true) {
+                        String inputI = scanner.nextLine().toLowerCase();
 
-                    if(inputI.contains("back") || inputI.contains("leave") || inputI.contains("return")) {
-                        user.setCurrentLocation(user.showLastLocation());
-                        currentLocation = "corridor";
-                        System.out.println(corridor.getMessage());
-                        user.removeLocation();
-                    }else{
-                        System.out.println("It seems like this is not the correct direction...");
-                    }
-                    break;
+                        if (inputI.contains("back") || inputI.contains("leave") || inputI.contains("return")) {
+                            user.setCurrentLocation(user.showLastLocation());
+                            System.out.println(user.showLastLocation().getMessage());
+                            currentLocation = user.getCurrentLocation();
+                            user.removeLocation();
+                            break;
+                        } else if (user.checkItem(map)&& inputI.contains("read") || inputI.contains("map")) {
+                            System.out.println(map.getMessage());
+
+                        }else {
+                            System.out.println("It seems like this is not the correct direction...");
+                        }}
+                        break;
+
+
 
                 case "frenchPaintingCollections":
+                    while (true){
 //                       System.out.println(frenchPaintingCollections.getMessage());
-                        String inputJ = scanner.nextLine().toLowerCase();
-                        if(inputJ.contains("back") || inputJ.contains("leave") || inputJ.contains("return")) {
-                            user.setCurrentLocation(user.showLastLocation());
-                            currentLocation = String.valueOf(user.showLastLocation());
-                            System.out.println(user.showLastLocation().getMessage());
-                            user.removeLocation();
-                            
+                            String inputJ = scanner.nextLine().toLowerCase();
+                            if (inputJ.contains("back") || inputJ.contains("leave") || inputJ.contains("return")) {
+                                user.setCurrentLocation(user.showLastLocation());
+                                System.out.println(user.showLastLocation().getMessage());
+                                currentLocation = user.getCurrentLocation();
+                                user.removeLocation();
+                                break;
 
-                        }else if (inputJ.contains("left")) {
-                            user.setCurrentLocation(apolloGallery);
-                            System.out.println(apolloGallery.getMessage());
-                            currentLocation = "apolloGallery";
-                            user.addLocation(apolloGallery);
 
-                        } else if (inputJ.contains("right")) {
-                            user.setCurrentLocation(corridor);
-                            System.out.println(corridor.getMessage());
-                            currentLocation = "corridor";
-                            user.addLocation(corridor);
-                            
-                        } else{
-                            System.out.println("It seems like this is not the correct direction...");
-                        }
+                            } else if (inputJ.contains("left")) {
+                                user.setCurrentLocation(apolloGallery);
+                                System.out.println(apolloGallery.getMessage());
+                                currentLocation = "apolloGallery";
+                                user.addLocation(frenchPaintingCollections);
+                                break;
+
+                            } else if (inputJ.contains("right")) {
+                                user.setCurrentLocation(corridor);
+                                System.out.println(corridor.getMessage());
+                                currentLocation = "corridor";
+                                user.addLocation(frenchPaintingCollections);
+                                break;
+
+                            } else if (user.checkItem(map)&& inputJ.contains("read") || inputJ.contains("map")) {
+                                System.out.println(map.getMessage());
+
+                            }else {
+                                System.out.println("It seems like this is not the correct direction...");
+                            }
+                    }
                     break;
 
 
 
 
                 case "italianPaintingCollections":
-                    //where the user should use the item Map to go to the room where Monalisa is stored
+                    while (true) {
+                        //where the user should use the item Map to go to the room where Monalisa is stored
                         String inputL = scanner.nextLine().toLowerCase();
 
 
                         if (inputL.contains("back") || inputL.contains("leave") || inputL.contains("return")) {
-                            user.setCurrentLocation(corridor);
-                            currentLocation = "corridor";
-                            System.out.println(corridor.getMessage());
+                            user.setCurrentLocation(user.showLastLocation());
+                            System.out.println(user.showLastLocation().getMessage());
+                            currentLocation = user.getCurrentLocation();
+                            user.removeLocation();
                             break;
+
+                        }else if (user.checkItem(map) && inputL.contains("read") || inputL.contains("map") ) {
+                            System.out.println(map.getMessage());
 
                         } else if (inputL.contains("madonna")) {
 //                            currentLocation = "the Gate";
@@ -273,9 +322,11 @@ public class Game {
                                     "and the door of the house was closed. At the same time, " +
                                     "a staff member in the museum was lowering her head to organize something.");
                             break MAIN_LOOP;
-                        }else{
+                        } else {
                             System.out.println("It seems like this is not the correct direction...");
+                        }
                     }
+                        break;
 
                 default:
                     System.out.println("You are lost.");
@@ -312,7 +363,7 @@ public class Game {
             } else if (inputN.contains("no")) {
                 System.out.println("Okay, can you do me a favor? I'm going to get something from the basement. This is the key to Monalisa's room. Can you help me move this thing in?");
                 System.out.println("you take the key from her, now it seems like you can open the door now. Meanwhile, there are some small words on the key.");
-//                user.takeItem(key);
+                user.takeItem(key);
                break;
             }else{
                 System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");
@@ -322,7 +373,7 @@ public class Game {
 
         while(true){
             String inputO = scanner.nextLine().toLowerCase();
-            if(inputO.contains("read") || inputO.contains("look")){
+            if(user.checkItem(key)  && inputO.contains("read") || inputO.contains("look") ||inputO.contains("key") ){
                 System.out.println(key.getMessage());
             } else if (inputO.contains("open")) {
                 System.out.println("you entered the room, Monalisa is right in front of you, and the rescue mission seems to be completed. However suddenly, to your right, in the completely opposite direction to the Mona Lisa, you hear the faint cry of the kitten.");
@@ -340,11 +391,11 @@ public class Game {
 
         while(true){
             String inputP = scanner.nextLine().toLowerCase();
-            if(inputP.contains("monalisa")){
+            if(inputP.contains("monalisa") || inputP.contains("left")){
                 System.out.println("Congratulations on successfully rescuing the Mona Lisa! However, the real Mona Lisa is intact in the museum's storage room, and what you rescued is just a replica. At the same time, the kitten died in pain.");
                 System.out.println("Game Over. Thanks for playing.");
            return;
-            } else if (inputP.contains("cat") || inputP.contains("kitten")) {
+            } else if (inputP.contains("cat") || inputP.contains("kitten") || inputP.contains("right") ) {
                 System.out.println("you saved the cat, and it turns out this extremely cute and lucky cat belongs to a very wealthy woman and you are rewarded with five million euros.");
                 System.out.println("Game Over. Thanks for playing ;)");
             return;

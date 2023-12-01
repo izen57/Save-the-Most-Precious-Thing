@@ -39,6 +39,14 @@ public class User extends Character {
         return item.getMessage();
     }
 
+    public boolean checkItem(Item item){
+        if(this.getInventory().getItems().contains(item)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public void addLocation(Location location){
         this.locationHistory.push(location);
     }
@@ -50,6 +58,20 @@ public class User extends Character {
     public Location showLastLocation(){
         return this.locationHistory.peek();
 
+    }
+
+    public String moveForward(Location current, Location last){
+        this.setCurrentLocation(current);
+        this.addLocation(last);
+        System.out.println(current.getMessage());
+        return current.getName();
+    }
+
+    public String moveBack(){
+        this.setCurrentLocation(this.showLastLocation());
+        System.out.println(this.showLastLocation().getMessage());
+        this.removeLocation();
+        return this.getCurrentLocation();
     }
 }
 

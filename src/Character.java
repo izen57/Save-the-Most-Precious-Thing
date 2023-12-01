@@ -26,8 +26,8 @@ public abstract class Character {
     }
 
 
-    public Location getCurrentLocation() {
-        return currentLocation;
+    public String getCurrentLocation() {
+        return currentLocation.getName();
     }
 
     public void setCurrentLocation(Location currentLocation) {
