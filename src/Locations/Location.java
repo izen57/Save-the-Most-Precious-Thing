@@ -1,4 +1,6 @@
-import java.util.List;
+package Locations;
+import Inventory.Item;
+
 
 public class Location {
     private String name;
@@ -6,10 +8,9 @@ public class Location {
     private Location previousLocation;
     private String message;
 
-    public Location(String name, Item item, Location previousLocation, String message) {
+    public Location(String name, Item item,  String message) {
         this.name = name;
         this.item = item;
-        this.previousLocation = previousLocation;
         this.message = message;
     }
 
