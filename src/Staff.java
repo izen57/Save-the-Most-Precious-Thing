@@ -1,5 +1,5 @@
+import Inventory.AbstractItem;
 import Inventory.Inventory;
-import Inventory.Item;
 import Locations.Location;
 
 public class Staff extends Character{
@@ -10,12 +10,12 @@ public class Staff extends Character{
     }
 
     @Override
-    public void takeItem(Item itemFromLocation) {
+    public void takeItem(AbstractItem itemFromLocation) {
 
     }
 
     @Override
-    public void dropItem(Item item) {
+    public void dropItem(AbstractItem item) {
 
     }
 }

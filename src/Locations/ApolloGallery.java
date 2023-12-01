@@ -2,7 +2,7 @@ package Locations;
 
 public class ApolloGallery extends Location {
     public ApolloGallery() {
-        super("apolloGallery", null,"You entered the Apollo Gallery, it is filled with dazzling jewelry and royal utensils." +
+        super("apolloGallery", "You entered the Apollo Gallery, it is filled with dazzling jewelry and royal utensils." +
                 " Sapphires shine with pure light. The king's crown stands in the center. " +
                 "There is an exit that turns right at the end of the gallery... ");
     }

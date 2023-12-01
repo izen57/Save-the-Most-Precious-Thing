@@ -1,16 +1,14 @@
+import Inventory.AbstractItem;
 import Inventory.Inventory;
-import Inventory.Item;
 import Inventory.Key;
 import Inventory.MuseumMap;
 import Locations.*;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import java.util.Scanner;
 
 public class Game {
-    User user = new User(new Inventory(new ArrayList<Item>()), null);
+    User user = new User(new Inventory(new ArrayList<AbstractItem>()), null);
     AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
     AncientGreekStair ancientGreekStair = new AncientGreekStair();
     ApolloGallery apolloGallery = new ApolloGallery();
@@ -34,6 +32,7 @@ public class Game {
                 "front of the Louvre. Although you have seen this beautiful scene many times, the sunset still" +
                 " makes you deeply addicted every time.  While you were immersed in the scenery, " +
                 "you received a message on your phone...");
+
 
 
         while (true) { // Start an infinite loop

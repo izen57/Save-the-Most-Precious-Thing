@@ -41,4 +41,9 @@ public class Inventory
 
         return null;
     }
+
+    public boolean contains(AbstractItem item)
+    {
+        return storage.contains(item);
+    }
 }

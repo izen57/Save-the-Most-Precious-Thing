@@ -1,10 +1,10 @@
+import Inventory.AbstractItem;
 import Inventory.Inventory;
 import Locations.Location;
-import Inventory.Item;
 
 
 public abstract class Character {
-    private Inventory inventory;
+    protected Inventory inventory;
     private Location currentLocation;
 
     public Character(Inventory inventory, Location currentLocation) {
@@ -12,8 +12,8 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public abstract void takeItem(Item itemFromLocation);
-    public abstract void dropItem(Item item);
+    public abstract void takeItem(AbstractItem itemFromLocation);
+    public abstract void dropItem(AbstractItem item);
     //public abstract void applyItem(IApplicable item);
 
 
@@ -34,5 +34,7 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-
+    public boolean checkItem(AbstractItem item){
+        return inventory.contains(item);
+    }
 }

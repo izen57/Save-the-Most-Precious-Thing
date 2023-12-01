@@ -11,10 +11,10 @@ public class ApplicableItem extends AbstractItem implements IApplicable
     }
 
     @Override
-    public boolean apply(IApplicable applicableItem)
+    public String getMessage()
     {
         // here it will be the match between the names of items for each item.
         // For example: OldKey and Old Door
-        return false;
+        return "false";
     }
 }
