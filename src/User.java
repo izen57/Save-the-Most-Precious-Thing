@@ -21,18 +21,6 @@ public class User extends Character {
         this.locationHistory = locationHistory;
     }
 
-
-    @Override
-    public void takeItem(AbstractItem itemFromLocation) {
-        inventory.addItem(itemFromLocation);
-    }
-
-    @Override
-    public void dropItem(AbstractItem item) {
-        inventory.removeItem(item.getName());
-
-    }
-
     public String applyItem(IApplicable item){
         return item.getMessage();
     }
