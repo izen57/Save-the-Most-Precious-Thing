@@ -14,15 +14,10 @@ public class Game {
     ItalianPaintingCollections italianPaintingCollections = new ItalianPaintingCollections();
     SpanishPaintingCollections spanishPaintingCollections = new SpanishPaintingCollections();
 //    TheGate theGate = new TheGate();
-    MuseumMap map = new MuseumMap();
-    Key key = new Key();
-    Newspaper newspaper = new Newspaper();
-
 //    RoomOfMonalisa roomOfMonalisa = new RoomOfMonalisa();
     private static Scanner scanner = new Scanner(System.in);
 
     public void startGame(){
-
         System.out.println("Today is Monday, the closing day of the Louvre. The sun sets in the west, and the golden sunset shines on the huge glass pyramid in " +
                 "front of the Louvre. Although you have seen this beautiful scene many times, the sunset still" +
                 " makes you deeply addicted every time.  While you were immersed in the scenery, " +
@@ -90,6 +85,7 @@ public class Game {
         MAIN_LOOP:
         while (true) { // main loop
 //            String currentLocation =String.valueOf(user.getLocation());
+            MuseumMap map = user.findItemByName("map");
             switch (currentLocation){
                 case "ancientGreekGallery":
                     String inputE = scanner.nextLine().toLowerCase();
@@ -115,6 +111,7 @@ public class Game {
                     //the user can pick up the map here
                     while (true) {
                         String inputF = scanner.nextLine().toLowerCase();
+
                         if (inputF.contains("right")) {
                             //set user's location to new location
                             user.setCurrentLocation(corridor);
@@ -135,10 +132,12 @@ public class Game {
 
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
                             //put the map into the user's inventory
-                            user.takeItem(user.getCurrentLocation().findItemByName("Map"));
-                            System.out.println(map.getMessage());
-
-                        }else if (user.findItemByName("map") != null && inputF.contains("read") || inputF.contains("map")  ) {
+                            map = user.getCurrentLocation().dropItem("map");
+                            if (map != null) {
+                                user.takeItem(map);
+                                System.out.println(map.getMessage());
+                            }
+                        } else if (map != null && (inputF.contains("read") || inputF.contains("map"))) {
                             System.out.println(map.getMessage());
                         }
                         else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
@@ -180,7 +179,7 @@ public class Game {
                             currentLocation = user.moveBack();
                             break;
 
-                        } else if (user.findItemByName("map") != null && inputG.contains("read") || inputG.contains("map") && user.findItemByName("map") != null) {
+                        } else if (map != null && (inputG.contains("read") || inputG.contains("map"))) {
                             System.out.println(map.getMessage());
 
                         }else {
@@ -226,7 +225,7 @@ public class Game {
                             user.removeLocation();
                             break;
 
-                        } else if (user.findItemByName("map") != null && inputH.contains("read") || inputH.contains("map")  ) {
+                        } else if (map != null && (inputH.contains("read") || inputH.contains("map"))) {
                             System.out.println(map.getMessage());
 
                         }else {
@@ -247,9 +246,8 @@ public class Game {
                             currentLocation = user.getCurrentLocation().getName();
                             user.removeLocation();
                             break;
-                        } else if (user.findItemByName("map") != null && inputI.contains("read") || inputI.contains("map")) {
+                        } else if (map != null && (inputI.contains("read") || inputI.contains("map"))) {
                             System.out.println(map.getMessage());
-
                         }else {
                             System.out.println("It seems like this is not the correct direction...");
                         }}
@@ -258,9 +256,11 @@ public class Game {
 
 
                 case "frenchPaintingCollections":
+                    // Here the user will read the newspaper
                     while (true){
 //                       System.out.println(frenchPaintingCollections.getMessage());
                             String inputJ = scanner.nextLine().toLowerCase();
+
                             if (inputJ.contains("back") || inputJ.contains("leave") || inputJ.contains("return")) {
                                 user.setCurrentLocation(user.showLastLocation());
                                 System.out.println(user.showLastLocation().getMessage());
@@ -283,7 +283,7 @@ public class Game {
                                 user.addLocation(frenchPaintingCollections);
                                 break;
 
-                            } else if (user.findItemByName("map") != null && inputJ.contains("read") || inputJ.contains("map")) {
+                            } else if (map != null && (inputJ.contains("read") || inputJ.contains("map"))) {
                                 System.out.println(map.getMessage());
 
                             }else {
@@ -300,7 +300,6 @@ public class Game {
                         //where the user should use the item Map to go to the room where Monalisa is stored
                         String inputL = scanner.nextLine().toLowerCase();
 
-
                         if (inputL.contains("back") || inputL.contains("leave") || inputL.contains("return")) {
                             user.setCurrentLocation(user.showLastLocation());
                             System.out.println(user.showLastLocation().getMessage());
@@ -308,9 +307,8 @@ public class Game {
                             user.removeLocation();
                             break;
 
-                        }else if (user.findItemByName("map") != null && inputL.contains("read") || inputL.contains("map") ) {
+                        } else if (map != null && (inputL.contains("read") || inputL.contains("map"))) {
                             System.out.println(map.getMessage());
-
                         } else if (inputL.contains("madonna")) {
 //                            currentLocation = "the Gate";
                             System.out.println("you quickly found Our Lady of the Rocks. Opposite was an independent room, " +
@@ -341,12 +339,11 @@ public class Game {
         while(true){
             String inputM = scanner.nextLine().toLowerCase();
             if(inputM.contains("talk") ||inputM.contains("ask") ){
-            System.out.println("Do you need any help? the staff raised her head and asked you nicely.");
-            break;
-        }else {
-                System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");
-            }
-
+                System.out.println("Do you need any help? the staff raised her head and asked you nicely.");
+                break;
+            }else {
+                    System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");
+                }
         }
 
         while(true){
@@ -358,7 +355,7 @@ public class Game {
             } else if (inputN.contains("no")) {
                 System.out.println("Okay, can you do me a favor? I'm going to get something from the basement. This is the key to Monalisa's room. Can you help me move this thing in?");
                 System.out.println("you take the key from her, now it seems like you can open the door now. Meanwhile, there are some small words on the key.");
-                user.takeItem(key);
+                user.takeItem(user.getCurrentLocation().dropItem("key"));
                break;
             }else{
                 System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");
@@ -368,7 +365,8 @@ public class Game {
 
         while(true){
             String inputO = scanner.nextLine().toLowerCase();
-            if (user.findItemByName("key") != null && inputO.contains("read") || inputO.contains("look") ||inputO.contains("key") ){
+            Key key = user.findItemByName("key");
+            if (key != null && (inputO.contains("read") || inputO.contains("look") ||inputO.contains("key"))) {
                 System.out.println(key.getMessage());
             } else if (inputO.contains("open")) {
                 System.out.println("you entered the room, Monalisa is right in front of you, and the rescue mission seems to be completed. However suddenly, to your right, in the completely opposite direction to the Mona Lisa, you hear the faint cry of the kitten.");
