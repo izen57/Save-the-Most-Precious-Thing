@@ -21,23 +21,25 @@ public class Inventory
         storage.add(item);
     }
 
-    public void removeItem(String itemName)
+    public <T extends AbstractItem> T removeItem(String itemName)
     {
-        AbstractItem item = findItemByName(itemName);
+        T item = findItemByName(itemName);
         if (item != null)
             storage.remove(item);
+
+        return item;
     }
 
     /**
-     * Find an item by its name.
-     * @param itemName an item to find
-     * @return an abstract item if there is it in the inventory, <code>null</code> otherwise
+     * Find an item in the inner inventory by its name.
+     * @param itemName an item to find.
+     * @return an item of type <code>T</code> which must extends the {@link AbstractItem AbstractItem class } if there is it in the inventory, <code>null</code> otherwise.
      */
-    public AbstractItem findItemByName(String itemName)
+    public <T extends AbstractItem> T findItemByName(String itemName)
     {
         for (AbstractItem i : storage)
             if (itemName.equalsIgnoreCase(i.getName()))
-                return i;
+                return (T) i;
 
         return null;
     }

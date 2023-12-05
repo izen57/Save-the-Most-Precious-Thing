@@ -12,8 +12,18 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public abstract void takeItem(AbstractItem itemFromLocation);
-    public abstract void dropItem(AbstractItem item);
+    public void takeItem(AbstractItem itemFromLocation) {
+        inventory.addItem(itemFromLocation);
+    }
+
+    public <T extends AbstractItem> T dropItem(String itemName)
+    {
+        T item = findItemByName(itemName);
+        if (item != null)
+            inventory.removeItem(itemName);
+
+        return item;
+    }
     //public abstract void applyItem(IApplicable item);
 
 
@@ -34,7 +44,12 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public AbstractItem findItemByName(String itemName){
+    /**
+     * Find an item in the inner inventory by its name.
+     * @param itemName an item to find.
+     * @return an item of type <code>T</code> which must extends the {@link AbstractItem AbstractItem class } if there is it in the inventory, <code>null</code> otherwise.
+     */
+    public <T extends AbstractItem> T findItemByName(String itemName){
         return inventory.findItemByName(itemName);
     }
 }
