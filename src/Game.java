@@ -281,8 +281,10 @@ public class Game {
                                 System.out.println(corridor.getMessage());
                                 currentLocation = "corridor";
                                 user.addLocation(frenchPaintingCollections);
+                                System.out.println("In the corner of the hall you see a rack with booklets about the history of the hall.\n");
+                                Newspaper newspaper = user.getCurrentLocation().findItemByName("newspaper");
+                                System.out.println(newspaper.getDescription());
                                 break;
-
                             } else if (map != null && (inputJ.contains("read") || inputJ.contains("map"))) {
                                 System.out.println(map.getMessage());
 
