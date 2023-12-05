@@ -36,7 +36,7 @@ public class Inventory
     public AbstractItem findItemByName(String itemName)
     {
         for (AbstractItem i : storage)
-            if (itemName.equals(i.getName()))
+            if (itemName.equalsIgnoreCase(i.getName()))
                 return i;
 
         return null;

@@ -1,8 +1,16 @@
 package Locations;
 
+import Inventory.Newspaper;
+
 public class FrenchPaintingCollections extends Location {
 
     public FrenchPaintingCollections() {
-        super("frenchPaintingCollections", "you are surrounded by the painting of french artist, there seems no sign of Monalisa. However in your right, there is a corridor to go to collections of other countries.");
+        super(
+            "frenchPaintingCollections",
+            "You are surrounded by the painting of french artist, there seems no sign of Monalisa. " +
+            "In your right, there is a corridor to go to collections of other countries." +
+            "In the corner of the hall you see a rack with booklets about the history of the hall."
+        );
+        super.inventory.addItem(new Newspaper());
     }
 }
