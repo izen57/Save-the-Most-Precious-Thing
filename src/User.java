@@ -71,7 +71,7 @@ public class User extends Character {
         this.setCurrentLocation(this.showLastLocation());
         System.out.println(this.showLastLocation().getMessage());
         this.removeLocation();
-        return this.getCurrentLocation();
+        return this.getCurrentLocation().getName();
 
     }
 }

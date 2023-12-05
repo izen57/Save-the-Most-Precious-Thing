@@ -1,7 +1,4 @@
-import Inventory.AbstractItem;
-import Inventory.Inventory;
-import Inventory.Key;
-import Inventory.MuseumMap;
+import Inventory.*;
 import Locations.*;
 
 import java.util.ArrayList;
@@ -18,10 +15,8 @@ public class Game {
     SpanishPaintingCollections spanishPaintingCollections = new SpanishPaintingCollections();
 //    TheGate theGate = new TheGate();
     MuseumMap map = new MuseumMap();
-
     Key key = new Key();
-
-
+    Newspaper newspaper = new Newspaper();
 
 //    RoomOfMonalisa roomOfMonalisa = new RoomOfMonalisa();
     private static Scanner scanner = new Scanner(System.in);
@@ -140,10 +135,10 @@ public class Game {
 
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
                             //put the map into the user's inventory
-                            user.takeItem(map);
+                            user.takeItem(user.getCurrentLocation().findItemByName("Map"));
                             System.out.println(map.getMessage());
 
-                        }else if (user.checkItem(map) && inputF.contains("read") || inputF.contains("map")  ) {
+                        }else if (user.findItemByName("map") != null && inputF.contains("read") || inputF.contains("map")  ) {
                             System.out.println(map.getMessage());
                         }
                         else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
@@ -151,7 +146,7 @@ public class Game {
                             System.out.println("You went back to the corridor filled with ancient Greek sculptures. " +
                                     "On your right is the statue of Venus with a broken arm. She is at the end of the corridor,facing the corridor and " +
                                             "quietly overlooking the countless worldly people passing by");
-                            currentLocation = user.getCurrentLocation();
+                            currentLocation = user.getCurrentLocation().getName();
                             user.removeLocation();
                             break;
 
@@ -185,7 +180,7 @@ public class Game {
                             currentLocation = user.moveBack();
                             break;
 
-                        } else if ( user.checkItem(map) && inputG.contains("read") || inputG.contains("map") && user.checkItem(map)) {
+                        } else if (user.findItemByName("map") != null && inputG.contains("read") || inputG.contains("map") && user.findItemByName("map") != null) {
                             System.out.println(map.getMessage());
 
                         }else {
@@ -227,11 +222,11 @@ public class Game {
 //                            currentLocation = user.moveBack();
                             user.setCurrentLocation(user.showLastLocation());
                             System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
+                            currentLocation = user.getCurrentLocation().getMessage();
                             user.removeLocation();
                             break;
 
-                        } else if (user.checkItem(map) && inputH.contains("read") || inputH.contains("map")  ) {
+                        } else if (user.findItemByName("map") != null && inputH.contains("read") || inputH.contains("map")  ) {
                             System.out.println(map.getMessage());
 
                         }else {
@@ -249,10 +244,10 @@ public class Game {
                         if (inputI.contains("back") || inputI.contains("leave") || inputI.contains("return")) {
                             user.setCurrentLocation(user.showLastLocation());
                             System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
+                            currentLocation = user.getCurrentLocation().getName();
                             user.removeLocation();
                             break;
-                        } else if (user.checkItem(map)&& inputI.contains("read") || inputI.contains("map")) {
+                        } else if (user.findItemByName("map") != null && inputI.contains("read") || inputI.contains("map")) {
                             System.out.println(map.getMessage());
 
                         }else {
@@ -269,7 +264,7 @@ public class Game {
                             if (inputJ.contains("back") || inputJ.contains("leave") || inputJ.contains("return")) {
                                 user.setCurrentLocation(user.showLastLocation());
                                 System.out.println(user.showLastLocation().getMessage());
-                                currentLocation = user.getCurrentLocation();
+                                currentLocation = user.getCurrentLocation().getName();
                                 user.removeLocation();
                                 break;
 
@@ -288,7 +283,7 @@ public class Game {
                                 user.addLocation(frenchPaintingCollections);
                                 break;
 
-                            } else if (user.checkItem(map)&& inputJ.contains("read") || inputJ.contains("map")) {
+                            } else if (user.findItemByName("map") != null && inputJ.contains("read") || inputJ.contains("map")) {
                                 System.out.println(map.getMessage());
 
                             }else {
@@ -309,11 +304,11 @@ public class Game {
                         if (inputL.contains("back") || inputL.contains("leave") || inputL.contains("return")) {
                             user.setCurrentLocation(user.showLastLocation());
                             System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
+                            currentLocation = user.getCurrentLocation().getName();
                             user.removeLocation();
                             break;
 
-                        }else if (user.checkItem(map) && inputL.contains("read") || inputL.contains("map") ) {
+                        }else if (user.findItemByName("map") != null && inputL.contains("read") || inputL.contains("map") ) {
                             System.out.println(map.getMessage());
 
                         } else if (inputL.contains("madonna")) {
@@ -373,7 +368,7 @@ public class Game {
 
         while(true){
             String inputO = scanner.nextLine().toLowerCase();
-            if(user.checkItem(key)  && inputO.contains("read") || inputO.contains("look") ||inputO.contains("key") ){
+            if (user.findItemByName("key") != null && inputO.contains("read") || inputO.contains("look") ||inputO.contains("key") ){
                 System.out.println(key.getMessage());
             } else if (inputO.contains("open")) {
                 System.out.println("you entered the room, Monalisa is right in front of you, and the rescue mission seems to be completed. However suddenly, to your right, in the completely opposite direction to the Mona Lisa, you hear the faint cry of the kitten.");

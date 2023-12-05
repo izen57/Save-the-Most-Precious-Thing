@@ -1,5 +1,6 @@
 package Locations;
 
+import Inventory.AbstractItem;
 import Inventory.Inventory;
 
 public class Location {
@@ -33,5 +34,10 @@ public class Location {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public AbstractItem findItemByName(String itemName)
+    {
+        return inventory.findItemByName(itemName);
     }
 }

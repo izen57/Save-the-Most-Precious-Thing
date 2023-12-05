@@ -26,15 +26,15 @@ public abstract class Character {
     }
 
 
-    public String getCurrentLocation() {
-        return currentLocation.getName();
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
 
-    public boolean checkItem(AbstractItem item){
-        return inventory.contains(item);
+    public AbstractItem findItemByName(String itemName){
+        return inventory.findItemByName(itemName);
     }
 }
