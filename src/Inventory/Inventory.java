@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * A class which represents an inventory of an in-game instance.
- * The inventory is held by {@link Locations.Location locations} and all classes derived by the {@link Character character} class.
+ * The inventory is held by {@link Locations.Location locations} and all classes derived by the {@link Main.Character character} class.
  */
 public class Inventory
 {
