@@ -1,7 +1,8 @@
+package Main;
+
 import Inventory.*;
 import Locations.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {

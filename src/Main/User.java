@@ -1,3 +1,5 @@
+package Main;
+
 import Inventory.AbstractItem;
 import Inventory.IApplicable;
 import Inventory.Inventory;
@@ -5,7 +7,8 @@ import Locations.Location;
 
 import java.util.Stack;
 
-public class User extends Character {
+public class User extends Character
+{
     private Stack<Location> locationHistory = new Stack<>();
 
     public User(Inventory inventory, Location currentLocation) {

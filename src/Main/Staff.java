@@ -1,8 +1,11 @@
+package Main;
+
 import Inventory.AbstractItem;
 import Inventory.Inventory;
 import Locations.Location;
 
-public class Staff extends Character{
+public class Staff extends Character
+{
     public Staff(Inventory inventory, Location currentLocation) {
         super(inventory, currentLocation);
     }
