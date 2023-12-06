@@ -133,7 +133,7 @@ public class Game {
 
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
                             //put the map into the user's inventory
-                            map = user.getCurrentLocation().dropItem("map");
+                            map = user.getCurrentLocation().removeItem("map");
                             if (map != null) {
                                 user.takeItem(map);
                                 System.out.println(map.getMessage());
@@ -358,7 +358,7 @@ public class Game {
             } else if (inputN.contains("no")) {
                 System.out.println("Okay, can you do me a favor? I'm going to get something from the basement. This is the key to Monalisa's room. Can you help me move this thing in?");
                 System.out.println("you take the key from her, now it seems like you can open the door now. Meanwhile, there are some small words on the key.");
-                user.takeItem(user.getCurrentLocation().dropItem("key"));
+                user.takeItem(user.getCurrentLocation().removeItem("key"));
                break;
             }else{
                 System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");

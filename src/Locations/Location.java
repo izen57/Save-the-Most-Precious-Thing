@@ -47,17 +47,17 @@ public class Location {
      * Adds an {@link AbstractItem item} to the inventory of the location.
      * @param itemToAdd an item to add.
      */
-    public void takeItem(AbstractItem itemToAdd) {
+    public void addItem(AbstractItem itemToAdd) {
         inventory.addItem(itemToAdd);
     }
 
     /**
      * Removes an {@link AbstractItem item} from the location.
      * @param itemName an item to remove.
-     * @return an item of the given type parameter if it is presents in the inventory of the location, <code>null</code> otherwise.
+     * @return an item of the given type parameter if it is presents in the inventory of the location, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the location which should be derived from the {@link AbstractItem}.
      */
-    public <T extends AbstractItem> T dropItem(String itemName)
+    public <T extends AbstractItem> T removeItem(String itemName)
     {
         return inventory.removeItem(itemName);
     }
