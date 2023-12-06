@@ -65,7 +65,7 @@ public class Location {
     /**
      * Find an item on the location by its name.
      * @param itemName a name of the item to find.
-     * @return an item of the given type parameter if it is presents in the inventory of the location, <code>null</code> otherwise.
+     * @return an item of the given type parameter if it is presents in the inventory of the location, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the inventory of the location which should be derived from the {@link AbstractItem}.
      */
     public <T extends AbstractItem> T findItemByName(String itemName)

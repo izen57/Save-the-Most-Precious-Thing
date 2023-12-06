@@ -36,7 +36,7 @@ public abstract class Character {
      * Removes an item to the character's {@link Inventory inventory} and drop it to the current {@link Location location}.
      * Use it with the {@link Location#addItem(AbstractItem)}.
      * @param itemName the item to drop.
-     * @return an item of the given type parameter if it is presents in the character's inventory, <code>null</code> otherwise.
+     * @return an item of the given type parameter if it is presents in the character's inventory, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
     public <T extends AbstractItem> T dropItem(String itemName)
@@ -68,7 +68,7 @@ public abstract class Character {
     /**
      * Find an item in the character's inventory by its name.
      * @param itemName an item to find.
-     * @return an item of type <code>T</code> which must extends the {@link AbstractItem AbstractItem class} if there is it in the inventory, <code>null</code> otherwise.
+     * @return an item of type {@code T} which must extends the {@link AbstractItem AbstractItem class} if there is it in the inventory, <code>null</code> otherwise.
      */
     public <T extends AbstractItem> T findItemByName(String itemName){
         return inventory.findItemByName(itemName);
