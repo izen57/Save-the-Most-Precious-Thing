@@ -7,6 +7,9 @@ import Locations.Location;
 
 import java.util.Stack;
 
+/**
+ * The user is the character with the stack of the history of locations he visited.
+ */
 public class User extends Character
 {
     private Stack<Location> locationHistory = new Stack<>();
@@ -40,16 +43,6 @@ public class User extends Character
         return this.locationHistory.peek();
 
     }
-
-
-//    public ArrayList<AbstractItem> getInventories() {
-//        return abstractItems;
-//    }
-
-//    public void setInventories(List<AbstractItem> inventories)
-//    {
-//        this.abstractItems = inventories;
-//    }
 
     public String moveForward(Location current, Location last){
         this.setCurrentLocation(current);
