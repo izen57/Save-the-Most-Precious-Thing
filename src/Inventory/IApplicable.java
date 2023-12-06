@@ -1,14 +1,14 @@
 package Inventory;
 
 /**
- *  The interface to implement the conception of the appliance of an item.
+ * The interface to implement the conception of the appliance of an {@link AbstractItem abstract item}.
  */
 public interface IApplicable
 {
     /**
-     * Apply an applicable item to another item.
+     * Writes in the output the message while applying the {@link ApplicableItem item}.
      *
-     * @return <code>true</code> if this item can be applied to the given item, <code>false</code> otherwise.
+     * @return the message of the application.
      */
     String getMessage();
 }
