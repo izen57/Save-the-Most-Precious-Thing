@@ -45,10 +45,10 @@ public class Location {
 
     /**
      * Adds an {@link AbstractItem item} to the inventory of the location.
-     * @param itemFromLocation an item to add.
+     * @param itemToAdd an item to add.
      */
-    public void takeItem(AbstractItem itemFromLocation) {
-        inventory.addItem(itemFromLocation);
+    public void takeItem(AbstractItem itemToAdd) {
+        inventory.addItem(itemToAdd);
     }
 
     /**
