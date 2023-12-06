@@ -4,7 +4,8 @@ public class Newspaper extends NonApplicableItem
 {
     public Newspaper()
     {
-        super("The forgotten newspaper in the French Painting Collections",
+        super(
+            "The forgotten newspaper in the French Painting Collections",
             "You see a newspaper from a week ago. The front page reads, " +
                 "\"The Louvre will redistribute some of its exhibits. " +
                 "Due to the expected influx of visitors and the poor condition of some storage areas, " +
