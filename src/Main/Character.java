@@ -68,7 +68,7 @@ public abstract class Character {
     /**
      * Find an item in the character's inventory by its name.
      * @param itemName an item to find.
-     * @return an item of type <code>T</code> which must extends the {@link AbstractItem AbstractItem class } if there is it in the inventory, <code>null</code> otherwise.
+     * @return an item of type <code>T</code> which must extends the {@link AbstractItem AbstractItem class} if there is it in the inventory, <code>null</code> otherwise.
      */
     public <T extends AbstractItem> T findItemByName(String itemName){
         return inventory.findItemByName(itemName);
