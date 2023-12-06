@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    User user = new User(new Inventory(new ArrayList<AbstractItem>()), null);
+    User user = new User(new Inventory(), null);
     AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
     AncientGreekStair ancientGreekStair = new AncientGreekStair();
     ApolloGallery apolloGallery = new ApolloGallery();

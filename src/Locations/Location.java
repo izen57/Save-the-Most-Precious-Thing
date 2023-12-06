@@ -42,11 +42,7 @@ public class Location {
 
     public <T extends AbstractItem> T dropItem(String itemName)
     {
-        T item = findItemByName(itemName);
-        if (item != null)
-            inventory.removeItem(itemName);
-
-        return item;
+        return inventory.removeItem(itemName);
     }
 
     /**
