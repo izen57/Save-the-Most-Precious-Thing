@@ -1,6 +1,5 @@
 package Main;
 
-import Inventory.AbstractItem;
 import Inventory.Inventory;
 import Locations.Location;
 

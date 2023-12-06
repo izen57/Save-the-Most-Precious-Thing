@@ -1,6 +1,9 @@
 package Main;
 
-import Inventory.*;
+import Inventory.Inventory;
+import Inventory.Key;
+import Inventory.MuseumMap;
+import Inventory.Newspaper;
 import Locations.*;
 
 import java.util.Scanner;
