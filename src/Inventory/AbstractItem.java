@@ -1,18 +1,18 @@
 package Inventory;
 
 /**
- * The class for a general item representation. Use it for the general iteration.
- * An item can be an applicable one and non-applicable one.
+ * The class for a general item representation. It used by inventory of {@link Locations.Location locations} and {@link Character characters}.
+ * An item can be an {@link ApplicableItem applicable} one and {@link NonApplicableItem non-applicable} one.
  */
 public abstract class AbstractItem
 {
     /**
-     * A name of an item
+     * A name of an item.
      */
     private String name;
 
     /**
-     * A description of an item. It can include its story, origin, application, etc.
+     * A description of an item. Mostly it is the message which appears while applying but can be its story, origin, application, etc.
      */
     private String description;
 
