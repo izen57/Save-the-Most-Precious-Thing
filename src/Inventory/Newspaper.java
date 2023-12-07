@@ -1,6 +1,6 @@
 package Inventory;
 
-public class Newspaper extends NonApplicableItem
+public class Newspaper extends AbstractItem
 {
     public Newspaper()
     {

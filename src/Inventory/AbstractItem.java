@@ -2,7 +2,7 @@ package Inventory;
 
 /**
  * The class for a general item representation. It used by inventory of {@link Locations.Location locations} and {@link Character characters}.
- * An item can be an {@link ApplicableItem applicable} one and {@link NonApplicableItem non-applicable} one.
+ * An item can be an applicable with implementation of {@link IApplicable} or non-applicable without it.
  */
 public abstract class AbstractItem
 {
