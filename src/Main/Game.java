@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class Game {
     User user = new User(new Inventory(), null);
 
-    User user = new User(new Inventory(), null);
     AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
     AncientGreekStair ancientGreekStair = new AncientGreekStair();
     ApolloGallery apolloGallery = new ApolloGallery();
@@ -139,18 +138,13 @@ public class Game {
                         } else if (map != null && (inputF.contains("read") || inputF.contains("map"))) {
                             System.out.println(map.getMessage());
                             user.takeItem(map);
-                            System.out.println(map.getMessage());
-
-                        }else if (user.checkItem(map) &&  inputF.contains("read") || inputF.contains("map")  ) {
-//                            System.out.println(map.getMessage());
-                            user.applyItem(map);
                         }
                         else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
                             user.setCurrentLocation(user.showLastLocation());
                             System.out.println("You went back to the corridor filled with ancient Greek sculptures. " +
                                     "On your right is the statue of Venus with a broken arm. She is at the end of the corridor,facing the corridor and " +
                                             "quietly overlooking the countless worldly people passing by");
-                            currentLocation = user.getCurrentLocation();
+                            currentLocation = user.getCurrentLocation().getName();
                             user.removeLocation();
                             break;
 
@@ -228,7 +222,7 @@ public class Game {
                         if (inputI.contains("back") || inputI.contains("leave") || inputI.contains("return")) {
                             user.moveBack();
                             break;
-                        } else if (user.checkItem(map)&& inputI.contains("read") || inputI.contains("map")) {
+                        } else if (map != null && (inputI.contains("read") || inputI.contains("map"))) {
                             System.out.println(map.getMessage());
                         }else {
                             System.out.println("It seems like this is not the correct direction...");
