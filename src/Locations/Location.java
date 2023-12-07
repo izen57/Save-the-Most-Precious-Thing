@@ -6,14 +6,8 @@ public class Location {
     private String name;
     protected Inventory inventory;
     private String message;
-
-    public Location(String name, String message) {
-        this.name = name;
-        this.inventory = new Inventory();
-        this.message = message;
-    }
-
-    public Location(String name, Inventory inventory, String message) {
+  
+    public Location(String name, Inventory inventory,  String message) {
         this.name = name;
         this.inventory = inventory;
         this.message = message;
@@ -27,6 +21,9 @@ public class Location {
         this.name = name;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
     public String getMessage() {
         return message;
     }
