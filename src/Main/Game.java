@@ -130,8 +130,9 @@ public class Game {
 
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
                             //put the map into the user's inventory
-                            map = user.getCurrentLocation().removeItem("map");
-                            if (map != null) {
+                            MuseumMap mapCheck = user.getCurrentLocation().removeItem("map");
+                            if (mapCheck != null) {
+                                map = mapCheck;
                                 user.takeItem(map);
                                 System.out.println(map.getMessage());
                             }
@@ -247,10 +248,10 @@ public class Game {
                                 break;
 
                             } else if (inputJ.contains("right")) {
-                                currentLocation = user.moveForward(corridor, frenchPaintingCollections);
                                 System.out.println("In the corner of the hall you see a rack with booklets about the history of the hall.\n");
                                 Newspaper newspaper = user.getCurrentLocation().findItemByName("newspaper");
                                 System.out.println(newspaper.getDescription());
+                                currentLocation = user.moveForward(corridor, frenchPaintingCollections);
                                 break;
                             } else if (map != null && (inputJ.contains("read") || inputJ.contains("map"))) {
                                 System.out.println(map.getMessage());
@@ -321,7 +322,8 @@ public class Game {
             } else if (inputN.contains("no")) {
                 System.out.println("Okay, can you do me a favor? I'm going to get something from the basement. This is the key to Monalisa's room. Can you help me move this thing in?");
                 System.out.println("you take the key from her, now it seems like you can open the door now. Meanwhile, there are some small words on the key.");
-                user.takeItem(user.getCurrentLocation().removeItem("key"));
+                //user.takeItem(user.getCurrentLocation().removeItem("key"));
+                user.takeItem(new Key()); // fix it later
                break;
             }else{
                 System.out.println("You can't do anything strange, otherwise she will notice you and the rescue mission will fail.");
