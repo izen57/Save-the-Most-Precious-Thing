@@ -1,12 +1,12 @@
 package Locations;
-import Inventory.Inventory;
 
+import Inventory.Inventory;
 
 public class Location {
     private String name;
     protected Inventory inventory;
     private String message;
-
+  
     public Location(String name, Inventory inventory,  String message) {
         this.name = name;
         this.inventory = inventory;
@@ -21,11 +21,9 @@ public class Location {
         this.name = name;
     }
 
-
     public Inventory getInventory() {
         return inventory;
     }
-
     public String getMessage() {
         return message;
     }

@@ -14,18 +14,13 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public  void takeItem(AbstractItem itemFromLocation){
+    public void takeItem(AbstractItem itemFromLocation){
         this.inventory.addItem(itemFromLocation);
     };
-    public  void dropItem(AbstractItem item){
+  
+    public void dropItem(AbstractItem item){
         this.inventory.removeItem(item.getName());
     };
-    //public abstract void applyItem(IApplicable item);
-
-    public boolean checkItem(AbstractItem item){
-        return this.getInventory().contains(item);
-
-    }
 
     public Inventory getInventory() {
         return inventory;
@@ -35,7 +30,6 @@ public abstract class Character {
         this.inventory = inventory;
     }
 
-
     public String getCurrentLocation() {
         return currentLocation.getName();
     }
@@ -44,7 +38,7 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-
-
-
+    public boolean checkItem(AbstractItem item){
+        return inventory.contains(item);
+    }
 }
