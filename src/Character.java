@@ -2,6 +2,8 @@ import Inventory.AbstractItem;
 import Inventory.Inventory;
 import Locations.Location;
 
+import java.util.ArrayList;
+
 
 public abstract class Character {
     protected Inventory inventory;
@@ -12,10 +14,13 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public abstract void takeItem(AbstractItem itemFromLocation);
-    public abstract void dropItem(AbstractItem item);
-    //public abstract void applyItem(IApplicable item);
-
+    public void takeItem(AbstractItem itemFromLocation){
+        this.inventory.addItem(itemFromLocation);
+    };
+  
+    public void dropItem(AbstractItem item){
+        this.inventory.removeItem(item.getName());
+    };
 
     public Inventory getInventory() {
         return inventory;
@@ -24,7 +29,6 @@ public abstract class Character {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
-
 
     public String getCurrentLocation() {
         return currentLocation.getName();

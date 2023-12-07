@@ -4,17 +4,18 @@ import Inventory.Key;
 import Inventory.MuseumMap;
 import Locations.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    User user = new User(new Inventory(new ArrayList<AbstractItem>()), null);
+    User user = new User(new Inventory(), null);
+
     AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
     AncientGreekStair ancientGreekStair = new AncientGreekStair();
     ApolloGallery apolloGallery = new ApolloGallery();
     Corridor corridor = new Corridor();
     FrenchPaintingCollections frenchPaintingCollections = new FrenchPaintingCollections();
     ItalianPaintingCollections italianPaintingCollections = new ItalianPaintingCollections();
+
     SpanishPaintingCollections spanishPaintingCollections = new SpanishPaintingCollections();
 //    TheGate theGate = new TheGate();
     MuseumMap map = new MuseumMap();
@@ -94,19 +95,17 @@ public class Game {
 
         MAIN_LOOP:
         while (true) { // main loop
-//            String currentLocation =String.valueOf(user.getLocation());
             switch (currentLocation){
                 case "ancientGreekGallery":
                     String inputE = scanner.nextLine().toLowerCase();
 
                     if(inputE.contains("left")){
                         //set user's location to new location
-                        user.setCurrentLocation(ancientGreekStair);
-                        currentLocation = "ancientGreekStair";
-                        user.addLocation(ancientGreekGallery);
-                        System.out.println(ancientGreekStair.getMessage());
+                       currentLocation =  user.moveForward(ancientGreekStair, null);
 
-                    }else if(inputE.toLowerCase().contains("back")){
+
+
+                    }else if(inputE.contains("out") || inputE.contains("back") ){
                         //the mission can not be denied, you can not go out of the Louvre now.
                         System.out.println("the mission can not be denied, you can not go out of the Louvre now.");
 
@@ -122,29 +121,22 @@ public class Game {
                         String inputF = scanner.nextLine().toLowerCase();
                         if (inputF.contains("right")) {
                             //set user's location to new location
-                            user.setCurrentLocation(corridor);
-                            user.addLocation(ancientGreekStair);
-                            currentLocation = "corridor";
-                            System.out.println(corridor.getMessage());
-//                            currentLocation = user.moveForward(corridor, ancientGreekStair);
+                            currentLocation = user.moveForward(corridor, ancientGreekStair);
                             break;
-
 
                         } else if (inputF.contains("left")) {
-                            user.setCurrentLocation(apolloGallery);
-                            user.addLocation(ancientGreekStair);
-                            currentLocation = "apolloGallery";
-                            System.out.println(apolloGallery.getMessage());
-                            break;
+                            currentLocation = user.moveForward(apolloGallery, ancientGreekStair);
 
+                            break;
 
                         } else if (inputF.contains("pick") || inputF.contains("take")) {
                             //put the map into the user's inventory
                             user.takeItem(map);
                             System.out.println(map.getMessage());
 
-                        }else if (user.checkItem(map) && inputF.contains("read") || inputF.contains("map")  ) {
-                            System.out.println(map.getMessage());
+                        }else if (user.checkItem(map) &&  inputF.contains("read") || inputF.contains("map")  ) {
+//                            System.out.println(map.getMessage());
+                            user.applyItem(map);
                         }
                         else if (inputF.contains("back") || inputF.contains("leave") || inputF.contains("return")) {
                             user.setCurrentLocation(user.showLastLocation());
@@ -170,18 +162,11 @@ public class Game {
 
                         if (inputG.contains("right")) {
                             //set user's location to new location
-                            user.setCurrentLocation(frenchPaintingCollections);
-                            user.addLocation(apolloGallery);
-                            currentLocation = "frenchPaintingCollections";
-                            System.out.println(frenchPaintingCollections.getMessage());
+                            currentLocation = user.moveForward( frenchPaintingCollections, apolloGallery);
                             break;
 
 
                         } else if (inputG.contains("back") || inputG.contains("leave") || inputG.contains("return")) {
-//                            user.setCurrentLocation(user.showLastLocation());
-//                            System.out.println(user.showLastLocation().getMessage());
-//                            currentLocation = user.getCurrentLocation();
-//                            user.removeLocation();
                             currentLocation = user.moveBack();
                             break;
 
@@ -202,33 +187,20 @@ public class Game {
 
                         if (inputH.contains("right")) {
                             //set user's location to new location
-                            user.setCurrentLocation(italianPaintingCollections);
-                            user.addLocation(corridor);
-                            currentLocation = "italianPaintingCollections";
-                            System.out.println(italianPaintingCollections.getMessage());
+                            currentLocation = user.moveForward( italianPaintingCollections, corridor);
+
                             break;
 
                         } else if (inputH.contains("left")) {
-                            user.setCurrentLocation(frenchPaintingCollections);
-                            user.addLocation(corridor);
-                            currentLocation = "frenchPaintingCollections";
-                            System.out.println(frenchPaintingCollections.getMessage());
+                            currentLocation = user.moveForward( frenchPaintingCollections, corridor);
                             break;
 
                         } else if (inputH.contains("middle")) {
-                            user.setCurrentLocation(spanishPaintingCollections);
-                            user.addLocation(corridor);
-                            currentLocation = "spanishPaintingCollections";
-                            System.out.println(spanishPaintingCollections.getMessage());
+                            currentLocation = user.moveForward(spanishPaintingCollections, corridor);
                             break;
 
                         } else if (inputH.contains("back") || inputH.contains("leave") || inputH.contains("return")) {
-//                            System.out.println("There are people walking outside the corridor, you can't let people discover your whereabouts.");
-//                            currentLocation = user.moveBack();
-                            user.setCurrentLocation(user.showLastLocation());
-                            System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
-                            user.removeLocation();
+                            currentLocation = user.moveBack();
                             break;
 
                         } else if (user.checkItem(map) && inputH.contains("read") || inputH.contains("map")  ) {
@@ -247,10 +219,7 @@ public class Game {
                         String inputI = scanner.nextLine().toLowerCase();
 
                         if (inputI.contains("back") || inputI.contains("leave") || inputI.contains("return")) {
-                            user.setCurrentLocation(user.showLastLocation());
-                            System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
-                            user.removeLocation();
+                            user.moveBack();
                             break;
                         } else if (user.checkItem(map)&& inputI.contains("read") || inputI.contains("map")) {
                             System.out.println(map.getMessage());
@@ -264,28 +233,19 @@ public class Game {
 
                 case "frenchPaintingCollections":
                     while (true){
-//                       System.out.println(frenchPaintingCollections.getMessage());
                             String inputJ = scanner.nextLine().toLowerCase();
                             if (inputJ.contains("back") || inputJ.contains("leave") || inputJ.contains("return")) {
-                                user.setCurrentLocation(user.showLastLocation());
-                                System.out.println(user.showLastLocation().getMessage());
-                                currentLocation = user.getCurrentLocation();
-                                user.removeLocation();
+                                user.moveBack();
                                 break;
 
 
                             } else if (inputJ.contains("left")) {
-                                user.setCurrentLocation(apolloGallery);
-                                System.out.println(apolloGallery.getMessage());
-                                currentLocation = "apolloGallery";
-                                user.addLocation(frenchPaintingCollections);
+                                currentLocation = user.moveForward(apolloGallery, frenchPaintingCollections);
+
                                 break;
 
                             } else if (inputJ.contains("right")) {
-                                user.setCurrentLocation(corridor);
-                                System.out.println(corridor.getMessage());
-                                currentLocation = "corridor";
-                                user.addLocation(frenchPaintingCollections);
+                                currentLocation = user.moveForward(corridor, frenchPaintingCollections);
                                 break;
 
                             } else if (user.checkItem(map)&& inputJ.contains("read") || inputJ.contains("map")) {
@@ -307,10 +267,7 @@ public class Game {
 
 
                         if (inputL.contains("back") || inputL.contains("leave") || inputL.contains("return")) {
-                            user.setCurrentLocation(user.showLastLocation());
-                            System.out.println(user.showLastLocation().getMessage());
-                            currentLocation = user.getCurrentLocation();
-                            user.removeLocation();
+                            user.moveBack();
                             break;
 
                         }else if (user.checkItem(map) && inputL.contains("read") || inputL.contains("map") ) {
