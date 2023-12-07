@@ -1,11 +1,16 @@
-import Inventory.AbstractItem;
+package Main;
+
 import Inventory.IApplicable;
 import Inventory.Inventory;
 import Locations.Location;
 
 import java.util.Stack;
 
-public class User extends Character {
+/**
+ * The user is the character with the stack of the history of locations he visited.
+ */
+public class User extends Character
+{
     private Stack<Location> locationHistory = new Stack<>();
 
     public User(Inventory inventory, Location currentLocation) {

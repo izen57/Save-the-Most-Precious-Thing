@@ -2,15 +2,30 @@ package Inventory;
 
 import java.util.ArrayList;
 
+/**
+ * A class which represents an inventory of an in-game instance.
+ * The inventory is held by {@link Locations.Location locations} and all classes derived by the {@link Main.Character character} class.
+ */
 public class Inventory
 {
+    /**
+     * A storage of the inventory which contains an {@link ArrayList} of {@link AbstractItem abstract} items.
+     * Such a generalization is good for the iteration through the inventory or taking any item.
+     */
     private ArrayList<AbstractItem> storage;
 
+    /**
+     * Initialize an inventory with no {@link AbstractItem items} in it and capacity of 100.
+     */
     public Inventory()
     {
         storage = new ArrayList<>(100);
     }
 
+    /**
+     * Initialize an inventory with the already created storage.
+     * @param storage a storage to inject.
+     */
     public Inventory(ArrayList<AbstractItem> storage)
     {
         this.storage = storage;
@@ -21,29 +36,33 @@ public class Inventory
         storage.add(item);
     }
 
-    public void removeItem(String itemName)
+    /**
+     *
+     * @param itemName a name of the item to remove.
+     * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
+     * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
+     */
+    public <T extends AbstractItem> T removeItem(String itemName)
     {
-        AbstractItem item = findItemByName(itemName);
+        T item = findItemByName(itemName);
         if (item != null)
             storage.remove(item);
+
+        return item;
     }
 
     /**
-     * Find an item by its name.
-     * @param itemName an item to find
-     * @return an abstract item if there is it in the inventory, <code>null</code> otherwise
+     * Find an item in the inventory by its name.
+     * @param itemName a name of the item to find.
+     * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
+     * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
-    public AbstractItem findItemByName(String itemName)
+    public <T extends AbstractItem> T findItemByName(String itemName)
     {
         for (AbstractItem i : storage)
-            if (itemName.equals(i.getName()))
-                return i;
+            if (itemName.equalsIgnoreCase(i.getName()))
+                return (T) i;
 
         return null;
-    }
-
-    public boolean contains(AbstractItem item)
-    {
-        return storage.contains(item);
     }
 }

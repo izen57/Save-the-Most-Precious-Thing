@@ -1,3 +1,5 @@
+package Main;
+
 /**
  * <p>A class to store and manipulate the in-game time.
  * It stores the number of steps main character took, and can convert it to minutes.</p>
