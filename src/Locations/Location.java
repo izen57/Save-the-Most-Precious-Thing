@@ -1,16 +1,15 @@
 package Locations;
-import Inventory.Item;
+import Inventory.Inventory;
 
 
 public class Location {
     private String name;
-    private Item item;
-    private Location previousLocation;
+    protected Inventory inventory;
     private String message;
 
-    public Location(String name, Item item,  String message) {
+    public Location(String name, Inventory inventory,  String message) {
         this.name = name;
-        this.item = item;
+        this.inventory = inventory;
         this.message = message;
     }
 
@@ -22,21 +21,9 @@ public class Location {
         this.name = name;
     }
 
-    public Item getItem() {
-        return item;
-    }
 
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public Location getPreviousLocation() {
-        return previousLocation;
-    }
-
-
-    public void setPreviousLocation(Location previousLocation) {
-        this.previousLocation = previousLocation;
+    public Inventory getInventory() {
+        return inventory;
     }
 
     public String getMessage() {

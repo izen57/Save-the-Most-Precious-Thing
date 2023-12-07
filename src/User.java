@@ -1,5 +1,6 @@
+import Inventory.AbstractItem;
+import Inventory.IApplicable;
 import Inventory.Inventory;
-import Inventory.Item;
 import Locations.Location;
 
 import java.util.Stack;
@@ -22,29 +23,18 @@ public class User extends Character {
 
 
 //    @Override
-//    public Location
-    @Override
-    public void takeItem(Item itemFromLocation) {
-        this.getInventory().addItem(itemFromLocation);
+//    public void takeItem(AbstractItem itemFromLocation) {
+//        inventory.addItem(itemFromLocation);
+//    }
+//
+//    @Override
+//    public void dropItem(AbstractItem item) {
+//        inventory.removeItem(item.getName());
+//
+//    }
 
-    }
-
-    @Override
-    public void dropItem(Item item) {
-        this.getInventory().removeItem(item);
-
-    }
-
-    public String applyItem(Item item){
+    public String applyItem(IApplicable item){
         return item.getMessage();
-    }
-
-    public boolean checkItem(Item item){
-        if(this.getInventory().getItems().contains(item)){
-            return true;
-        }else {
-            return false;
-        }
     }
 
     public void addLocation(Location location){
@@ -60,6 +50,16 @@ public class User extends Character {
 
     }
 
+
+//    public ArrayList<AbstractItem> getInventories() {
+//        return abstractItems;
+//    }
+
+//    public void setInventories(List<AbstractItem> inventories)
+//    {
+//        this.abstractItems = inventories;
+//    }
+
     public String moveForward(Location current, Location last){
         this.setCurrentLocation(current);
         this.addLocation(last);
@@ -72,6 +72,6 @@ public class User extends Character {
         System.out.println(this.showLastLocation().getMessage());
         this.removeLocation();
         return this.getCurrentLocation();
+
     }
 }
-

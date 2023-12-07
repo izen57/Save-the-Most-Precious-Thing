@@ -1,10 +1,12 @@
+import Inventory.AbstractItem;
 import Inventory.Inventory;
 import Locations.Location;
-import Inventory.Item;
+
+import java.util.ArrayList;
 
 
 public abstract class Character {
-    private Inventory inventory;
+    protected Inventory inventory;
     private Location currentLocation;
 
     public Character(Inventory inventory, Location currentLocation) {
@@ -12,10 +14,18 @@ public abstract class Character {
         this.currentLocation = currentLocation;
     }
 
-    public abstract void takeItem(Item itemFromLocation);
-    public abstract void dropItem(Item item);
+    public  void takeItem(AbstractItem itemFromLocation){
+        this.inventory.addItem(itemFromLocation);
+    };
+    public  void dropItem(AbstractItem item){
+        this.inventory.removeItem(item.getName());
+    };
     //public abstract void applyItem(IApplicable item);
 
+    public boolean checkItem(AbstractItem item){
+        return this.getInventory().contains(item);
+
+    }
 
     public Inventory getInventory() {
         return inventory;
@@ -33,6 +43,8 @@ public abstract class Character {
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
+
+
 
 
 }
