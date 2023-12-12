@@ -184,6 +184,7 @@ public class MainLoop {
                 if(user.getLocationHistory()!= null){
                     Location previousLocation = currentLocation;
                     currentLocation = user.showLastLocation();
+                    user.setCurrentLocation(currentLocation);
                     System.out.println(currentLocation.getMessage());
                     user.addLocation(previousLocation);
 
@@ -209,6 +210,14 @@ public class MainLoop {
                 System.out.println(newspaper.getDescription());
                 }
                 break;
+
+            case TIP:
+                if(user.getCurrentLocation().getName().equals("restaurant"))
+                {
+                    System.out.println("Surprise! some recommendation from Mikhail & Yajing: ");
+                }
+                break;
+
 
 
 

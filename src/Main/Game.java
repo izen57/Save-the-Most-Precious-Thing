@@ -12,7 +12,7 @@ public class Game {
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
         User user = new User(new Inventory(), null);
-        // 创建地点
+        // create locations
         AncientGreekGallery ancientGreekGallery = new AncientGreekGallery();
         AncientGreekStair ancientGreekStair = new AncientGreekStair();
         ApolloGallery apolloGallery = new ApolloGallery();
@@ -23,7 +23,7 @@ public class Game {
         Restaurant restaurant = new Restaurant();
         SpanishPaintingCollections spanishPaintingCollections = new SpanishPaintingCollections();
 
-        // 设置地点连接
+        // set the connections between different locations
         ancientGreekGallery.setNorth(ancientGreekStair);
         ancientGreekStair.setSouth(ancientGreekGallery);
 
@@ -59,6 +59,7 @@ public class Game {
 
         while (true) { // Start an infinite loop
             //System.out.println("Enter 'yes' to get a congratulatory message, or anything else to try again:");
+            System.out.print("> ");
             String inputA = scanner.nextLine().toLowerCase();
 
             if (inputA.contains("read")) { // Check if user input contains "read" (case insensitive)
@@ -85,7 +86,9 @@ public class Game {
         }
 
         while (true) {
+            System.out.print("> ");
             String inputC = scanner.nextLine(); // Read user input
+
 
             if (inputC.equalsIgnoreCase("museum")) {
                 System.out.println("now you know the password to enter Louvre. and you immediately go to the entry of the museum, there are 3 wings in Louvre: Sully Denon and Richelieu. Remember, only if you enter the right room can you save the most precious good.");
@@ -97,6 +100,7 @@ public class Game {
         }
 
         while (true) {
+            System.out.print("> ");
             String inputD = scanner.nextLine().toLowerCase(); // Read user input
 
             if (inputD.contains("denon")) {
@@ -114,13 +118,13 @@ public class Game {
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().toLowerCase();
-
             if (input.contains("madonna")) {
                 break;
             }
 
             Command command = MainLoop.parseCommand(input);
             MainLoop.processCommand(command);
+
         }
 
 
@@ -130,6 +134,7 @@ public class Game {
 
 
         while (true) {
+            System.out.print("> ");
             String inputM = scanner.nextLine().toLowerCase();
             if (inputM.contains("talk") || inputM.contains("ask")) {
                 System.out.println("Do you need any help? the staff raised her head and asked you nicely.");
@@ -141,6 +146,7 @@ public class Game {
         }
 
         while (true) {
+            System.out.print("> ");
             String inputN = scanner.nextLine().toLowerCase();
             if (inputN.contains("yes")) {
                 System.out.println("Hey, I don't know you, you're not a museum member here, you need to leave immediately or I'll call the police.");
@@ -158,6 +164,7 @@ public class Game {
 
 
         while (true) {
+            System.out.print("> ");
             String inputO = scanner.nextLine().toLowerCase();
             Key key = user.findItemByName("key");
             if (key != null && (inputO.contains("read") || inputO.contains("look") || inputO.contains("key"))) {
@@ -177,6 +184,7 @@ public class Game {
 
 
         while (true) {
+            System.out.print("> ");
             String inputP = scanner.nextLine().toLowerCase();
             if (inputP.contains("monalisa") || inputP.contains("left")) {
                 System.out.println("Congratulations on successfully rescuing the Mona Lisa! However, the real Mona Lisa is intact in the museum's storage room, and what you rescued is just a replica. At the same time, the kitten died in pain.");
