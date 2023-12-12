@@ -11,6 +11,11 @@ public class Location {
     private String name;
     protected Inventory inventory;
     private String message;
+    private Location east;
+    private Location west;
+
+    private Location north;
+    private Location south;
 
     /**
      * Initialize the location with the given {@link Inventory inventory}.
@@ -39,23 +44,54 @@ public class Location {
         return message;
     }
 
+    public Location getEast() {
+        return east;
+    }
+
+    public void setEast(Location east) {
+        this.east = east;
+    }
+
+    public Location getWest() {
+        return west;
+    }
+
+    public void setWest(Location west) {
+        this.west = west;
+    }
+
+    public Location getNorth() {
+        return north;
+    }
+
+    public void setNorth(Location north) {
+        this.north = north;
+    }
+
+    public Location getSouth() {
+        return south;
+    }
+
+    public void setSouth(Location south) {
+        this.south = south;
+    }
+
     /**
      * Adds an {@link AbstractItem item} to the inventory of the location.
-     * @param itemToAdd an item to add.
+     * @param item an item to add.
      */
-    public void addItem(AbstractItem itemToAdd) {
-        inventory.addItem(itemToAdd);
+    public void addItem(AbstractItem item) {
+        inventory.addItem(item);
     }
 
     /**
      * Removes an {@link AbstractItem item} from the location.
      * @param itemName an item to remove.
      * @return an item of the given type parameter if it is presents in the inventory of the location, {@code null} otherwise.
-     * @param <T> the type parameter of needed item from the location which should be derived from the {@link AbstractItem}.
      */
-    public <T extends AbstractItem> T removeItem(String itemName)
+    public void removeItem(String itemName)
     {
-        return inventory.removeItem(itemName);
+        inventory.removeItem(itemName);
     }
 
     /**
@@ -68,4 +104,6 @@ public class Location {
     {
         return inventory.findItemByName(itemName);
     }
+
+
 }

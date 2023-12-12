@@ -6,7 +6,7 @@ package Inventory;
 public interface IApplicable
 {
     /**
-     * Writes in the output the message while applying the {@link ApplicableItem item}.
+     * Writes in the output the message while applying the item.
      *
      * @return the message of the application.
      */

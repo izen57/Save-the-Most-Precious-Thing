@@ -10,8 +10,7 @@ public class FrenchPaintingCollections extends Location {
             "frenchPaintingCollections",
             new Inventory(),
             "You are surrounded by the painting of french artist, there seems no sign of Monalisa. " +
-            "In your right, there is a corridor to go to collections of other countries."
+            "to your east, there is a corridor to go to collections of other countries."
         );
-        addItem(new Newspaper());
     }
 }

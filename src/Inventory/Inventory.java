@@ -40,15 +40,13 @@ public class Inventory
      *
      * @param itemName a name of the item to remove.
      * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
-     * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
-    public <T extends AbstractItem> T removeItem(String itemName)
+    public void removeItem(String itemName)
     {
-        T item = findItemByName(itemName);
+        AbstractItem item = findItemByName(itemName);
         if (item != null)
             storage.remove(item);
 
-        return item;
     }
 
     /**

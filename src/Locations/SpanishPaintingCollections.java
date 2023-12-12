@@ -1,7 +1,10 @@
 package Locations;
 
-    public class SpanishPaintingCollections extends Location {
+import Inventory.Inventory;
+
+public class SpanishPaintingCollections extends Location {
         public SpanishPaintingCollections() {
-            super("spanishPaintingCollections", null, "you are surrounded by the painting of Spanish artist, there seems no sign of Monalisa.");
+            super("spanishPaintingCollections", new Inventory(), "you are surrounded by the painting of Spanish artist, there seems no sign of Monalisa." +
+                    "However, to the east of you, there is a painting by Titian right in front of you.");
         }
 }
