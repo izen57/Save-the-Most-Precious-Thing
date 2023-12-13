@@ -9,9 +9,8 @@ public class FrenchPaintingCollections extends Location {
         super(
             "frenchPaintingCollections",
             new Inventory(),
-            "You are surrounded by the painting of the French artists, there seems to be no sign of Monalisa, " +
-            "on your right there is a corridor to go to the collections of other countries."
+            "You are surrounded by the painting of French artist, there seems no sign of Monalisa. " +
+                "To your east, there is a corridor to go to the collections of other countries."
         );
-        addItem(new Newspaper());
     }
 }

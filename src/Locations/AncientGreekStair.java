@@ -8,9 +8,11 @@ public class AncientGreekStair extends Location {
         super(
             "ancientGreekStair",
             new Inventory(),
-            "You stand before the headless Goddess of Victory, " +
-                "with her wings outstretched on either side. On her left is the Western Painters' Exhibition Hall, " +
-                "and on her right is the magnificent Apollo Corridor. Meanwhile, at her feet there seems to be a map left by someone else."
+            "You are standing before the headless Goddess of Victory, " +
+                "with her wings outstretched on either side. " +
+                "On her east is the Egypt Exhibition Hall," +
+                "and on her west is the splendid Apollo Corridor. " +
+                "Meanwhile, at her feet there seems to be a map left by someone else."
         );
         addItem(new MuseumMap());
     }

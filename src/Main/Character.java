@@ -25,11 +25,11 @@ public abstract class Character {
     /**
      * Adds an {@link AbstractItem item} to the character's {@link Inventory inventory}.
      * To grab an item from the {@link Location location} use this method with the {@link Location#removeItem(String)}.
-     * @param itemFromLocation the item to add.
+     * @param item the item to add.
      */
-    public void takeItem(AbstractItem itemFromLocation) {
-        if (itemFromLocation != null)
-            inventory.addItem(itemFromLocation);
+    public void takeItem(AbstractItem item) {
+        inventory.addItem(item);
+        currentLocation.removeItem(item.getName());
     }
 
     /**
@@ -37,15 +37,14 @@ public abstract class Character {
      * Use it with the {@link Location#addItem(AbstractItem)}.
      * @param itemName the item to drop.
      * @return an item of the given type parameter if it is presents in the character's inventory, {@code null} otherwise.
-     * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
-    public <T extends AbstractItem> T dropItem(String itemName)
+    public void  dropItem(String itemName)
     {
-        T removedItem =  inventory.removeItem(itemName);
-        if (removedItem != null)
+        AbstractItem removedItem = inventory.findItemByName(itemName);
+        if (removedItem != null) {
+            inventory.removeItem(itemName);
             currentLocation.addItem(removedItem);
-
-        return removedItem;
+        }
     }
 
     public Inventory getInventory() {
@@ -68,7 +67,7 @@ public abstract class Character {
     /**
      * Finds an item in the character's {@link Inventory inventory} by its name.
      * @param itemName an item to find.
-     * @return an item of type {@code T} which must extends the {@link AbstractItem} if there is it in the inventory, <code>null</code> otherwise.
+     * @return an item of type {@code T} which must extends the {@link AbstractItem} if there is it in the inventory, {@code null} otherwise.
      */
     public <T extends AbstractItem> T findItemByName(String itemName){
         return inventory.findItemByName(itemName);

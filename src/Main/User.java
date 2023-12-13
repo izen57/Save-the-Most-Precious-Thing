@@ -6,6 +6,8 @@ import Locations.Location;
 
 import java.util.Stack;
 
+import static Main.Command.*;
+
 /**
  * The user is the character with the stack of the history of locations he visited.
  */
@@ -42,18 +44,20 @@ public class User extends Character
         return this.locationHistory.peek();
 
     }
-
-    public String moveForward(Location current, Location last){
-        this.setCurrentLocation(current);
-        this.addLocation(last);
-        System.out.println(current.getMessage());
-        return current.getName();
+    public void move(Location location, Command command){
+        addLocation(location);
+        if(command == NORTH){
+        location = location.getNorth();
+        } else if (command == EAST) {
+            location = location.getEast();
+        } else if (command == WEST) {
+            location = location.getWest();
+        } else if (command ==SOUTH) {
+            location = location.getSouth();
+        }
+        setCurrentLocation(location);
+        System.out.println(location.getMessage());
     }
 
-    public String moveBack(){
-        this.setCurrentLocation(this.showLastLocation());
-        System.out.println(this.showLastLocation().getMessage());
-        this.removeLocation();
-        return this.getCurrentLocation().getName();
-    }
+
 }
