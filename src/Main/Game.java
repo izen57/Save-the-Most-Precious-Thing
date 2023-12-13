@@ -169,7 +169,8 @@ public class Game {
                 );
                 System.out.println(
                     "You take the key from her, now it seems like you can open the door. " +
-                    "Meanwhile, there are some little words on the key.");
+                    "Meanwhile, there are some little words on the key."
+                );
                 user.inventory.addItem(new Key());
                 break;
             } else {
