@@ -1,7 +1,6 @@
 package Locations;
 
 import Inventory.Inventory;
-import Inventory.Newspaper;
 
 public class FrenchPaintingCollections extends Location {
 

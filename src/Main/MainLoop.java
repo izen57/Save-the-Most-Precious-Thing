@@ -2,7 +2,7 @@ package Main;
 
 import Inventory.MuseumMap;
 import Inventory.Newspaper;
-import Locations.*;
+import Locations.Location;
 
 import static Main.Command.*;
 
