@@ -357,6 +357,25 @@ public class Game {
                     "belongs to a very wealthy woman, and you are rewarded with five million euros.\n\n"
                 );
                 System.out.println("Game over. Thanks for playing ;)");
+
+                System.out.println("\n\n" +
+                    "                 _                       \n" +
+                    "                \\`*-.                   \n" +
+                    "                 )  _`-.                \n" +
+                    "                .  : `. .               \n" +
+                    "                : _   '  \\              \n" +
+                    "                ; *` _.   `*-._         \n" +
+                    "                `-.-'          `-.      \n" +
+                    "                  ;       `       `.    \n" +
+                    "                  :.       .        \\   \n" +
+                    "                  . \\  .   :   .-'   .  \n" +
+                    "                  '  `+.;  ;  '      :  \n" +
+                    "                  :  '  |    ;       ;-.\n" +
+                    "                  ; '   : :`-:     _.`* ;\n" +
+                    "         [bug] .*' /  .*' ; .*`- +'  `*'\n" +
+                    "               `*-*   `*-*  `*-*'       \n"
+                );
+
                 return;
             }
         }
