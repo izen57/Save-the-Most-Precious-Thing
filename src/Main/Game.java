@@ -22,7 +22,7 @@ public class Game {
 //    RoomOfMonalisa roomOfMonalisa = new RoomOfMonalisa();
     private static Scanner scanner = new Scanner(System.in);
 
-    public void startGame(){
+    public void startGame() {
         System.out.println(
             "It is Monday, the closing day of the Louvre. " +
             "The sun is setting in the west and the golden sunset is shining on the huge glass pyramid in front of the Louvre. " +
