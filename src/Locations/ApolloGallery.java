@@ -7,9 +7,10 @@ public class ApolloGallery extends Location {
         super(
             "apolloGallery",
             new Inventory(),
-            "You entered the Apollo Gallery, it is filled with dazzling jewelry and royal utensils." +
-                " Sapphires shine with pure light. The king's crown stands in the center. " +
-                "There is an exit that turns right at the end of the gallery... "
+            "You have entered the Apollo Gallery, filled with dazzling jewelry and royal paraphernalia, " +
+                "Sapphires shine with pure light. sapphires glittering with pure light. " +
+                "The king's crown stands in the center. " +
+                "There is an exit that turns right at the end of the gallery..."
         );
     }
 }
