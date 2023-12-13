@@ -7,3 +7,4 @@ Today is Monday, the closing day of the Louvre. The sun sets in the west, and th
 ## Map
 
 ## The UML diagram
+![UML](UML.svg)
