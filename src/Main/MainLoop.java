@@ -9,9 +9,7 @@ import static Main.Command.*;
 public class MainLoop {
     private Location currentLocation;
     private User user;
-
     private Newspaper newspaper = new Newspaper();
-
 
     public MainLoop(Location startLocation, User user) {
         this.currentLocation = startLocation;
@@ -109,7 +107,7 @@ public class MainLoop {
 //                    user.move(currentLocation,NORTH);
 
                 } else {
-                    System.out.println("It seems like this is not the correct direction...");
+                    System.out.println("It seems that this is not the right direction...");
                 }
                 break;
 
@@ -121,7 +119,7 @@ public class MainLoop {
                     user.setCurrentLocation(currentLocation);
 //                    user.move(currentLocation,SOUTH);
                 } else {
-                    System.out.println("It seems like this is not the correct direction...");
+                    System.out.println("It seems that this is not the right direction...");
                 }
                 break;
 
@@ -133,7 +131,7 @@ public class MainLoop {
                     user.setCurrentLocation(currentLocation);
 //                    user.move(currentLocation, EAST);
                 } else {
-                    System.out.println("It seems like this is not the correct direction...");
+                    System.out.println("It seems that this is not the right direction...");
                 }
                 break;
 
@@ -145,10 +143,9 @@ public class MainLoop {
                     user.setCurrentLocation(currentLocation);
 //                    user.move(currentLocation, WEST);
                 } else {
-                    System.out.println("It seems like this is not the correct direction...");
+                    System.out.println("It seems that this is not the right direction...");
                 }
                 break;
-
 
             case TAKE:
                 if(currentLocation.findItemByName("map") != null){
@@ -161,35 +158,33 @@ public class MainLoop {
                 }
                 break;
 
-
             case DROP:
-                if( user.findItemByName("map")!=null){
+                if (user.findItemByName("map") != null) {
                     MuseumMap map = user.inventory.findItemByName("map");
                     user.dropItem("map");
 //                    user.inventory.removeItem("map");
 //                    currentLocation.addItem(map);
-                    System.out.println("you dropped your map.");
-                }else{
-                    System.out.println("Your backpack is empty, there is nothing to drop.");
+                    System.out.println("You have dropped your map.");
+                } else {
+                    System.out.println("You have no map.");
                 }
                 break;
 
             case READ:
-                if(user.findItemByName("map") != null){
+                if (user.findItemByName("map") != null) {
                     System.out.println(user.findItemByName("map").getDescription());
                 }
                 break;
 
             case BACK:
-                if(user.getLocationHistory()!= null){
+                if (user.getLocationHistory() != null) {
                     Location previousLocation = currentLocation;
                     currentLocation = user.showLastLocation();
                     user.setCurrentLocation(currentLocation);
                     System.out.println(currentLocation.getMessage());
                     user.addLocation(previousLocation);
-
-                }else{
-                    System.out.println("The mission can not be denied, you can not go out of the Louvre now.");
+                } else {
+                    System.out.println("The mission cannot be denied, you cannot leave the Louvre now.");
                 }
                 break;
 
@@ -203,36 +198,20 @@ public class MainLoop {
                 System.out.println("Mona Lisa is in danger, jumping won't help you.");
                 break;
 
-
             case NEWSPAPER:
                 if(user.getCurrentLocation().getName().equals("corridor"))
-                {
-                System.out.println(newspaper.getDescription());
-                }
+                    System.out.println(newspaper.getDescription());
                 break;
 
             case TIP:
                 if(user.getCurrentLocation().getName().equals("restaurant"))
-                {
                     System.out.println("Surprise! some recommendation from Mikhail & Yajing: ");
-                }
                 break;
 
-
-
-
             default:
-                System.out.println("This is not a meaningful command.");
+                System.out.println("This is not a useful command.");
                 break;
         }
     }
-
-
-
-    }
-
-
-
-
-
+}
 
