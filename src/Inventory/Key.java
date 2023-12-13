@@ -8,6 +8,6 @@ public class Key extends AbstractItem implements IApplicable {
     @Override
     public String getMessage()
     {
-        return "Room for Monalisa 1509";
+        return "The following is written on the key, \"Room for Monalisa, 1509\".";
     }
 }
