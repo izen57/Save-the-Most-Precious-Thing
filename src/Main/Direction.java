@@ -1,7 +1,7 @@
 package Main;
 
 /**
- * The enumeration to represent the direction where the user goes.
+ * The enumeration to represent the direction where the {@link User user} goes.
  */
 public enum Direction
 {
