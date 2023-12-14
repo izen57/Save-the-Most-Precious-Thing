@@ -12,4 +12,7 @@ public class ApolloGallery extends Location {
                 "Signs to help visitors navigate their way point both north and east. "
         );
     }
+    public String getDescription(){
+        return "There is a Monet painting hanging at the north exit, and the lights at the east exit are very bright.";
+    }
 }

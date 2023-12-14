@@ -1,6 +1,7 @@
 package Main;
 
-import Inventory.MuseumMap;
+import Inventory.AbstractItem;
+import Inventory.IApplicable;
 import Inventory.Newspaper;
 import Locations.*;
 
@@ -10,7 +11,6 @@ public class MainLoop {
     private Location currentLocation;
     private User user;
 
-    private Newspaper newspaper = new Newspaper();
 
 
     public MainLoop(Location startLocation, User user) {
@@ -29,7 +29,7 @@ public class MainLoop {
             case "west":
             case "go west":
             case "move west":
-                return Command.WEST;
+                return WEST;
 
             case "north":
             case "go north":
@@ -44,49 +44,54 @@ public class MainLoop {
             case "look":
             case "look around":
             case "observe":
-                return Command.LOOK;
+            case "explore":
+                return LOOK;
 
             case "jump":
-                return Command.JUMP;
+                return JUMP;
 
             case "sleep":
-                return Command.SLEEP;
+                return SLEEP;
 
             case "run":
-                return Command.RUN;
+                return RUN;
 
             case "tip":
-                return Command.TIP;
+                return TIP;
 
-            case "take the map":
-            case "pick the map":
-            case "pick map":
             case "take map":
-            case "map":
-                return Command.TAKE;
+            case "pick map":
+            case "take notebook":
+            case "pick notebook":
+                return TAKE;
 
-            case "drop the map":
-            case "throw the map":
             case "drop map":
             case "throw map":
-                return Command.DROP;
+            case "drop notebook":
+            case "throw notebook":
+                return DROP;
 
-            case "read the map":
-            case "look the map":
             case "read map":
-            case "look map":
-                return Command.READ;
+            case "read notebook":
+                return READ;
 
             case "go back":
             case "back":
             case "move back":
-                return Command.BACK;
+                return BACK;
 
             case "read newspaper":
             case "look newspaper":
             case "pick newspaper":
             case "take newspaper":
-                return Command.NEWSPAPER;
+                return NEWSPAPER;
+
+            case "inventory":
+            case "check inventory":
+                return Inventory;
+
+            case "help":
+                return HELP;
 
 
 
@@ -98,7 +103,9 @@ public class MainLoop {
         }
     }
 
-    public void processCommand(Command command) {
+    public void processCommand(Command command, String userInput) {
+        //asked ChatGPT for this line.
+        String[] words = userInput.trim().split("\\s+");
         switch (command) {
             case NORTH:
                 if (currentLocation.getNorth() != null) {
@@ -151,32 +158,25 @@ public class MainLoop {
 
 
             case TAKE:
-                if(currentLocation.findItemByName("map") != null){
-                    MuseumMap map = currentLocation.findItemByName("map") ;
-//                    user.inventory.addItem(map);
-                    user.takeItem(map);
-                    System.out.println(map.getMessage());
-                }else{
-                    System.out.println("There's nothing to take here.");
-                }
+                IApplicable itemToTake = currentLocation.findItemByName(words[1]) ;
+                if(itemToTake != null){
+                user.takeItem((AbstractItem) itemToTake);}
+                else{System.out.println("There's nothing to take here.");}
                 break;
 
 
             case DROP:
-                if( user.findItemByName("map")!=null){
-                    MuseumMap map = user.inventory.findItemByName("map");
-                    user.dropItem("map");
-//                    user.inventory.removeItem("map");
-//                    currentLocation.addItem(map);
-                    System.out.println("you dropped your map.");
+                if( user.findItemByName(words[1])!=null){
+                    user.dropItem(words[1]);
                 }else{
                     System.out.println("Your backpack is empty, there is nothing to drop.");
                 }
                 break;
 
             case READ:
-                if(user.findItemByName("map") != null){
-                    System.out.println(user.findItemByName("map").getDescription());
+                if(user.findItemByName(words[1]) != null){
+                    IApplicable itemToRead = user.findItemByName(words[1]);
+                    System.out.println(itemToRead.getMessage());
                 }
                 break;
 
@@ -193,9 +193,20 @@ public class MainLoop {
                 }
                 break;
 
+            case Inventory:
+                if(user.getInventory() != null){
+                    System.out.print("Now you have ");
+                    for(int i = 0; i<user.getInventory().getStorage().size(); i++){
+                        System.out.print(user.getInventory().getStorage().get(i).getName() + " ");
+                    }
+                    System.out.print(" in your inventory.\n")
+                    ;
+                }
+                break;
+
             //case look
             case LOOK:
-                System.out.println(currentLocation.getMessage());
+                System.out.println(currentLocation.getDescription());
                 break;
 
             //case jump
@@ -207,6 +218,7 @@ public class MainLoop {
             case NEWSPAPER:
                 if(user.getCurrentLocation().getName().equals("corridor"))
                 {
+                Newspaper newspaper = user.getCurrentLocation().findItemByName("newspaper");
                 System.out.println(newspaper.getDescription());
                 }
                 break;
@@ -214,15 +226,21 @@ public class MainLoop {
             case TIP:
                 if(user.getCurrentLocation().getName().equals("restaurant"))
                 {
-                    System.out.println("Surprise! some recommendation from Mikhail & Yajing: ");
+                    System.out.println("Surprise! some recommendation from Mikhail & Yajing:  ");
                 }
                 break;
+
+            case HELP:
+                System.out.println(" The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun" +
+                        "At the same time, pay attention to the items that appear in the scene. When you pick up the item, the item will automatically enter your inventory. When you throw the item away, the item will be removed from the inventory.");
+
+
 
 
 
 
             default:
-                System.out.println("This is not a meaningful command.");
+                System.out.println("This is not the correct command.");
                 break;
         }
     }

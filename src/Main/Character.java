@@ -1,6 +1,7 @@
 package Main;
 
 import Inventory.AbstractItem;
+import Inventory.IApplicable;
 import Inventory.Inventory;
 import Locations.Location;
 
@@ -25,11 +26,12 @@ public abstract class Character {
     /**
      * Adds an item to the character's {@link Inventory inventory}.
      * To grab an item from the location use this method with the {@link Location#removeItem(String)}.
-     * @param item the item to add.
+     * @param itemFromLocation the item to add.
      */
-    public void takeItem(AbstractItem item) {
-        inventory.addItem(item);
-        currentLocation.removeItem(item.getName());
+    public void takeItem(AbstractItem itemFromLocation) {;
+            inventory.addItem(itemFromLocation);
+            currentLocation.removeItem(itemFromLocation.getName());
+            System.out.println(itemFromLocation.getDescription());
 
     }
 
@@ -41,13 +43,18 @@ public abstract class Character {
      */
     public void  dropItem(String itemName)
     {
-        AbstractItem removedItem = inventory.findItemByName(itemName) ;
+        AbstractItem removedItem = inventory.findItemByName(itemName);
         if (removedItem != null) {
             inventory.removeItem(itemName);
             currentLocation.addItem(removedItem);
+            System.out.println("you dropped the " +itemName);
+
         }
 
     }
+
+
+
 
     public Inventory getInventory() {
         return inventory;

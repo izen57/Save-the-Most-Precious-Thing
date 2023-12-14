@@ -7,7 +7,7 @@ import Inventory.Inventory;
  * The class represents a location of the game.
  * Each location should have the name, the {@link Inventory inventory} and the entrance message which is printing when the user entrance the location.
  */
-public class Location {
+public abstract class Location {
     private String name;
     protected Inventory inventory;
     private String message;
@@ -94,6 +94,16 @@ public class Location {
         inventory.removeItem(itemName);
     }
 
+    public boolean isEmpty(){
+        if(inventory.getStorage() == null){
+            return true;
+        }else{
+            return false;
+        }
+
+
+    }
+
     /**
      * Find an item on the location by its name.
      * @param itemName a name of the item to find.
@@ -104,6 +114,10 @@ public class Location {
     {
         return inventory.findItemByName(itemName);
     }
+
+    abstract public String getDescription();
+
+
 
 
 }

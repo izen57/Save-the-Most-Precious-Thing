@@ -15,4 +15,8 @@ public class Corridor extends Location {
 
         addItem(new Newspaper());
     }
+
+    public String getDescription(){
+        return "There is a Picasso painting hanging at the north exit, and the smell of coffee comes from the east exit.";
+    }
 }

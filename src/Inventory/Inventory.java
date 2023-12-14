@@ -49,6 +49,8 @@ public class Inventory
 
     }
 
+
+
     /**
      * Find an item in the inventory by its name.
      * @param itemName a name of the item to find.
@@ -63,4 +65,10 @@ public class Inventory
 
         return null;
     }
+
+    public ArrayList<AbstractItem> getStorage() {
+        return storage;
+    }
+
+
 }

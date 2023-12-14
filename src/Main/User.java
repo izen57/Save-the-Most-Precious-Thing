@@ -44,20 +44,20 @@ public class User extends Character
         return this.locationHistory.peek();
 
     }
-    public void move(Location location, Command command){
-        addLocation(location);
-        if(command == NORTH){
-        location = location.getNorth();
-        } else if (command == EAST) {
-            location = location.getEast();
-        } else if (command == WEST) {
-            location = location.getWest();
-        } else if (command ==SOUTH) {
-            location = location.getSouth();
-        }
-        setCurrentLocation(location);
-        System.out.println(location.getMessage());
-    }
+//    public void move(Location location, Command command){
+//        addLocation(location);
+//        if(command == NORTH){
+//        location = location.getNorth();
+//        } else if (command == EAST) {
+//            location = location.getEast();
+//        } else if (command == WEST) {
+//            location = location.getWest();
+//        } else if (command ==SOUTH) {
+//            location = location.getSouth();
+//        }
+//        setCurrentLocation(location);
+//        System.out.println(location.getMessage());
+//    }
 
 
 }

@@ -11,4 +11,5 @@ public interface IApplicable
      * @return the message of the application.
      */
     String getMessage();
+    String getName();
 }
