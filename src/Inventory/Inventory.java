@@ -37,16 +37,14 @@ public class Inventory
     }
 
     /**
-     *
+     * Removes the existing item from the storage, nothing happens otherwise.
      * @param itemName a name of the item to remove.
-     * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
      */
     public void removeItem(String itemName)
     {
         AbstractItem item = findItemByName(itemName);
         if (item != null)
             storage.remove(item);
-
     }
 
     /**
