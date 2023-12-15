@@ -12,9 +12,13 @@ When you throw the item away, the item will be placed on the location.
 Hope you enjoy our game (^^)
 
 ## Introduction
-Today is Monday, the closing day of the Louvre. The sun sets in the west, and the golden sunset shines on the huge glass pyramid in front of the Louvre. Although you have seen this beautiful scene many times, the sunset still makes you deeply addicted every time. While you were immersed in the scenery, you received a message on your phone...
+Today is Monday, the closing day of the Louvre. 
+The sun sets in the west, and the golden sunset shines on the huge glass pyramid in front of the Louvre. 
+Although you have seen this beautiful scene many times, the sunset still makes you deeply addicted every time. 
+While you were immersed in the scenery, you received a message on your phone...
 
 ## Map
+![Map](Map.jpg)
 
 ## The UML diagram
 ![UML](UML.svg)
