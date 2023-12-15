@@ -8,11 +8,11 @@ public class Corridor extends Location {
         super(
             "corridor",
             new Inventory(),
-            "You are moving to the corridor. In the corner next to the corridor, there is a rack with booklets about the history of the hall. " +
-                    "There is a brand new newspaper on the booklet. " +
-                    "Meanwhile,There are two different exits on the east and north sides of the corridor."
+            "Move into the hallway. In the corner next to the corridor is a shelf with " +
+                "booklets about the history of the hall. " +
+                "There is a brand new newspaper on the booklet. " +
+                "There are now two different exits on the east and north sides of the corridor."
         );
-
         addItem(new Newspaper());
     }
 

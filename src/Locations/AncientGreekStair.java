@@ -8,12 +8,13 @@ public class AncientGreekStair extends Location {
         super(
             "ancientGreekStair",
             new Inventory(),
-            "You are facing the headless goddess of victory, " +
-                "her wings spread out to both sides. On her east is the exhibition hall of Egypt collections," +
-                "and on her west is the splendid Apollo Corridor. Meanwhile, At her feet, there seemed to be a map left by someone else. "
+            "You are standing before the headless Goddess of Victory, " +
+                "with her wings outstretched on either side. " +
+                "On her east is the Egypt Exhibition Hall," +
+                "and on her west is the splendid Apollo Corridor. " +
+                "Meanwhile, at her feet there seems to be a map left by someone else."
         );
-        MuseumMap map = new MuseumMap();
-        addItem(map);
+        addItem(new MuseumMap());
     }
 
     public String getDescription(){

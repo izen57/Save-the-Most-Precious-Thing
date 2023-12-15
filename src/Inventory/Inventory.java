@@ -15,7 +15,7 @@ public class Inventory
     private ArrayList<AbstractItem> storage;
 
     /**
-     * Initialize an inventory with no {@link AbstractItem items} in it and capacity of 100.
+     * Initializes an inventory with no {@link AbstractItem items} in it and capacity of 100.
      */
     public Inventory()
     {
@@ -23,7 +23,7 @@ public class Inventory
     }
 
     /**
-     * Initialize an inventory with the already created storage.
+     * Initializes an inventory with the already created storage.
      * @param storage a storage to inject.
      */
     public Inventory(ArrayList<AbstractItem> storage)
@@ -37,22 +37,20 @@ public class Inventory
     }
 
     /**
-     *
+     * Removes the existing item from the storage, nothing happens otherwise.
      * @param itemName a name of the item to remove.
-     * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
      */
     public void removeItem(String itemName)
     {
         AbstractItem item = findItemByName(itemName);
         if (item != null)
             storage.remove(item);
-
     }
 
 
 
     /**
-     * Find an item in the inventory by its name.
+     * Finds an item in the inventory by its name.
      * @param itemName a name of the item to find.
      * @return an item of the given type parameter if it is presents in an inventory, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.

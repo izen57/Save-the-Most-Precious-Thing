@@ -1,7 +1,6 @@
 package Main;
 
 import Inventory.AbstractItem;
-import Inventory.IApplicable;
 import Inventory.Inventory;
 import Locations.Location;
 
@@ -36,12 +35,11 @@ public abstract class Character {
     }
 
     /**
-     * Removes an item to the character's {@link Inventory inventory} and drop it to the current {@link Location location}.
-     * Use it with the {@link Location#addItem(AbstractItem)}.
+     * Removes an {@link AbstractItem item} from the character's {@link Inventory inventory}
+     * and passes it to the current {@link Location location's} inventory.
      * @param itemName the item to drop.
-     * @return an item of the given type parameter if it is presents in the character's inventory, {@code null} otherwise.
      */
-    public void  dropItem(String itemName)
+    public void dropItem(String itemName)
     {
         AbstractItem removedItem = inventory.findItemByName(itemName);
         if (removedItem != null) {
@@ -50,11 +48,7 @@ public abstract class Character {
             System.out.println("you dropped the " +itemName);
 
         }
-
     }
-
-
-
 
     public Inventory getInventory() {
         return inventory;
@@ -74,9 +68,10 @@ public abstract class Character {
     }
 
     /**
-     * Find an item in the character's inventory by its name.
-     * @param itemName an item to find.
-     * @return an item of type {@code T} which must extends the {@link AbstractItem AbstractItem class} if there is it in the inventory, <code>null</code> otherwise.
+     * Finds an item in the character's {@link Inventory inventory} by its name.
+     * @param itemName the name of the item to find.
+     * @return an item of type {@code T} which must extends the {@link AbstractItem} if there is it in the inventory, {@code null} otherwise.
+     * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
     public <T extends AbstractItem> T findItemByName(String itemName){
         return inventory.findItemByName(itemName);

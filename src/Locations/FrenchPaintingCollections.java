@@ -9,8 +9,8 @@ public class FrenchPaintingCollections extends Location {
         super(
             "frenchPaintingCollections",
             new Inventory(),
-            "You are surrounded by the painting of french artist, there seems no sign of Monalisa. " +
-            "to your east, there is a corridor to go to collections of other countries."
+            "You are surrounded by the painting of French artist, there seems no sign of Monalisa. " +
+                "To your east, there is a corridor to go to the collections of other countries."
         );
 
         Notebook notebook = new Notebook();
