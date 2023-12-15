@@ -47,8 +47,6 @@ public class Inventory
             storage.remove(item);
     }
 
-
-
     /**
      * Finds an item in the inventory by its name.
      * @param itemName a name of the item to find.
@@ -64,9 +62,28 @@ public class Inventory
         return null;
     }
 
+    public void showInventory()
+    {
+        if (!isEmpty()) {
+            System.out.print("Now you have: ");
+            for (AbstractItem item : storage)
+                System.out.print(item.getName() + "; ");
+            System.out.println(" in your inventory.");
+        } else
+            System.out.println("You have nothing yet in your inventory.");
+    }
+
     public ArrayList<AbstractItem> getStorage() {
         return storage;
     }
 
+    public boolean isEmpty()
+    {
+        return storage.isEmpty();
+    }
 
+    public int getSize()
+    {
+        return storage.size();
+    }
 }

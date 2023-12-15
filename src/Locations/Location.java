@@ -5,28 +5,32 @@ import Inventory.Inventory;
 
 /**
  * The class represents a location of the game.
- * Each location should have the name, the {@link Inventory inventory} and the entrance message which is printing when the user entrance the location.
+ * Each location should have the name, the {@link Inventory inventory}, the entrance message
+ * which is printing when the user entrance the location, and the description which will be displayed by the map, for instance.
  */
 public abstract class Location {
     private String name;
     protected Inventory inventory;
     private String message;
+    private String description;
     private Location east;
     private Location west;
-
     private Location north;
     private Location south;
 
     /**
      * Initialize the location with the given {@link Inventory inventory}.
-     * @param name a name of the location.
-     * @param inventory an already created inventory.
-     * @param message an entrance message.
+     *
+     * @param name        a name of the location.
+     * @param inventory   an already created inventory.
+     * @param message     an entrance message.
+     * @param description a message which is provided by the map
      */
-    public Location(String name, Inventory inventory, String message) {
+    public Location(String name, Inventory inventory, String message, String description) {
         this.name = name;
         this.inventory = inventory;
         this.message = message;
+        this.description = description;
     }
 
     public String getName() {
@@ -76,8 +80,10 @@ public abstract class Location {
         this.south = south;
     }
 
+    //abstract public String getDescription();
+
     /**
-     * Adds an {@link AbstractItem item} to the inventory of the location.
+     * Adds an {@link AbstractItem item} to the location's {@link Inventory inventory}.
      * @param item an item to add.
      */
     public void addItem(AbstractItem item) {
@@ -85,23 +91,17 @@ public abstract class Location {
     }
 
     /**
-     * Removes an {@link AbstractItem item} from the location.
+     * Removes an {@link AbstractItem item} from the location's {@link Inventory inventory}.
      * @param itemName an item to remove.
-     * @return an item of the given type parameter if it is presents in the inventory of the location, {@code null} otherwise.
      */
     public void removeItem(String itemName)
     {
         inventory.removeItem(itemName);
     }
 
-    public boolean isEmpty(){
-        if(inventory.getStorage() == null){
-            return true;
-        }else{
-            return false;
-        }
-
-
+    public boolean isEmpty()
+    {
+        return inventory.isEmpty();
     }
 
     /**
@@ -115,9 +115,8 @@ public abstract class Location {
         return inventory.findItemByName(itemName);
     }
 
-    abstract public String getDescription();
-
-
-
-
+    public String getDescription()
+    {
+        return description;
+    }
 }

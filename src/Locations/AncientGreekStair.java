@@ -12,12 +12,9 @@ public class AncientGreekStair extends Location {
                 "with her wings outstretched on either side. " +
                 "On her east is the Egypt Exhibition Hall," +
                 "and on her west is the splendid Apollo Corridor. " +
-                "Meanwhile, at her feet there seems to be a map left by someone else."
+                "Meanwhile, at her feet there seems to be a map left by someone else.",
+            "There are only two exits here, and this map looks like it might be helpful."
         );
         addItem(new MuseumMap());
-    }
-
-    public String getDescription(){
-        return "There are only two exits here, and that map looks like it might be helpful.";
     }
 }

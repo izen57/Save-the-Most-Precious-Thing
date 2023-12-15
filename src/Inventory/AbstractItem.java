@@ -12,7 +12,7 @@ public abstract class AbstractItem
     private String name;
 
     /**
-     * A description of an item. Mostly it is the message which appears while applying but can be its story, origin, application, etc.
+     * A description of an item. Mostly it is the message which appears while applying it but can be its story, origin, application, etc.
      */
     private String description;
 

@@ -7,14 +7,8 @@ public class SpanishPaintingCollections extends Location {
         super(
             "spanishPaintingCollections",
             new Inventory(),
-            "You are surrounded by the painting of the Spanish artist, there seems to be no sign of Monalisa. "
+            "You are surrounded by the painting of the Spanish artist, there seems to be no sign of Monalisa. ",
+            "To your east hangs a Venere di Urbino, and to your west hangs a giant water lily."
         );
     }
-
-
-    public String getDescription(){
-        return "To your east hangs a Venere di Urbino, and to your west hangs a giant water lily.";
-    }
-
-
 }

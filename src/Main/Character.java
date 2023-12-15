@@ -6,7 +6,7 @@ import Locations.Location;
 
 /**
  * The class which represents the character including the {@link User user} and NPCs.
- * All characters have their own {@link Inventory inventory} and the {@link Location location}.
+ * All characters have their own {@link Inventory inventory} and current {@link Location location}.
  */
 public abstract class Character {
     protected Inventory inventory;
@@ -23,15 +23,14 @@ public abstract class Character {
     }
 
     /**
-     * Adds an item to the character's {@link Inventory inventory}.
-     * To grab an item from the location use this method with the {@link Location#removeItem(String)}.
+     * Adds an {@link AbstractItem item} to the character's {@link Inventory inventory}
+     * and removes it from the inventory of the current {@link Location location}.
      * @param itemFromLocation the item to add.
      */
-    public void takeItem(AbstractItem itemFromLocation) {;
-            inventory.addItem(itemFromLocation);
-            currentLocation.removeItem(itemFromLocation.getName());
-            System.out.println(itemFromLocation.getDescription());
-
+    public void takeItem(AbstractItem itemFromLocation) {
+        inventory.addItem(itemFromLocation);
+        currentLocation.removeItem(itemFromLocation.getName());
+        System.out.println(itemFromLocation.getDescription());
     }
 
     /**
@@ -45,8 +44,7 @@ public abstract class Character {
         if (removedItem != null) {
             inventory.removeItem(itemName);
             currentLocation.addItem(removedItem);
-            System.out.println("you dropped the " +itemName);
-
+            System.out.println("You have dropped the " + itemName + '.');
         }
     }
 
@@ -57,7 +55,6 @@ public abstract class Character {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
-
 
     public Location getCurrentLocation() {
         return currentLocation;

@@ -10,14 +10,9 @@ public class FrenchPaintingCollections extends Location {
             "frenchPaintingCollections",
             new Inventory(),
             "You are surrounded by the painting of French artist, there seems no sign of Monalisa. " +
-                "To your east, there is a corridor to go to the collections of other countries."
+                "To your east, there is a corridor to go to the collections of other countries.",
+            "On your left, there is a leather notebook lies quietly at your feet."
         );
-
-        Notebook notebook = new Notebook();
-        addItem(notebook);
-    }
-
-    public String getDescription(){
-        return "On your left, there is a leather notebook lying quietly at your feet.";
+        addItem(new Notebook());
     }
 }

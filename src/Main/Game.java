@@ -7,13 +7,11 @@ import Locations.*;
 import java.util.Scanner;
 
 public class Game {
-
-
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
         User user = new User(new Inventory(), null);
         Staff staff = new Staff(new Inventory(), null);
-        staff.inventory.addItem(new Key());
+        staff.getInventory().addItem(new Key());
 
 
         // create locations
@@ -55,11 +53,13 @@ public class Game {
         ancientEgyptPavilion.setNorth(corridor);
         ancientEgyptPavilion.setWest(ancientGreekStair);
 
-        System.out.println("Save the Most Precious Thing\n" +
-                "Text Adventure Game\n" +
-                "Copyright 2023-12 by Yajing Wang & Mikhail Korotych.\n" +
-                "(First-time players should type “about”.)\n"+
-                "(If you are ready for an interesting adventure, please type “ready”.) ");
+        System.out.println(
+            "Save the Most Precious Thing\n" +
+            "Text Adventure Game\n" +
+            "Copyright 2023-12 by Yajing Wang & Mikhail Korotych.\n" +
+            "(First-time players should type \"about\".)\n"+
+            "(If you are ready for an interesting adventure, please type \"ready\".)"
+        );
 
         while(true){
             System.out.print("> ");
@@ -67,27 +67,27 @@ public class Game {
 
             if(input0.equalsIgnoreCase("ready")){
                 System.out.println(
-                        "It is Monday, the closing day of the Louvre. " +
-                        "The sun is setting in the west and the golden sunset is shining on the huge glass pyramid in front of the Louvre. " +
-                        "Although you have seen this beautiful scene many times before, the sunset still makes you deeply addicted every time. " +
-                        "While you were immersed in the scenery, you received a message on your phone..."
+                    "It is Monday, the closing day of the Louvre. " +
+                    "The sun is setting in the west and the golden sunset is shining on the huge glass pyramid in front of the Louvre. " +
+                    "Although you have seen this beautiful scene many times before, the sunset still makes you deeply addicted every time. " +
+                    "While you were immersed in the scenery, you received a message on your phone..."
                 );
 
                 break;
             } else if (input0.equalsIgnoreCase("about")) {
-                System.out.println("This is a text adventure game set in the Louvre Museum in Paris, France. You need to enter the correct answer to advance the plot or location. The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun.\n" +
-                        "At the same time, pay attention to the items that appear in the scene. When you pick up the item, the item will automatically enter your inventory. When you throw the item away, the item will be removed from the inventory.\n" +
-                        "\n" +
-                        "Hope you enjoy our game (^^)");
-            }else{
-                System.out.println("What are you waiting for? A magical adventure is right in front of you.");
+                System.out.println(
+                    "This is a text adventure game set in the Louvre Museum in Paris, France. " +
+                    "You must enter the correct answer to advance the action or location. " +
+                    "The correct answer is no more than two words and is often a noun, a verb, or a combination of a verb and a noun.\n" +
+                    "At the same time, pay attention to the items that appear in the scene. " +
+                    "When you pick up the item, the item will be removed from the location. " +
+                    "When you throw the item away, the item will be placed on the location.\n\n" +
+                    "Hope you enjoy our game (^^)"
+                );
+            } else {
+                System.out.println("What are you waiting for? A magical adventure lies before you!");
             }
-
         }
-
-
-
-
 
 
         while (true) { // Start an infinite loop
@@ -121,7 +121,8 @@ public class Game {
                     "\n\"I collected treasures from the past, but they were not mine. " +
                     "I show the stories of the world, but I have never left my room. " +
                     "You can travel with me to ancient times, " +
-                    "but I am always in the present. Who I am?\"");
+                    "but I am always in the present. Who I am?\""
+                );
                 break; // Break the loop if the user entered "read"
             }
         }
@@ -158,26 +159,24 @@ public class Game {
         MainLoop MainLoop = new MainLoop(ancientGreekGallery, user);
 
         while (true) {
-            try{
-            System.out.print("> ");
-            String input = scanner.nextLine().toLowerCase();
-            if (input.contains("madonna")) {
-                break;
-            }
-            //asked ChatGPT for this detection
-            if (input.matches(".*\\d+.*")) {
-                    throw new IllegalArgumentException("in this game, all correct answers consist of only words, entering numbers does not help.");
-            }
+            try {
+                System.out.print("> ");
+                String input = scanner.nextLine().toLowerCase();
+                if (input.contains("madonna")) {
+                    break;
+                }
+                //asked ChatGPT for this detection
+                if (input.matches(".*\\d+.*")) {
+                    throw new IllegalArgumentException("In this game, all correct answers are words only, entering numbers does not help.");
+                }
 
-            Command command = MainLoop.parseCommand(input);
-            MainLoop.processCommand(command, input);}
-            catch (IllegalArgumentException e){
-                System.out.println("please note: " + e.getMessage());
-            }
-            catch (Exception e){
+                Command command = MainLoop.parseCommand(input);
+                MainLoop.processCommand(command, input);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Please note: " + e.getMessage());
+            } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
             }
-
         }
 
         System.out.println(
@@ -187,7 +186,6 @@ public class Game {
             "At the same time, an employee of the museum " +
             "was lowering her head to organize something."
         );
-
 
         while (true) {
             System.out.print("> ");
@@ -240,8 +238,8 @@ public class Game {
                     "you hear the faint cry of the kitten.\n"
                 );
                 System.out.println(
-                    "At the moment, the flames have blackened the frame of the Mona Lisa,  " +
-                    "and the painting inside also shows signs of having been set on fire.  " +
+                    "At the moment, the flames have blackened the frame of the Mona Lisa, " +
+                    "and the painting inside also shows signs of having been set on fire. " +
                     "Between the dying kitten and the Mona Lisa that is about to be consumed up by the flames, you can only make one choice..."
                 );
                 break;
@@ -296,5 +294,3 @@ public class Game {
         new Game().startGame();
     }
 }
-
-

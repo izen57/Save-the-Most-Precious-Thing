@@ -11,12 +11,10 @@ public class Corridor extends Location {
             "Move into the hallway. In the corner next to the corridor is a shelf with " +
                 "booklets about the history of the hall. " +
                 "There is a brand new newspaper on the booklet. " +
-                "There are now two different exits on the east and north sides of the corridor."
+                "There are now two different exits on the east and north sides of the corridor.",
+            "There is a Picasso painting hanging at the north exit, " +
+                "and the smell of coffee comes from the east exit."
         );
         addItem(new Newspaper());
-    }
-
-    public String getDescription(){
-        return "There is a Picasso painting hanging at the north exit, and the smell of coffee comes from the east exit.";
     }
 }

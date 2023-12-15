@@ -6,10 +6,8 @@ import Locations.Location;
 
 import java.util.Stack;
 
-import static Main.Command.*;
-
 /**
- * The user is the character with the stack of the history of locations he visited.
+ * The user is the character with the {@link Stack stack} of the history of {@link Location locations} he visited.
  */
 public class User extends Character
 {
@@ -18,7 +16,6 @@ public class User extends Character
     public User(Inventory inventory, Location currentLocation) {
         super(inventory, currentLocation);
     }
-
 
     public Stack<Location> getLocationHistory() {
         return locationHistory;
@@ -40,24 +37,12 @@ public class User extends Character
         this.locationHistory.pop();
     }
 
-    public Location showLastLocation(){
+    public Location showLastLocation() {
         return this.locationHistory.peek();
-
     }
-//    public void move(Location location, Command command){
-//        addLocation(location);
-//        if(command == NORTH){
-//        location = location.getNorth();
-//        } else if (command == EAST) {
-//            location = location.getEast();
-//        } else if (command == WEST) {
-//            location = location.getWest();
-//        } else if (command ==SOUTH) {
-//            location = location.getSouth();
-//        }
-//        setCurrentLocation(location);
-//        System.out.println(location.getMessage());
-//    }
 
-
+    public void showInventory()
+    {
+        inventory.showInventory();
+    }
 }

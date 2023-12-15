@@ -7,9 +7,7 @@ public interface IApplicable
 {
     /**
      * Writes in the output the message while applying the item.
-     *
      * @return the message of the application.
      */
     String getMessage();
-    String getName();
 }
