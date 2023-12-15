@@ -3,7 +3,7 @@ package Main;
 import Inventory.AbstractItem;
 import Inventory.IApplicable;
 import Inventory.Newspaper;
-import Locations.*;
+import Locations.Location;
 
 import static Main.Command.*;
 
