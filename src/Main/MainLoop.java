@@ -1,9 +1,10 @@
 package Main;
 
+import Characters.NPC;
+import Characters.User;
 import Inventory.AbstractItem;
 import Inventory.IApplicable;
-import Locations.*;
-import Characters.*;
+import Locations.Location;
 
 import static Main.Command.*;
 
@@ -11,8 +12,6 @@ import static Main.Command.*;
 public class MainLoop {
     private Location currentLocation;
     private User user;
-
-
 
     public MainLoop(Location startLocation, User user) {
         this.currentLocation = startLocation;
@@ -90,7 +89,6 @@ public class MainLoop {
             case "move back":
                 return BACK;
 
-
             case "inventory":
             case "check inventory":
                 return Inventory;
@@ -113,7 +111,6 @@ public class MainLoop {
                     currentLocation = currentLocation.getNorth();
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
-
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -125,7 +122,6 @@ public class MainLoop {
                     currentLocation = currentLocation.getSouth();
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
-
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -137,7 +133,6 @@ public class MainLoop {
                     currentLocation = currentLocation.getEast();
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
-
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -149,7 +144,6 @@ public class MainLoop {
                     currentLocation = currentLocation.getWest();
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
-
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -158,66 +152,75 @@ public class MainLoop {
 
 
             case TAKEITEM:
-                AbstractItem itemToTake = currentLocation.findItemByName(words[1]) ;
-                if(itemToTake instanceof IApplicable){
-                    user.takeItem( itemToTake);}
-                else if (itemToTake != null){
-                    System.out.println("The " + itemToTake.getName()+ " belongs to the museum and this can not be into your inventory, but you still can read it.");
-                } else {System.out.println("There's nothing to take here.");}
+                AbstractItem itemToTake = currentLocation.findItemByName(words[1]);
+                if (itemToTake instanceof IApplicable) {
+                    user.takeItem(itemToTake);
+                } else if (itemToTake != null) {
+                    System.out.println("The " + itemToTake.getName() + " is the museum property " +
+                        "and can not be added to your inventory." +
+                        "However, you can still read it."
+                    );
+                } else {
+                    System.out.println("There's nothing to take here.");
+                }
                 break;
 
 
             case DROPITEM:
-                if( user.findItemByName(words[1])!=null){
+                if (user.findItemByName(words[1]) != null) {
                     user.dropItem(words[1]);
-                }else{
-                    System.out.println("You don't have "+ words[1]+ " in your inventory, there is nothing to drop.");
+                } else {
+                    System.out.println("The "+ words[1] + " is not in your inventory.");
                 }
                 break;
 
             case READITEM:
-                if(user.findItemByName(words[1]) != null){
-                    IApplicable itemToRead = user.findItemByName(words[1]);
-                    System.out.println(itemToRead.getMessage());
-                } else if(currentLocation.findItemByName(words[1]) != null){
-                    AbstractItem itemToRead = currentLocation.findItemByName(words[1]);
-                    if(itemToRead instanceof IApplicable){
-                        System.out.println("You need to take something can be read first.");
-                    }else{
-                        System.out.println(itemToRead.getDescription());
-                    }
-                }else{
-                    System.out.println("There is no" + words[1] +" to be read here.");
+                IApplicable userItemToRead = user.findItemByName(words[1]);
+                IApplicable locationItemToRead = currentLocation.findItemByName(words[1]);
+                if (userItemToRead != null) {
+//                    IApplicable itemToRead = user.findItemByName(words[1]);
+                    System.out.println(userItemToRead.getMessage());
+                } else if (locationItemToRead != null) {
+//                    AbstractItem itemToRead = currentLocation.findItemByName(words[1]);
+//                    if(itemToRead instanceof IApplicable){
+//                        System.out.println("You need to take something can be read first.");
+//                    }else{
+                        System.out.println(locationItemToRead.getMessage());
+//                    }
+                } else {
+                    System.out.println("There is no " + words[1] + " to be read here.");
                 }
                 break;
 
             case READ:
-                System.out.println("Please specify what you want to read.");
+                System.out.println("Please specify what you would like to read.");
                 break;
 
             case DROP:
-                System.out.println("Please specify what you want to drop.");
+                System.out.println("Please specify what you would like to drop.");
                 break;
 
             case TAKE:
-                System.out.println("Please specify what you want to take.");
+                System.out.println("Please specify what you would like to take.");
                 break;
 
             case BACK:
                 if (user.getLocationHistory() == null) {
                     System.out.println("The mission can not be denied, you can not go out of the Louvre now.");
-                } else {
-                    Location previousLocation = currentLocation;
-                    currentLocation = user.showLastLocation();
-                    user.setCurrentLocation(currentLocation);
-                    System.out.println(currentLocation.getMessage());
-                    user.addLocation(previousLocation);
+                    break;
                 }
+
+                Location previousLocation = currentLocation;
+                currentLocation = user.showLastLocation();
+                user.setCurrentLocation(currentLocation);
+                System.out.println(currentLocation.getMessage());
+                user.addLocation(previousLocation);
+
                 break;
 
             case Inventory:
                 if (user.isInventoryEmpty())
-                    System.out.println("Your inventory is currently empty.");
+                    System.out.println("Your inventory is empty.");
                 else
                     user.showInventory();
                 break;
@@ -226,11 +229,8 @@ public class MainLoop {
                 System.out.println(currentLocation.getDescription());
                 break;
 
-
-
             case ASK:
-                if(user.getCurrentLocation().getCharacter() instanceof NPC)
-                {
+                if (user.getCurrentLocation().getCharacter() instanceof NPC) {
                     System.out.println(((NPC) user.getCurrentLocation().getCharacter()).getMessage());
                 }
                 break;
@@ -238,8 +238,9 @@ public class MainLoop {
             case HELP:
                 System.out.println(
                     "The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun. " +
-                        "At the same time, pay attention to the items that appear in the scene. When you pick up the item,  some items will enter your inventory and some will not." +
-                        " For item in inventory, you can drop it and the item will be removed from the inventory.");
+                    "At the same time, pay attention to the items that appear in the scene. " +
+                    "When you pick up the item, some items will enter your inventory and some will not. " +
+                    "For item in inventory, you can drop it and the item will be removed from the inventory.");
                 break;
 
 
