@@ -7,10 +7,10 @@ public class Restaurant extends Location {
         super(
             "restaurant",
             new Inventory(),
-            "This is a place for tourists to eat and rest. It is worth noting that there are two people sitting not far from you, talking about something.",
+            "This is a place for tourists to eat and rest. " +
+                "It's important to note that two people are sitting nearby, having a conversation.",
             "The interior of the restaurant is very warm, " +
                 "clean and comfortable, but it lacks the hustle and bustle of the past."
         );
-
     }
 }
