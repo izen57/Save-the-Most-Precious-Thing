@@ -9,8 +9,9 @@ public class Friend extends Character implements NPC
         super(inventory, currentLocation);
     }
 
-    public String getMessage(){
-        return "Surprise! it turns out that these two people are Yajing and Mikhail. Yajing said that there is a very delicious cake shop in Brussels called Yasushi Sasaki and Mikhail said";
-
+    public String getMessage() {
+        return "Surprise! These two people are Yajing and Mikhail. " +
+            "Yajing mentioned a delicious cake shop in Brussels called Yasushi Sasaki, " +
+            "and Mikhail agreed.";
     }
 }
