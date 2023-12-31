@@ -13,25 +13,20 @@ public class AncientGreekStair extends Location {
                 "On her east is the Egypt Exhibition Hall," +
                 "and on her west is the splendid Apollo Corridor. " +
                 "Meanwhile, at her feet there seems to be a map left by someone else.",
-            "There are only two exits here, one towards east and the other towards west."
+            "There are only two exits here: one to the east and one to the west."
         );
-
     }
 
-
     @Override
-    public String getMessage(){
-        if(isEmpty()){
-        return "You are standing before the headless Goddess of Victory, " +
-                "with her wings outstretched on either side. " +
-                "On her east is the Egypt Exhibition Hall," +
-                "and on her west is the splendid Apollo Corridor. ";}
-        else{
-           return "You are standing before the headless Goddess of Victory, " +
-                   "with her wings outstretched on either side. " +
-                   "On her east is the Egypt Exhibition Hall," +
-                   "and on her west is the splendid Apollo Corridor. "+
-                   "Meanwhile, at her feet there seems to be a map left by someone else.";
-        }
+    public String getMessage() {
+        String message = "You are standing before the headless Goddess of Victory, " +
+            "with her wings outstretched on either side. " +
+            "On her east is the Egypt Exhibition Hall," +
+            "and on her west is the splendid Apollo Corridor.";
+
+        if (!isEmpty())
+            message += " Meanwhile, at her feet there seems to be a map left by someone else.";
+
+        return message;
     }
 }
