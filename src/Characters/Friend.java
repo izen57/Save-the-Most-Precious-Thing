@@ -12,6 +12,8 @@ public class Friend extends Character implements NPC
     public String getMessage() {
         return "Surprise! These two people are Yajing and Mikhail. " +
             "Yajing mentioned a delicious cake shop in Brussels called Yasushi Sasaki, " +
-            "and Mikhail agreed.";
+            "and Mikhail agreed. " +
+            "Mikhail also enjoyed Café Georgette, which is located in the city center and serves" +
+            "authentic Belgian cuisine.";
     }
 }
