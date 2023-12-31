@@ -4,7 +4,7 @@ public class MuseumMap extends AbstractItem implements IApplicable {
     public MuseumMap() {
         super(
           "map",
-          "This is a museum map, it seems to have some guidelines."
+          "This is a museum map, it has some guidelines."
         );
     }
 

@@ -5,7 +5,7 @@ import Inventory.Inventory;
 import Locations.Location;
 
 /**
- * The class which represents the character including the {@link User user}, {@link NPC NPCs}, {@link Staff staff}, and {@link Friend friends}.
+ * The class which represents the character including the {@link User user}, {@link NPC NPCs}, and {@link Friend friends}.
  * All characters have their own {@link Inventory inventory} and current {@link Location location}.
  */
 public abstract class Character {
@@ -31,7 +31,7 @@ public abstract class Character {
         inventory.addItem(itemFromLocation);
         currentLocation.removeItem(itemFromLocation.getName());
 
-        System.out.println("You've just picked up "+ itemFromLocation.getName() + '.');
+        System.out.println("You've just picked up "+ itemFromLocation.getName() +  " and now it is in your inventory.");
         System.out.println(itemFromLocation.getDescription());
     }
 
@@ -52,6 +52,10 @@ public abstract class Character {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
     public Location getCurrentLocation() {

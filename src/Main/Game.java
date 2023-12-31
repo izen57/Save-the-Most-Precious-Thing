@@ -9,16 +9,16 @@ import java.util.Scanner;
 
 public class Game {
     private User user;
-    private Staff staff;
+//    private Staff staff;
     private Friend friend;
     private Location startLocation;
 
 
     public void initializeElements(){
         this.user = new User(new Inventory(), null);
-        this.staff = new Staff(new Inventory(), null);
+//        this.staff = new Staff(new Inventory(), null);
         this.friend = new Friend(null, null);
-        this.staff.takeItem(new Key());
+//        this.staff.getInventory().addItem(new Key());
 
 
         // create locations
@@ -264,9 +264,9 @@ public class Game {
                     "You take the key from her, now it seems like you can open the door. " +
                     "Meanwhile, there are some little words on the key."
                 );
-                Key key = staff.findItemByName("key");
-                user.takeItem(key);
-                staff.dropItem("key");
+//                Key key = staff.findItemByName("key");
+//                user.takeItem(key);
+//                staff.dropItem("key");
                 break;
             } else if (inputN.contains("quit") || inputN.contains("give up")) {
                 System.out.println("You exit from the game, game over.");
@@ -282,9 +282,9 @@ public class Game {
         while (true) {
             System.out.print("> ");
             String inputO = scanner.nextLine().toLowerCase();
-            Key key = user.findItemByName("key");
-            if (key != null && inputO.contains("key") && (inputO.contains("read") || inputO.contains("look"))) {
-                System.out.println(key.getMessage());
+            if (inputO.contains("key") && (inputO.contains("read") || inputO.contains("look"))) {
+                System.out.println("The following is written on the key, \"Room for Monalisa, 1509\".");
+
             } else if (inputO.contains("open")) {
                 System.out.println(
                     "You have entered the room, Monalisa is right in front of you, and the rescue mission seems to be over. " +
