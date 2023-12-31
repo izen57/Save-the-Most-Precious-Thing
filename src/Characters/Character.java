@@ -5,7 +5,7 @@ import Inventory.Inventory;
 import Locations.Location;
 
 /**
- * The class which represents the character including the {@link User user} and NPCs.
+ * The class which represents the character including the {@link User user}, {@link NPC NPCs}, {@link Staff staff}, and {@link Friend friends}.
  * All characters have their own {@link Inventory inventory} and current {@link Location location}.
  */
 public abstract class Character {
@@ -30,8 +30,9 @@ public abstract class Character {
     public void takeItem(AbstractItem itemFromLocation) {
         inventory.addItem(itemFromLocation);
         currentLocation.removeItem(itemFromLocation.getName());
+
+        System.out.println("You've just picked up "+ itemFromLocation.getName() + '.');
         System.out.println(itemFromLocation.getDescription());
-        System.out.println( "(This "+ itemFromLocation.getName() + " is in your inventory now.)");
     }
 
     /**
@@ -45,7 +46,7 @@ public abstract class Character {
         if (removedItem != null) {
             inventory.removeItem(itemName);
             currentLocation.addItem(removedItem);
-            System.out.println("You have dropped the " + itemName + '.');
+            System.out.println("You've dropped the " + itemName + '.');
         }
     }
 
@@ -71,7 +72,7 @@ public abstract class Character {
      * @return an item of type {@code T} which must extends the {@link AbstractItem} if there is it in the inventory, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the inventory which should be derived from the {@link AbstractItem}.
      */
-    public <T extends AbstractItem> T findItemByName(String itemName){
+    public <T extends AbstractItem> T findItemByName(String itemName) {
         return inventory.findItemByName(itemName);
     }
 }
