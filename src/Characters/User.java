@@ -1,8 +1,8 @@
 package Characters;
 
 import Inventory.IApplicable;
-import Inventory.*;
-import Locations.*;
+import Inventory.Inventory;
+import Locations.Location;
 
 import java.util.Stack;
 
