@@ -64,17 +64,14 @@ public class Inventory
 
     public void showInventory()
     {
-        if (!isEmpty()) {
-            System.out.print("Now you have: ");
-            for (AbstractItem item : storage)
-                System.out.print(item.getName() );
-            System.out.println(" in your inventory.");
-        } else
-            System.out.println("You have nothing yet in your inventory.");
-    }
+        if (isEmpty()) {
+            System.out.println("Your inventory is currently empty.");
+            return;
+        }
 
-    public ArrayList<AbstractItem> getStorage() {
-        return storage;
+        System.out.println("You have these items in your inventory:");
+        for (AbstractItem item : storage)
+            System.out.println(" - " + item.getName());
     }
 
     public boolean isEmpty()
