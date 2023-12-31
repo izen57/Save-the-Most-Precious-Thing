@@ -11,7 +11,7 @@ public class MuseumMap extends AbstractItem implements IApplicable {
     @Override
     public String getMessage()
     {
-        return "You can see that all the galleries run north-south. " +
+        return "Mona Lisa is in the northeast of the museum. " +
             "Opposite the Madonna of the Rocks is the entrance to the room where the Mona Lisa is kept.";
     }
 }

@@ -13,6 +13,16 @@ public class FrenchPaintingCollections extends Location {
                 "To your east, there is a corridor to go to the collections of other countries.",
             "On your left, there is a leather notebook lies quietly at your feet."
         );
-        addItem(new Notebook());
+
     }
+
+    @Override
+    public String getDescription(){
+        if(!isEmpty()){
+            return "On your left, there is a leather notebook lies quietly at your feet.";}
+        else{
+            return "To your east, there is a corridor to go to the collections of other countries.";
+        }
+    }
+
 }

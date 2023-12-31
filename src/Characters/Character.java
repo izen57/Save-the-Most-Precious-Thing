@@ -1,4 +1,4 @@
-package Main;
+package Characters;
 
 import Inventory.AbstractItem;
 import Inventory.Inventory;
@@ -31,6 +31,7 @@ public abstract class Character {
         inventory.addItem(itemFromLocation);
         currentLocation.removeItem(itemFromLocation.getName());
         System.out.println(itemFromLocation.getDescription());
+        System.out.println( "(This "+ itemFromLocation.getName() + " is in your inventory now.)");
     }
 
     /**
