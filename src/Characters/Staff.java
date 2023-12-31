@@ -1,6 +1,6 @@
 package Characters;
 
-import Inventory.*;
+import Inventory.Inventory;
 import Locations.Location;
 
 public class Staff extends Character implements NPC
