@@ -18,7 +18,7 @@ public class Game {
         this.user = new User(new Inventory(), null);
         this.staff = new Staff(new Inventory(), null);
         this.friend = new Friend(null, null);
-        this.staff.getInventory().addItem(new Key());
+        this.staff.takeItem(new Key());
 
 
         // create locations
@@ -34,7 +34,7 @@ public class Game {
 
         this.startLocation = ancientGreekGallery;
         this.friend.setCurrentLocation(restaurant);
-        restaurant.setCharacter(friend);
+        restaurant.placeCharacter(friend);
         ancientGreekStair.addItem(new MuseumMap());
         frenchPaintingCollections.addItem(new Notebook());
 
@@ -65,8 +65,6 @@ public class Game {
 
         ancientEgyptPavilion.setNorth(corridor);
         ancientEgyptPavilion.setWest(ancientGreekStair);
-
-
     }
 
 
@@ -258,9 +256,9 @@ public class Game {
                         "You take the key from her, now it seems like you can open the door. " +
                                 "Meanwhile, there are some little words on the key."
                 );
-                Key key = staff.getInventory().findItemByName("key");
-                user.getInventory().addItem(key);
-                staff.getInventory().removeItem("key");
+                Key key = staff.findItemByName("key");
+                user.takeItem(key);
+                staff.dropItem("key");
                 break;
             } else if (inputN.contains("quit") || inputN.contains("give up") ) {
                 System.out.println("You exit from the game, game over.");
