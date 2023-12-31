@@ -21,7 +21,7 @@ public class AncientGreekStair extends Location {
     public String getMessage() {
         String message = "You are standing before the headless Goddess of Victory, " +
             "with her wings outstretched on either side. " +
-            "On her east is the Egypt Exhibition Hall," +
+            "On her east is the Egypt Exhibition Hall, " +
             "and on her west is the splendid Apollo Corridor.";
 
         if (!isEmpty())
