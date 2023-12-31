@@ -18,6 +18,8 @@ public abstract class Location {
     private Location north;
     private Location south;
 
+    private Characters.Character npc;
+
     /**
      * Initialize the location with the given {@link Inventory inventory}.
      *
@@ -102,6 +104,14 @@ public abstract class Location {
     public boolean isEmpty()
     {
         return inventory.isEmpty();
+    }
+
+    public Characters.Character getCharacter(){
+        return this.npc;
+    }
+
+    public void setCharacter(Characters.Character character){
+         this.npc = character;
     }
 
     /**
