@@ -1,5 +1,6 @@
 package Locations;
 
+import Characters.Character;
 import Inventory.AbstractItem;
 import Inventory.Inventory;
 
@@ -18,7 +19,7 @@ public abstract class Location {
     private Location north;
     private Location south;
 
-    private Characters.Character npc;
+    private Character npc;
 
     /**
      * Initialize the location with the given {@link Inventory inventory}.
@@ -106,11 +107,11 @@ public abstract class Location {
         return inventory.isEmpty();
     }
 
-    public Characters.Character getCharacter(){
+    public Character getCharacter() {
         return this.npc;
     }
 
-    public void setCharacter(Characters.Character character){
+    public void placeCharacter(Character character) {
          this.npc = character;
     }
 
