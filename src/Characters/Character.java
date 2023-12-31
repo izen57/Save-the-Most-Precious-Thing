@@ -50,10 +50,6 @@ public abstract class Character {
         }
     }
 
-    public Inventory getInventory() {
-        return inventory;
-    }
-
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
@@ -74,5 +70,10 @@ public abstract class Character {
      */
     public <T extends AbstractItem> T findItemByName(String itemName) {
         return inventory.findItemByName(itemName);
+    }
+
+    public boolean isInventoryEmpty()
+    {
+        return inventory.isEmpty();
     }
 }
