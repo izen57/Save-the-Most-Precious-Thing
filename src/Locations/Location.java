@@ -11,7 +11,7 @@ import Inventory.Inventory;
 public abstract class Location {
     private String name;
     protected Inventory inventory;
-    private String message;
+    protected String message;
     private String description;
     private Location east;
     private Location west;
