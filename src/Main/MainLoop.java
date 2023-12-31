@@ -204,24 +204,22 @@ public class MainLoop {
                 break;
 
             case BACK:
-                if(user.getLocationHistory()!= null){
+                if (user.getLocationHistory() == null) {
+                    System.out.println("The mission can not be denied, you can not go out of the Louvre now.");
+                } else {
                     Location previousLocation = currentLocation;
                     currentLocation = user.showLastLocation();
                     user.setCurrentLocation(currentLocation);
                     System.out.println(currentLocation.getMessage());
                     user.addLocation(previousLocation);
-
-                }else{
-                    System.out.println("The mission can not be denied, you can not go out of the Louvre now.");
                 }
                 break;
 
             case Inventory:
-                if(!user.getInventory().getStorage().isEmpty()) {
+                if (user.isInventoryEmpty())
+                    System.out.println("Your inventory is currently empty.");
+                else
                     user.showInventory();
-                } else{
-                    System.out.println("Now you have nothing in your inventory.");
-                }
                 break;
 
             case LOOK:
@@ -238,11 +236,11 @@ public class MainLoop {
                 break;
 
             case HELP:
-                System.out.println("The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun. " +
+                System.out.println(
+                    "The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun. " +
                         "At the same time, pay attention to the items that appear in the scene. When you pick up the item,  some items will enter your inventory and some will not." +
                         " For item in inventory, you can drop it and the item will be removed from the inventory.");
                 break;
-
 
 
             default:
@@ -250,14 +248,4 @@ public class MainLoop {
                 break;
         }
     }
-
-
-
 }
-
-
-
-
-
-
-
