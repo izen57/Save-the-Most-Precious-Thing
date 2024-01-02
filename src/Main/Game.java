@@ -127,7 +127,7 @@ public class Game {
                 System.out.println("Hit any key to continue...");
                 break;
             } else if (inputA.contains("quit") || inputA.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println("While you were immersed in the scenery, you received a message on your phone..."); // Ask to re-enter if input is not "read"
@@ -166,7 +166,7 @@ public class Game {
                 );
                 break;
             } else if (inputC.contains("quit") || inputC.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println("I am right in front of your eyes. Who I am?");
@@ -182,7 +182,7 @@ public class Game {
                 System.out.println(startLocation.getMessage());
                 break;
             } else if (inputD.contains("quit") || inputD.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println("Remember, only if you enter the right room you can save the most precious good.");
@@ -219,7 +219,7 @@ public class Game {
         } while(running);
 
         if (quit) {
-            System.out.println("You exit from the game, game over.");
+            System.out.println("You've exited from the game. Game over.");
             return;
         }
 
@@ -236,7 +236,7 @@ public class Game {
                 System.out.println("\"Do you need some help?\", The employee raised her head and asked you nicely.");
                 break;
             } else if (inputM.contains("quit") || inputM.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println(
@@ -272,7 +272,7 @@ public class Game {
 //                staff.dropItem("key");
                 break;
             } else if (inputN.contains("quit") || inputN.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println(
@@ -302,7 +302,7 @@ public class Game {
                 );
                 break;
             } else if (inputO.contains("quit") || inputO.contains("give up")) {
-                System.out.println("You exit from the game, game over.");
+                System.out.println("You've exited from the game. Game over.");
                 return;
             } else {
                 System.out.println("The Mona Lisa is in danger, you are wasting your time.");
