@@ -13,8 +13,6 @@ public class Game {
     private Friend friend;
     private Location startLocation;
 
-    private TimeCounter timeCounter;
-
     public void initializeElements() {
         this.user = new User(new Inventory(), null);
 //        this.staff = new Staff(new Inventory(), null);
@@ -159,6 +157,7 @@ public class Game {
             if (inputC.equalsIgnoreCase("museum")) {
                 System.out.println(
                     "Now you know the password to enter Louvre and go immediately to the entrance of the museum. " +
+                    "Since you'll enter there the time will run out. Nevertheless, pay your attention to details as they may be crucial in your mission! " +
                     "There are 3 wings in Louvre: Sully Denon and Richelieu. " +
                     "Remember, only if you enter the right room you can save the most precious good."
                 );
@@ -190,12 +189,6 @@ public class Game {
         MainLoop MainLoop = new MainLoop(startLocation, user);
         boolean running = true;
         boolean quit = false;
-
-        System.out.println(
-            "Finally, you enter the building of the Denon Gallery of Louvre." +
-            "You need to hurry up if you want to save the most precious thing." +
-            "Nevertheless, pay your attention to details as they may be crucial in your mission!"
-        );
 
         do {
             try {

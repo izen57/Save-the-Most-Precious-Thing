@@ -13,16 +13,34 @@ public final class TimeCounter
      * So, if the main character takes 5 steps back this variable increases at 5.
      */
     private static int stepsCounter;
-    private static final int MINUTESLIMIT = 30;
+    private static final int step;
+    private static final float MINUTESLIMIT = 10f;
     private static final float MINPERSTEP = 0.05f;
 
     static {
         stepsCounter = 0;
+        step = 1;
     }
 
-    public static void takeSteps(int number)
+    /**
+     * Increases internal steps counter on the absolute value of the given number.
+     * If the percent of minutes left more or equal than 75% and less than 100% then
+     * the special message is being printing.
+     * If the percent of minutes left more or equal than 100% then
+     * the special message is being printing and the game finishes.
+     */
+    public static void takeSteps()
     {
-        stepsCounter += Math.abs(number);
+        stepsCounter += Math.abs(step);
+        float minutesLeftPercentage = getMinutesPassed() / MINUTESLIMIT;
+
+        if (Float.compare(minutesLeftPercentage, 0.75f) >= 0 &&
+            Float.compare(minutesLeftPercentage, 1f) < 0)
+            System.out.println("You have to hurry, there's not much time left!");
+        else if (Float.compare(minutesLeftPercentage, 1f) >= 0) {
+            System.out.println("You're out of your time! The most precious thing went up in flames...\n");
+            System.exit(0);
+        }
     }
 
     public static int getStepsTaken()
@@ -38,10 +56,5 @@ public final class TimeCounter
     public static float getMinutesPassed()
     {
         return stepsCounter * MINPERSTEP;
-    }
-
-    public static void checkTime()
-    {
-
     }
 }

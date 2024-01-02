@@ -12,7 +12,6 @@ import static Main.Command.*;
 public class MainLoop {
     private Location currentLocation;
     private User user;
-    private final int step = 5;
 
     public MainLoop(Location startLocation, User user) {
         this.currentLocation = startLocation;
@@ -113,7 +112,7 @@ public class MainLoop {
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
 
-                    TimeCounter.takeSteps(step);
+                    TimeCounter.takeSteps();
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -126,7 +125,7 @@ public class MainLoop {
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
 
-                    TimeCounter.takeSteps(step);
+                    TimeCounter.takeSteps();
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -139,7 +138,7 @@ public class MainLoop {
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
 
-                    TimeCounter.takeSteps(step);
+                    TimeCounter.takeSteps();
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -152,7 +151,7 @@ public class MainLoop {
                     System.out.println(currentLocation.getMessage());
                     user.setCurrentLocation(currentLocation);
 
-                    TimeCounter.takeSteps(step);
+                    TimeCounter.takeSteps();
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -225,7 +224,7 @@ public class MainLoop {
                 System.out.println(currentLocation.getMessage());
                 user.addLocation(previousLocation);
 
-                TimeCounter.takeSteps(-step);
+                TimeCounter.takeSteps();
 
                 break;
 
