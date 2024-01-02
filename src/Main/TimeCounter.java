@@ -6,7 +6,7 @@ package Main;
  * <p>The class also contains the time limit and the number of minutes per a step.</p>
  * <p>When the main character does not move the in-game time stops since no steps means no minutes left.</p>
  */
-public class TimeCounter
+public final class TimeCounter
 {
     /**
      * The variable to count an absolute amount of taken steps.
@@ -38,5 +38,10 @@ public class TimeCounter
     public static float getMinutesPassed()
     {
         return stepsCounter * MINPERSTEP;
+    }
+
+    public static void checkTime()
+    {
+
     }
 }
