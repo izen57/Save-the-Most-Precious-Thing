@@ -193,6 +193,12 @@ public class Game {
         boolean running = true;
         boolean quit = false;
 
+        System.out.println(
+            "Finally, you enter the building of the Denon Gallery of Louvre." +
+            "You need to hurry up if you want to save the most precious thing." +
+            "Nevertheless, pay your attention to details as they may be crucial in your mission!"
+        );
+
         do {
             try {
                 System.out.print("> ");
