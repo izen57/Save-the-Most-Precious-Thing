@@ -12,9 +12,13 @@ public class TimeCounter
      * The variable to count an absolute amount of taken steps.
      * So, if the main character takes 5 steps back this variable increases at 5.
      */
-    private static int counter = 0;
+    private static int counter;
     private static final int MINUTESLIMIT = 30;
     private static final float MINPERSTEP = 0.05f;
+
+    static {
+        counter = 0;
+    }
 
     public static void takeSteps(int number)
     {
