@@ -13,8 +13,11 @@ public class Game {
     private Friend friend;
     private Location startLocation;
 
+    private TimeCounter timeCounter;
 
-    public void initializeElements(){
+    public void initializeElements() {
+        timeCounter = new TimeCounter();
+
         this.user = new User(new Inventory(), null);
 //        this.staff = new Staff(new Inventory(), null);
         this.friend = new Friend(null, null);
