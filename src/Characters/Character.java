@@ -54,10 +54,6 @@ public abstract class Character {
         this.inventory = inventory;
     }
 
-    public Inventory getInventory() {
-        return inventory;
-    }
-
     public Location getCurrentLocation() {
         return currentLocation;
     }

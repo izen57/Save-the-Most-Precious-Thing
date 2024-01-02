@@ -43,10 +43,6 @@ public abstract class Location {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
     public String getMessage() {
         return message;
     }
