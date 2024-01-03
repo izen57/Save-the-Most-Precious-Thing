@@ -6,6 +6,6 @@ import Characters.*;
  */
 public enum Command {
     SOUTH, NORTH, WEST, EAST, BACK,
-    TAKEITEM, DROPITEM, READITEM, READ, TAKE, DROP, LOOK, Inventory,
+    TAKEITEM, DROPITEM, READITEM, READ, TAKE, DROP, LOOK, INVENTORY,
     UNKNOWN, HELP, ASK,
 }

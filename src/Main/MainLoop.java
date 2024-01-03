@@ -91,13 +91,13 @@ public class MainLoop {
 
             case "inventory":
             case "check inventory":
-                return Inventory;
+                return INVENTORY;
 
             case "help":
                 return HELP;
 
             default:
-                return Command.UNKNOWN;
+                return UNKNOWN;
         }
     }
 
@@ -184,17 +184,15 @@ public class MainLoop {
 
             case READITEM:
                 IApplicable userItemToRead = user.findItemByName(words[1]);
-                IApplicable locationItemToRead = currentLocation.findItemByName(words[1]);
+                AbstractItem locationItemToRead = currentLocation.findItemByName(words[1]);
                 if (userItemToRead != null) {
-//                    IApplicable itemToRead = user.findItemByName(words[1]);
                     System.out.println(userItemToRead.getMessage());
                 } else if (locationItemToRead != null) {
-//                    AbstractItem itemToRead = currentLocation.findItemByName(words[1]);
-//                    if(itemToRead instanceof IApplicable){
-//                        System.out.println("You need to take something can be read first.");
-//                    }else{
-                        System.out.println(locationItemToRead.getMessage());
-//                    }
+                    if(locationItemToRead instanceof IApplicable){
+                        System.out.println(((IApplicable) locationItemToRead).getMessage());
+                    }else{
+                        System.out.println(locationItemToRead.getDescription());
+                    }
                 } else {
                     System.out.println("There is no " + words[1] + " to be read here.");
                 }
@@ -228,7 +226,7 @@ public class MainLoop {
 
                 break;
 
-            case Inventory:
+            case INVENTORY:
                 if (user.isInventoryEmpty())
                     System.out.println("Your inventory is empty.");
                 else
@@ -254,7 +252,7 @@ public class MainLoop {
                 break;
 
 
-            default:
+            case UNKNOWN:
                 System.out.println("This is not the correct command.");
                 break;
         }

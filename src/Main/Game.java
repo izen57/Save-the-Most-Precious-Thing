@@ -9,15 +9,12 @@ import java.util.Scanner;
 
 public class Game {
     private User user;
-//    private Staff staff;
     private Friend friend;
     private Location startLocation;
 
     public void initializeElements() {
         this.user = new User(new Inventory(), null);
-//        this.staff = new Staff(new Inventory(), null);
         this.friend = new Friend(null, null);
-//        this.staff.getInventory().addItem(new Key());
 
 
         // create locations
@@ -31,6 +28,7 @@ public class Game {
         Restaurant restaurant = new Restaurant();
         SpanishPaintingCollections spanishPaintingCollections = new SpanishPaintingCollections();
 
+        //put NPC and items into locations
         this.startLocation = ancientGreekGallery;
         this.friend.setCurrentLocation(restaurant);
         restaurant.placeCharacter(friend);
@@ -110,7 +108,6 @@ public class Game {
 
 
         while (true) { // Start an  loop
-            //System.out.println("Enter 'yes' to get a congratulatory message, or anything else to try again:");
             System.out.print("> ");
             String inputA = scanner.nextLine().toLowerCase();
 
@@ -264,9 +261,6 @@ public class Game {
                     "You take the key from her, now it seems like you can open the door. " +
                     "Meanwhile, there are some little words on the key."
                 );
-//                Key key = staff.findItemByName("key");
-//                user.takeItem(key);
-//                staff.dropItem("key");
                 break;
             } else if (inputN.contains("quit") || inputN.contains("give up")) {
                 System.out.println("You've exited from the game. Game over.");
