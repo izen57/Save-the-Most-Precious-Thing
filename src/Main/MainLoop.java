@@ -50,6 +50,7 @@ public class MainLoop {
             case "ask":
             case "ask them":
             case "talk":
+            case "hi":
                 return ASK;
 
             case "read":

@@ -245,8 +245,8 @@ public class Game {
             String inputN = scanner.nextLine().toLowerCase();
             if (inputN.contains("yes")) {
                 System.out.println(
-                    "Hey, I don't know you, you're not a museum member here, " +
-                    "you need to leave immediately or I'll call the police."
+                    "\"Hey, I don't know you, you're not a museum member here, " +
+                    "you need to leave immediately or I'll call the police.\" she shouted to you."
                 );
                 System.out.println("Game over. You have failed the mission :(");
                 return;

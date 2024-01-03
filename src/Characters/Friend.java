@@ -14,6 +14,6 @@ public class Friend extends Character implements NPC
             "Yajing mentioned a delicious cake shop in Brussels called Yasushi Sasaki, " +
             "and Mikhail agreed. " +
             "Mikhail also enjoyed Café Georgette, which is located in the city center and serves" +
-            "authentic Belgian cuisine.";
+            " authentic Belgian cuisine.";
     }
 }
