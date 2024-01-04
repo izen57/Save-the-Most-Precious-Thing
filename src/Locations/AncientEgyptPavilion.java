@@ -2,7 +2,15 @@ package Locations;
 
 import Inventory.Inventory;
 
+/**
+ * This class extends the{@link Location} class, providing a specific setting within the game world.
+ */
 public class AncientEgyptPavilion extends Location{
+
+    /**
+     * Constructs an Ancient Egypt Pavilion location with a specific name, empty inventory, message and
+     * description which is a hint about an adjacent location.
+     */
     public AncientEgyptPavilion() {
         super(
             "ancientEgyptPavilion",

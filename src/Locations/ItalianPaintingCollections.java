@@ -2,7 +2,15 @@ package Locations;
 
 import Inventory.Inventory;
 
+/**
+ * This class extends the{@link Location} class, providing a specific setting within the game world.
+ */
 public class ItalianPaintingCollections extends Location {
+
+    /**
+     * Constructs an Italian Painting Collection location with a specific name, empty inventory, same message and description
+     * as a hint about finding the right place of Mona Lisa.
+     */
     public ItalianPaintingCollections() {
         super(
             "italianPaintingCollections",

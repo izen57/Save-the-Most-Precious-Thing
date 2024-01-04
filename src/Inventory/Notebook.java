@@ -1,14 +1,12 @@
 package Inventory;
 
 /**
- * Represents a Notebook item in the game.
  * This class extends {@link AbstractItem} class and provides a Notebook object for use within the game.
  */
 public class Notebook extends AbstractItem implements IApplicable{
 
     /**
      * Constructs a Notebook item with name and description.
-     * The name is set to "notebook" and a brief description is provided.
      */
     public Notebook() {
         super(

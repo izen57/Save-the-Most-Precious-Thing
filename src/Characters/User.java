@@ -8,7 +8,6 @@ import Main.TimeCounter;
 import java.util.Stack;
 
 /**
- * Represents the main player character in the game.
  * The User class extends the{@link Character} class and is characterized by a history of locations visited,
  * which is tracked using a {@link Stack} of {@link Location} objects. This class manages the user's
  * movements, inventory, and interactions with game items.
@@ -72,8 +71,7 @@ public class User extends Character {
     }
 
     /**
-     * Moves the User in a specified direction and updates the location history.
-     * Valid directions are "north", "south", "east", and "west". The method also
+     * Moves the User in a specified direction and updates the location history.The method also
      * prints the message of the new current location and updates the game's time counter.
      * @param direction The direction in which to move the User.
      */

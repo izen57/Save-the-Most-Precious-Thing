@@ -34,6 +34,7 @@ public class Game {
         restaurant.placeCharacter(friend);
         ancientGreekStair.addItem(new MuseumMap());
         frenchPaintingCollections.addItem(new Notebook());
+        corridor.addItem(new Newspaper());
 
         // set the connections between different locations
         ancientGreekGallery.setNorth(ancientGreekStair);

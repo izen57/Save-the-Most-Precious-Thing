@@ -2,7 +2,16 @@ package Locations;
 
 import Inventory.Inventory;
 
+/**
+ * This class extends the{@link Location} class, providing a specific setting within the game world.
+ */
 public class Restaurant extends Location {
+
+
+    /**
+     * Constructs a Restaurant location with a specific name, an empty inventory, and detailed descriptions.
+     * The description sets the scene of the restaurant, mentioning NPC and a conversation between them.
+     */
     public Restaurant() {
         super(
             "restaurant",

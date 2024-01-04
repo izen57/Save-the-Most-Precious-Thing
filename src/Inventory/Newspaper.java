@@ -1,7 +1,6 @@
 package Inventory;
 
 /**
- * Represents a Newspaper item in the game.
  * This class extends {@link AbstractItem} class and provides a detailed newspaper object for use within the game.
  */
 public class Newspaper extends AbstractItem {
