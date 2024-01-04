@@ -23,7 +23,7 @@ public abstract class Character {
     }
 
     /**
-     * Adds an {@link AbstractItem item} to the character's {@link Inventory inventory}
+     * Adds an {@link AbstractItem item} to the character's {@link Inventory inventory}.
      * and removes it from the inventory of the current {@link Location location}.
      * @param itemFromLocation the item to add.
      */
@@ -36,7 +36,7 @@ public abstract class Character {
     }
 
     /**
-     * Removes an {@link AbstractItem item} from the character's {@link Inventory inventory}
+     * Removes an {@link AbstractItem item} from the character's {@link Inventory inventory}.
      * and passes it to the current {@link Location location's} inventory.
      * @param itemName the item to drop.
      */
@@ -50,14 +50,27 @@ public abstract class Character {
         }
     }
 
+    /**
+     * Set an {@link Inventory inventory} for the character
+     * @param inventory the new inventory to set.
+     */
+
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
 
+    /**
+     * Get the current {@link Location location} of the character.
+     * @return currentLocation.
+     */
     public Location getCurrentLocation() {
         return currentLocation;
     }
 
+    /**
+     * Set the current {@link Location location} of the character.
+     * @param currentLocation the new location to set.
+     */
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
@@ -72,6 +85,10 @@ public abstract class Character {
         return inventory.findItemByName(itemName);
     }
 
+    /**
+     *Check the character's {@link Inventory inventory} is empty or not.
+     * @return true if it is empty otherwise false.
+     */
     public boolean isInventoryEmpty()
     {
         return inventory.isEmpty();
