@@ -8,8 +8,8 @@ import Main.TimeCounter;
 import java.util.Stack;
 
 /**
- * Represents the main user or player character in the game.
- * The User class extends the Character class and is characterized by a history of locations visited,
+ * Represents the main player character in the game.
+ * The User class extends the{@link Character} class and is characterized by a history of locations visited,
  * which is tracked using a {@link Stack} of {@link Location} objects. This class manages the user's
  * movements, inventory, and interactions with game items.
  */
@@ -58,7 +58,6 @@ public class User extends Character {
 
     /**
      * Shows the last location visited by the User.
-     *
      * @return The most recent Location object from the location history.
      */
     public Location showLastLocation() {

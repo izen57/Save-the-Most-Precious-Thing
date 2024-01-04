@@ -62,6 +62,11 @@ public class Inventory
         return null;
     }
 
+    /**
+     * Displays the contents of the User's inventory.
+     * If the inventory is empty, a message stating that the inventory is empty is displayed.
+     * Otherwise, it lists out each item present in the inventory.
+     */
     public void showInventory()
     {
         if (isEmpty()) {
@@ -74,11 +79,21 @@ public class Inventory
             System.out.println(" - " + item.getName());
     }
 
+
+    /**
+     * Checks if the User's inventory is empty.
+     * @return true if the inventory is empty, false otherwise.
+     */
     public boolean isEmpty()
     {
         return storage.isEmpty();
     }
 
+
+    /**
+     * Retrieves the number of items in the User's inventory.
+     * @return The size of the inventory.
+     */
     public int getSize()
     {
         return storage.size();

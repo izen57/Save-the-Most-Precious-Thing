@@ -139,7 +139,6 @@ public class MainLoop {
                 break;
 
 
-
             case TAKEITEM:
                 AbstractItem itemToTake = user.getCurrentLocation().findItemByName(words[1]);
                 if (itemToTake instanceof IApplicable) {
