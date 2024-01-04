@@ -51,6 +51,7 @@ public class Game {
 
         spanishPaintingCollections.setWest(frenchPaintingCollections);
         spanishPaintingCollections.setEast(italianPaintingCollections);
+        spanishPaintingCollections.setSouth(corridor);
 
         corridor.setNorth(spanishPaintingCollections);
         corridor.setEast(restaurant);
@@ -252,10 +253,10 @@ public class Game {
                 return;
             } else if (inputN.contains("no")) {
                 System.out.println(
-                    "Okay, can you do me a favor? " +
+                    "\"Okay, can you do me a favor? " +
                     "I'm going to get something from the basement. " +
                     "This is the key to Monalisa's room. " +
-                    "Can you help me move this thing in?"
+                    "Can you help me move this thing in?\""
                 );
                 System.out.println(
                     "You take the key from her, now it seems like you can open the door. " +

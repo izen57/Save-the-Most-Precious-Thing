@@ -107,52 +107,32 @@ public class MainLoop {
         String[] words = userInput.trim().split("\\s+");
         switch (command) {
             case NORTH:
-                if (currentLocation.getNorth() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getNorth();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-
-                    TimeCounter.takeSteps();
+                if (user.getCurrentLocation().getNorth() != null) {
+                    user.move("north");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case SOUTH:
-                if (currentLocation.getSouth() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getSouth();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-
-                    TimeCounter.takeSteps();
+                if (user.getCurrentLocation().getSouth() != null) {
+                    user.move("south");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case EAST:
-                if (currentLocation.getEast() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getEast();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-
-                    TimeCounter.takeSteps();
+                if (user.getCurrentLocation().getEast() != null) {
+                    user.move("east");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case WEST:
-                if (currentLocation.getWest() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getWest();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-
-                    TimeCounter.takeSteps();
+                if (user.getCurrentLocation().getWest() != null) {
+                    user.move("west");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
@@ -161,7 +141,7 @@ public class MainLoop {
 
 
             case TAKEITEM:
-                AbstractItem itemToTake = currentLocation.findItemByName(words[1]);
+                AbstractItem itemToTake = user.getCurrentLocation().findItemByName(words[1]);
                 if (itemToTake instanceof IApplicable) {
                     user.takeItem(itemToTake);
                 } else if (itemToTake != null) {
@@ -185,7 +165,7 @@ public class MainLoop {
 
             case READITEM:
                 IApplicable userItemToRead = user.findItemByName(words[1]);
-                AbstractItem locationItemToRead = currentLocation.findItemByName(words[1]);
+                AbstractItem locationItemToRead = user.getCurrentLocation().findItemByName(words[1]);
                 if (userItemToRead != null) {
                     System.out.println(userItemToRead.getMessage());
                 } else if (locationItemToRead != null) {
@@ -217,7 +197,7 @@ public class MainLoop {
                     break;
                 }
 
-                Location previousLocation = currentLocation;
+                Location previousLocation = user.getCurrentLocation();
                 currentLocation = user.showLastLocation();
                 user.setCurrentLocation(currentLocation);
                 System.out.println(currentLocation.getMessage());
@@ -235,7 +215,7 @@ public class MainLoop {
                 break;
 
             case LOOK:
-                System.out.println(currentLocation.getDescription());
+                System.out.println(user.getCurrentLocation().getDescription());
                 break;
 
             case ASK:
