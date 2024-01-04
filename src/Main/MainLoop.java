@@ -8,17 +8,35 @@ import Locations.Location;
 
 import static Main.Command.*;
 
-
+/**
+ * This class represents the main loop of the game.
+ * which is mainly the process of dealing with the user input, parse them into command and
+ * execute corresponding operations based on the command.
+ */
 public class MainLoop {
+
+    /** The location of user */
     private Location currentLocation;
+
+    /** The player of the game */
     private User user;
 
+    /**
+     * Construct a main loop with a specific start {@link Location} and a player {@link User}.
+     * @param startLocation start location.
+     * @param user player.
+     */
     public MainLoop(Location startLocation, User user) {
         this.currentLocation = startLocation;
         this.user = user;
         this.user.setCurrentLocation(startLocation);
     }
 
+    /**
+     * Parse user input into command.
+     * @param userInput
+     * @return corresponding command of user input.
+     */
     public Command parseCommand(String userInput) {
         switch (userInput.trim().toLowerCase()) {
             case "east":
@@ -102,6 +120,11 @@ public class MainLoop {
         }
     }
 
+    /**
+     * Execute corresponding operations based on the command.
+     * @param command based on the user input.
+     * @param userInput user input.
+     */
     public void processCommand(Command command, String userInput) {
         //asked ChatGPT for this line.
         String[] words = userInput.trim().split("\\s+");
@@ -218,9 +241,7 @@ public class MainLoop {
                 break;
 
             case ASK:
-                if (user.getCurrentLocation().getCharacter() instanceof NPC) {
-                    System.out.println(((NPC) user.getCurrentLocation().getCharacter()).getMessage());
-                }
+                System.out.println((user.getCurrentLocation().getCharacter()).getMessage());
                 break;
 
             case HELP:
