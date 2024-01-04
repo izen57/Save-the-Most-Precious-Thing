@@ -1,5 +1,6 @@
 package Main;
-import Characters.*;
+
+import Characters.User;
 
 /**
  * The enumeration to represent the command the {@link User user} may type.

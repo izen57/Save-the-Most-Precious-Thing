@@ -1,45 +1,46 @@
 package Locations;
 
-import Characters.*;
+import Characters.NPC;
+import Characters.User;
 import Inventory.AbstractItem;
 import Inventory.Inventory;
 
 /**
  * The class represents a location of the game.
  * Each location should have the name, the {@link Inventory inventory}, the entrance message
- * which is printing when the user entrance the location, and the description which will be displayed when user input look.
+ * which is printing when the {@link User user} entrance the location, and the description which will be displayed when user inputs {@code look}.
  */
 public abstract class Location {
 
-    /** the name of the location*/
+    /** The name of the location*/
     private String name;
 
-    /** the inventory of the location*/
+    /** The {@link Inventory inventory} of the location*/
     protected Inventory inventory;
 
-    /** the message of the location*/
+    /** The message of the location*/
     protected String message;
 
-    /** the description of the location*/
+    /** The description of the location*/
     private String description;
 
-    /** the east adjacent location of this location*/
+    /** The east adjacent location of this location*/
     private Location east;
 
-    /** the west adjacent location of this location*/
+    /** The west adjacent location of this location*/
     private Location west;
 
-    /** the north adjacent location of this location*/
+    /** The north adjacent location of this location*/
     private Location north;
 
-    /** the south adjacent location of this location*/
+    /** The south adjacent location of this location*/
     private Location south;
 
-    /** the NPC located in this location*/
+    /** The {@link NPC} located in this location*/
     private NPC npc;
 
     /**
-     * Initialize the location with the given {@link Inventory inventory}.
+     * Initializes the location with the given {@link Inventory inventory}.
      *
      * @param name        a name of the location.
      * @param inventory   an already created inventory.
@@ -54,7 +55,7 @@ public abstract class Location {
     }
 
     /**
-     * get the name of this location.
+     * Gets the name of this location.
      * @return location name.
      */
     public String getName() {
@@ -62,7 +63,7 @@ public abstract class Location {
     }
 
     /**
-     * set the name of this location.
+     * Sets the name of this location.
      * @param name location name.
      */
     public void setName(String name) {
@@ -70,24 +71,23 @@ public abstract class Location {
     }
 
     /**
-     * get the message associated with the location.
+     * Gets the message associated with the location.
      * @return message associated with the location.
      */
     public String getMessage() {
         return message;
     }
 
-
     /**
-     * get the east location related to current location.
-     * @return  east location name.
+     * Gets the east location related to current location.
+     * @return east location name.
      */
     public Location getEast() {
         return east;
     }
 
     /**
-     * set the east location related to current location.
+     * Sets the east location related to current location.
      * @param east location name.
      */
     public void setEast(Location east) {
@@ -95,7 +95,7 @@ public abstract class Location {
     }
 
     /**
-     * get the west location related to current location.
+     * Gets the west location related to current location.
      * @return  west location name.
      */
     public Location getWest() {
@@ -103,7 +103,7 @@ public abstract class Location {
     }
 
     /**
-     * set the west location related to current location.
+     * Sets the west location related to current location.
      * @param west location name.
      */
     public void setWest(Location west) {
@@ -111,7 +111,7 @@ public abstract class Location {
     }
 
     /**
-     * get the north location related to current location.
+     * Gets the north location related to current location.
      * @return  north location name.
      */
     public Location getNorth() {
@@ -119,31 +119,28 @@ public abstract class Location {
     }
 
     /**
-     * set the north location related to current location.
+     * Sets the north location related to current location.
      * @param north location name.
      */
     public void setNorth(Location north) {
         this.north = north;
     }
 
-
     /**
-     * get the south location related to current location.
-     * @return  south location name.
+     * Gets the south location related to current location.
+     * @return south location name.
      */
     public Location getSouth() {
         return south;
     }
 
-
     /**
-     * set the south location related to current location.
+     * Sets the south location related to current location.
      * @param south location name.
      */
     public void setSouth(Location south) {
         this.south = south;
     }
-
 
     /**
      * Adds an {@link AbstractItem item} to the location's {@link Inventory inventory}.
@@ -163,8 +160,8 @@ public abstract class Location {
     }
 
     /**
-     * Check if location's {@link Inventory inventory} is empty or not.
-     * @return true if it is empty, otherwise false.
+     * Checks if location's {@link Inventory inventory} is empty or not.
+     * @return {@code true} if it is empty, {@code false} otherwise.
      */
     public boolean isEmpty()
     {
@@ -172,7 +169,7 @@ public abstract class Location {
     }
 
     /**
-     * Get the {@link NPC} npc located at current location.
+     * Gets the {@link NPC} located at current location.
      * @return NPC located at current location.
      */
     public NPC getCharacter() {
@@ -180,7 +177,7 @@ public abstract class Location {
     }
 
     /**
-     * Set the {@link NPC} npc located at current location.
+     * Sets the {@link NPC} npc located at current location.
      * @param character located at current location.
      */
     public void placeCharacter(NPC character) {
@@ -190,7 +187,7 @@ public abstract class Location {
     /**
      * Finds an item on the location by its name.
      * @param itemName a name of the item to find.
-     * @return an item of the given type parameter if it is presents in the inventory of the location, {@code null} otherwise.
+     * @return an item of the given type parameter if it presents in the inventory of the location, {@code null} otherwise.
      * @param <T> the type parameter of needed item from the inventory of the location which should be derived from the {@link AbstractItem}.
      */
     public <T extends AbstractItem> T findItemByName(String itemName)
@@ -199,7 +196,7 @@ public abstract class Location {
     }
 
     /**
-     * Get description of current location.
+     * Gets the description of current location.
      * @return description associated with location.
      */
     public String getDescription()

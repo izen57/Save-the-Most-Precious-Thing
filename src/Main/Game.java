@@ -1,8 +1,12 @@
 package Main;
 
-import Inventory.*;
+import Characters.Friend;
+import Characters.User;
+import Inventory.Inventory;
+import Inventory.MuseumMap;
+import Inventory.Newspaper;
+import Inventory.Notebook;
 import Locations.*;
-import Characters.*;
 
 import java.util.Objects;
 import java.util.Scanner;

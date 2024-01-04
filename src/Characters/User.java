@@ -1,6 +1,5 @@
 package Characters;
 
-import Inventory.IApplicable;
 import Inventory.Inventory;
 import Locations.Location;
 import Main.TimeCounter;
@@ -8,15 +7,15 @@ import Main.TimeCounter;
 import java.util.Stack;
 
 /**
- * The User class extends the{@link Character} class and is characterized by a history of locations visited,
+ * The User class extends the {@link Character} class and is characterized by a history of locations visited,
  * which is tracked using a {@link Stack} of {@link Location} objects. This class manages the user's
- * movements, inventory, and interactions with game items.
+ * movements, {@link Inventory inventory}, and interactions with game items.
  */
 public class User extends Character {
     private Stack<Location> locationHistory = new Stack<>();
 
     /**
-     * Constructs a User with specified inventory and current location.
+     * Constructs a User with specified {@link Inventory inventory} and current {@link Location location}.
      * @param inventory The inventory associated with the User.
      * @param currentLocation The User's current location in the game.
      */
@@ -25,7 +24,7 @@ public class User extends Character {
     }
 
     /**
-     * Gets the history of locations visited by the User.
+     * Gets the history of {@link Location locations} visited by the User.
      * @return A stack of Location objects representing the User's location history.
      */
     public Stack<Location> getLocationHistory() {
@@ -33,15 +32,15 @@ public class User extends Character {
     }
 
     /**
-     * Sets the history of locations for the User.
-     * @param locationHistory  A stack of Location objects representing the new location history.
+     * Sets the history of {@link Location locations} for the User.
+     * @param locationHistory A stack of Location objects representing the new location history.
      */
     public void setLocationHistory(Stack<Location> locationHistory) {
         this.locationHistory = locationHistory;
     }
 
     /**
-     * Adds a new location to the User's location history.
+     * Adds a new {@link Location location} to the User's location history.
      * @param location  The new Location to be added to the history.
      */
     public void addLocation(Location location){
@@ -49,14 +48,14 @@ public class User extends Character {
     }
 
     /**
-     * Removes the most recent location from the User's location history.
+     * Removes the most recent {@link Location location} from the User's location history.
      */
-    public void removeLocation(){
+    public void removeLocation() {
         this.locationHistory.pop();
     }
 
     /**
-     * Shows the last location visited by the User.
+     * Shows the last {@link Location location} visited by the User.
      * @return The most recent Location object from the location history.
      */
     public Location showLastLocation() {
@@ -64,15 +63,15 @@ public class User extends Character {
     }
 
     /**
-     * Displays the User's current inventory.
+     * Displays the User's current {@link Inventory inventory}.
      */
     public void showInventory() {
         inventory.showInventory();
     }
 
     /**
-     * Moves the User in a specified direction and updates the location history.The method also
-     * prints the message of the new current location and updates the game's time counter.
+     * Moves the User in a specified direction and updates the {@link Location location} history.
+     * The method also prints the message of the new current location and updates the game's {@link TimeCounter time counter}.
      * @param direction The direction in which to move the User.
      */
     public void move(String direction) {

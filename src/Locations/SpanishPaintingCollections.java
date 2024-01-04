@@ -3,12 +3,12 @@ package Locations;
 import Inventory.Inventory;
 
 /**
- * This class extends the{@link Location} class, providing a specific setting within the game world.
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
  */
 public class SpanishPaintingCollections extends Location {
 
     /**
-     * Constructs an Spanish Painting Collection location with a specific name, empty inventory, message and
+     * Constructs a Spanish Painting Collection {@link Location location} with a specific name, empty {@link Inventory inventory}, message and
      *  description which is a hint about adjacent locations.
      */
     public SpanishPaintingCollections() {

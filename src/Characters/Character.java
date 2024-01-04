@@ -51,16 +51,15 @@ public abstract class Character {
     }
 
     /**
-     * Set an {@link Inventory inventory} for the character
+     * Sets an {@link Inventory inventory} for the character
      * @param inventory the new inventory to set.
      */
-
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
 
     /**
-     * Get the current {@link Location location} of the character.
+     * Gets the current {@link Location location} of the character.
      * @return currentLocation.
      */
     public Location getCurrentLocation() {
@@ -68,7 +67,7 @@ public abstract class Character {
     }
 
     /**
-     * Set the current {@link Location location} of the character.
+     * Sets the current {@link Location location} of the character.
      * @param currentLocation the new location to set.
      */
     public void setCurrentLocation(Location currentLocation) {
@@ -86,8 +85,8 @@ public abstract class Character {
     }
 
     /**
-     *Check the character's {@link Inventory inventory} is empty or not.
-     * @return true if it is empty otherwise false.
+     * Checks the character's {@link Inventory inventory} is empty or not.
+     * @return {@code true} if it is empty, {@code false} otherwise.
      */
     public boolean isInventoryEmpty()
     {

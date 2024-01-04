@@ -3,15 +3,13 @@ package Characters;
 import Inventory.Inventory;
 import Locations.Location;
 
-import java.util.Stack;
-
 /**
  * The friend is the character located at a {@link Location location} and with a {@link Inventory inventory}.
  */
 public class Friend extends Character implements NPC
 {
     /**
-     * Constructs a new Friend object with the specified inventory and location.
+     * Constructs a new Friend object with the specified {@link Inventory inventory} and {@link Location location}.
      * @param inventory The inventory associated with this Friend.
      * @param currentLocation  The current location of this Friend.
      */

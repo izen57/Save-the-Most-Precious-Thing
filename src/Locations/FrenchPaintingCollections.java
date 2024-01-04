@@ -5,12 +5,12 @@ import Inventory.Notebook;
 
 
 /**
- * This class extends the{@link Location} class, providing a specific setting within the game world.
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
  */
 public class FrenchPaintingCollections extends Location {
 
     /**
-     * Constructs an French Painting Collection location with a specific name, empty inventory and
+     * Constructs an French Painting Collection {@link Location location} with a specific name, empty {@link Inventory inventory}, and
      * message which is a hint about adjacent locations.
      */
     public FrenchPaintingCollections() {
@@ -25,17 +25,16 @@ public class FrenchPaintingCollections extends Location {
     }
 
     /**
-     * Override the original method to provide different descriptions in different situations.
-     * if the location is not empty, the description mentions the presence of a notebook.
+     * Overrides the original method to provide different descriptions in different situations.
+     * If the {@link Location location} is not empty the description mentions the presence of a {@link Notebook notebook}.
      * @return A string containing the description of the current location and notable items.
      */
     @Override
-    public String getDescription(){
-        if(!isEmpty()){
-            return "On your left, there is a leather notebook lies quietly at your feet.";}
-        else{
+    public String getDescription() {
+        if (!isEmpty())
+            return "On your left, there is a leather notebook lies quietly at your feet.";
+        else
             return "To your east, there is a corridor to go to the collections of other countries.";
-        }
     }
 
 }
