@@ -69,6 +69,7 @@ public class Game {
         corridor.setNorth(spanishPaintingCollections);
         corridor.setEast(restaurant);
         corridor.setWest(apolloGallery);
+        corridor.setSouth(ancientEgyptPavilion);
 
         restaurant.setWest(corridor);
 
