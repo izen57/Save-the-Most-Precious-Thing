@@ -54,9 +54,9 @@ public class Game {
 
         ancientGreekStair.setNorth(apolloGallery);
         ancientGreekStair.setEast(ancientEgyptPavilion);
-        ancientGreekStair.setWest(apolloGallery);
 
         apolloGallery.setNorth(frenchPaintingCollections);
+        apolloGallery.setSouth(ancientGreekStair);
         apolloGallery.setEast(corridor);
 
         frenchPaintingCollections.setEast(spanishPaintingCollections);

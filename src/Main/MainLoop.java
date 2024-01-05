@@ -171,7 +171,7 @@ public class MainLoop {
                         "However, you can still read it."
                     );
                 } else {
-                    System.out.println("There's nothing to take here.");
+                    System.out.println("There's no "+ words[1] +" to take here.");
                 }
                 break;
 

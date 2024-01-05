@@ -16,7 +16,7 @@ public class AncientGreekStair extends Location {
             "ancientGreekStair",
             new Inventory(),
             null,
-            "There are only two exits here: one to the east and one to the west."
+            "There are only two exits here: one to the east and one to the north."
         );
     }
 
@@ -30,7 +30,7 @@ public class AncientGreekStair extends Location {
         message = "You are standing before the headless Goddess of Victory, " +
             "with her wings outstretched on either side. " +
             "On her east is the Egypt Exhibition Hall, " +
-            "and on her west is the splendid Apollo Corridor.";
+            "and on her north is the splendid Apollo Corridor.";
 
         if (!isEmpty())
             message += " Meanwhile, at her feet there seems to be a map left by someone else.";
