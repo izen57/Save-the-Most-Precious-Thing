@@ -1,22 +1,41 @@
 package Main;
 
+import Characters.User;
 import Inventory.AbstractItem;
 import Inventory.IApplicable;
-import Inventory.Newspaper;
 import Locations.Location;
 
 import static Main.Command.*;
 
+/**
+ * This class represents the main loop of the game.
+ * This is mainly the process of dealing with the {@link User user} input, parsing it into the {@link Command command} and
+ * executing corresponding operations based on it.
+ */
 public class MainLoop {
+
+    /** The location of the user */
     private Location currentLocation;
+
+    /** The player of the game */
     private User user;
 
+    /**
+     * Constructs a main loop with a specific start {@link Location} and a {@link User player}.
+     * @param startLocation start location.
+     * @param user player.
+     */
     public MainLoop(Location startLocation, User user) {
         this.currentLocation = startLocation;
         this.user = user;
         this.user.setCurrentLocation(startLocation);
     }
 
+    /**
+     * Parses user input into command.
+     * @param userInput
+     * @return corresponding command of user input.
+     */
     public Command parseCommand(String userInput) {
         switch (userInput.trim().toLowerCase()) {
             case "east":
@@ -45,185 +64,195 @@ public class MainLoop {
             case "explore":
                 return LOOK;
 
-            case "jump":
-                return JUMP;
+            case "ask":
+            case "ask them":
+            case "talk":
+            case "hi":
+                return ASK;
 
-            case "sleep":
-                return SLEEP;
+            case "read":
+                return READ;
 
-            case "run":
-                return RUN;
+            case "drop":
+                return DROP;
 
-            case "tip":
-                return TIP;
+            case "take":
+                return TAKE;
 
             case "take map":
             case "pick map":
             case "take notebook":
             case "pick notebook":
-                return TAKE;
+            case "pick newspaper":
+            case "take newspaper":
+                return TAKEITEM;
 
             case "drop map":
             case "throw map":
             case "drop notebook":
             case "throw notebook":
-                return DROP;
+            case "drop newspaper":
+            case "throw newspaper":
+                return DROPITEM;
+
 
             case "read map":
             case "read notebook":
-                return READ;
+            case "read newspaper":
+            case "look newspaper":
+                return READITEM;
 
             case "go back":
             case "back":
             case "move back":
                 return BACK;
 
-            case "read newspaper":
-            case "look newspaper":
-            case "pick newspaper":
-            case "take newspaper":
-                return NEWSPAPER;
-
             case "inventory":
             case "check inventory":
-                return Inventory;
+                return INVENTORY;
 
             case "help":
                 return HELP;
 
-            case "quit":
-            case "give up":
-                return Command.QUIT;
             default:
-                return Command.UNKNOWN;
+                return UNKNOWN;
         }
     }
 
+    /**
+     * Executes corresponding operations based on the {@link Command command}.
+     * @param command based on the {@link User user} input.
+     * @param userInput user input.
+     */
     public void processCommand(Command command, String userInput) {
         //asked ChatGPT for this line.
         String[] words = userInput.trim().split("\\s+");
         switch (command) {
             case NORTH:
-                if (currentLocation.getNorth() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getNorth();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-//                    user.move(currentLocation,NORTH);
+                if (user.getCurrentLocation().getNorth() != null) {
+                    user.move("north");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case SOUTH:
-                if (currentLocation.getSouth() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getSouth();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-//                    user.move(currentLocation,SOUTH);
+                if (user.getCurrentLocation().getSouth() != null) {
+                    user.move("south");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case EAST:
-                if (currentLocation.getEast() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getEast();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-//                    user.move(currentLocation, EAST);
+                if (user.getCurrentLocation().getEast() != null) {
+                    user.move("east");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
             case WEST:
-                if (currentLocation.getWest() != null) {
-                    user.addLocation(currentLocation);
-                    currentLocation = currentLocation.getWest();
-                    System.out.println(currentLocation.getMessage());
-                    user.setCurrentLocation(currentLocation);
-//                    user.move(currentLocation, WEST);
+                if (user.getCurrentLocation().getWest() != null) {
+                    user.move("west");
                 } else {
                     System.out.println("It seems like this is not the correct direction...");
                 }
                 break;
 
 
-            case TAKE:
-                IApplicable itemToTake = currentLocation.findItemByName(words[1]) ;
-                if(itemToTake != null){
-                user.takeItem((AbstractItem) itemToTake);}
-                else {
-                    System.out.println("There's nothing to take here.");
+            case TAKEITEM:
+                AbstractItem itemToTake = user.getCurrentLocation().findItemByName(words[1]);
+                if (itemToTake instanceof IApplicable) {
+                    user.takeItem(itemToTake);
+                } else if (itemToTake != null) {
+                    System.out.println("The " + itemToTake.getName() + " is the museum property " +
+                        "and can not be added to your inventory." +
+                        "However, you can still read it."
+                    );
+                } else {
+                    System.out.println("There's no "+ words[1] +" to take here.");
                 }
                 break;
 
-            case DROP:
+
+            case DROPITEM:
                 if (user.findItemByName(words[1]) != null) {
                     user.dropItem(words[1]);
                 } else {
-                    System.out.println("Your backpack is empty, there is nothing to drop.");
+                    System.out.println("The "+ words[1] + " is not in your inventory.");
+                }
+                break;
+
+            case READITEM:
+                IApplicable userItemToRead = user.findItemByName(words[1]);
+                AbstractItem locationItemToRead = user.getCurrentLocation().findItemByName(words[1]);
+                if (userItemToRead != null) {
+                    System.out.println(userItemToRead.getMessage());
+                } else if (locationItemToRead != null) {
+                    if(locationItemToRead instanceof IApplicable){
+                        System.out.println(((IApplicable) locationItemToRead).getMessage());
+                    }else{
+                        System.out.println(locationItemToRead.getDescription());
+                    }
+                } else {
+                    System.out.println("There is no " + words[1] + " to be read here.");
                 }
                 break;
 
             case READ:
-                if (user.findItemByName(words[1]) != null) {
-                    IApplicable itemToRead = user.findItemByName(words[1]);
-                    System.out.println(itemToRead.getMessage());
-                }
+                System.out.println("Please specify what you would like to read.");
+                break;
+
+            case DROP:
+                System.out.println("Please specify what you would like to drop.");
+                break;
+
+            case TAKE:
+                System.out.println("Please specify what you would like to take.");
                 break;
 
             case BACK:
-                if (user.getLocationHistory()!= null) {
-                    Location previousLocation = currentLocation;
-                    currentLocation = user.showLastLocation();
-                    user.setCurrentLocation(currentLocation);
-                    System.out.println(currentLocation.getMessage());
-                    user.addLocation(previousLocation);
-                } else {
+                if (user.getLocationHistory() == null) {
                     System.out.println("The mission can not be denied, you can not go out of the Louvre now.");
+                    break;
                 }
+
+                Location previousLocation = user.getCurrentLocation();
+                currentLocation = user.showLastLocation();
+                user.setCurrentLocation(currentLocation);
+                System.out.println(currentLocation.getMessage());
+                user.addLocation(previousLocation);
+
+                TimeCounter.takeSteps();
+
                 break;
 
-            case Inventory:
-                user.showInventory();
+            case INVENTORY:
+                if (user.isInventoryEmpty())
+                    System.out.println("Your inventory is empty.");
+                else
+                    user.showInventory();
                 break;
 
-            //case look
             case LOOK:
-                System.out.println(currentLocation.getDescription());
+                System.out.println(user.getCurrentLocation().getDescription());
                 break;
 
-            //case jump
-            case JUMP:
-                System.out.println("Mona Lisa is in danger, jumping won't help you.");
-                break;
-
-            case NEWSPAPER:
-                if(user.getCurrentLocation().getName().equals("corridor")) {
-                    Newspaper newspaper = user.getCurrentLocation().findItemByName("newspaper");
-                    System.out.println(newspaper.getDescription());
-                }
-                break;
-
-            case TIP:
-                if(user.getCurrentLocation().getName().equals("restaurant"))
-                    System.out.println("Surprise! Some recommendation from Mikhail & Yajing:  ");
+            case ASK:
+                System.out.println((user.getCurrentLocation().getCharacter()).getMessage());
                 break;
 
             case HELP:
                 System.out.println(
-                    "The correct answer is no more than two words and is often a noun, a verb, or a combination of a verb and a noun.\n" +
+                    "The correct answer does not exceed two words, and is often a noun, a verb, or a combination of a verb and a noun. " +
                     "At the same time, pay attention to the items that appear in the scene. " +
-                    "When you pick up the item, the item will be removed from the location. " +
-                    "When you throw the item away, the item will be placed on the location.\n"
-                );
+                    "When you pick up the item, some items will enter your inventory and some will not. " +
+                    "For item in inventory, you can drop it and the item will be removed from the inventory.");
                 break;
 
-            default:
+
+            case UNKNOWN:
                 System.out.println("This is not the correct command.");
                 break;
         }

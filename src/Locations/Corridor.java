@@ -1,9 +1,17 @@
 package Locations;
 
 import Inventory.Inventory;
-import Inventory.Newspaper;
 
+
+/**
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
+ */
 public class Corridor extends Location {
+
+    /**
+     * Constructs a Corridor {@link Location location} with a specific name, empty {@link Inventory inventory}, message, and
+     * description which is a hint about adjacent locations.
+     */
     public Corridor() {
         super(
             "corridor",
@@ -15,6 +23,5 @@ public class Corridor extends Location {
             "There is a Picasso painting hanging at the north exit, " +
                 "and the smell of coffee comes from the east exit."
         );
-        addItem(new Newspaper());
     }
 }

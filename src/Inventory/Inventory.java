@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * A class which represents an inventory of an in-game instance.
- * The inventory is held by {@link Locations.Location locations} and all classes derived by the {@link Main.Character character} class.
+ * The inventory is held by {@link Locations.Location locations} and all classes derived by the {@link Character character} class.
  */
 public class Inventory
 {
@@ -62,28 +62,42 @@ public class Inventory
         return null;
     }
 
+    /**
+     * Displays the contents of the User's inventory.
+     * If the inventory is empty, a message stating that the inventory is empty is displayed.
+     * Otherwise, it lists out each item present in the inventory.
+     */
     public void showInventory()
     {
-        if (!isEmpty()) {
-            System.out.print("Now you have: ");
-            for (AbstractItem item : storage)
-                System.out.print(item.getName() + "; ");
-            System.out.println(" in your inventory.");
-        } else
-            System.out.println("You have nothing yet in your inventory.");
+        if (isEmpty()) {
+            System.out.println("Your inventory is currently empty.");
+            return;
+        }
+
+        System.out.println("You have these items in your inventory:");
+        for (AbstractItem item : storage)
+            System.out.println(" - " + item.getName());
     }
 
-    public ArrayList<AbstractItem> getStorage() {
-        return storage;
-    }
 
+    /**
+     * Checks if the User's inventory is empty.
+     * @return true if the inventory is empty, false otherwise.
+     */
     public boolean isEmpty()
     {
         return storage.isEmpty();
     }
 
+
+    /**
+     * Retrieves the number of items in the User's inventory.
+     * @return The size of the inventory.
+     */
     public int getSize()
     {
         return storage.size();
     }
+
+
 }
