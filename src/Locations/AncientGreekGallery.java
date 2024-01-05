@@ -4,11 +4,11 @@ package Locations;
 import Inventory.Inventory;
 
 /**
- * This class extends the{@link Location} class, providing a specific setting within the game world.
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
  */
 public class AncientGreekGallery extends Location {
     /**
-     * Constructs an Ancient Greek Gallery location with a specific name, empty inventory, message and
+     * Constructs an Ancient Greek Gallery {@link Location location} with a specific name, empty {@link Inventory inventory}, message, and
      * description which is a hint about an adjacent location.
      */
     public AncientGreekGallery() {

@@ -4,12 +4,12 @@ import Inventory.Inventory;
 
 
 /**
- * This class extends the{@link Location} class, providing a specific setting within the game world.
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
  */
 public class ApolloGallery extends Location {
 
     /**
-     * Constructs an Apollo Gallery location with a specific name, empty inventory, message and
+     * Constructs an Apollo Gallery {@link Location location} with a specific name, empty {@link Inventory inventory}, message, and
      * description which is a hint about adjacent locations.
      */
     public ApolloGallery() {

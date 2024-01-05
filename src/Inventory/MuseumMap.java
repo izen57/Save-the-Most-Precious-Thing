@@ -1,5 +1,7 @@
 package Inventory;
 
+import Locations.Location;
+
 /**
  * This class extends {@link AbstractItem} class and implements the {@link IApplicable} interface.
  * The Museum Map is a specialized item that provides guidance within the museum.
@@ -18,7 +20,7 @@ public class MuseumMap extends AbstractItem implements IApplicable {
 
     /**
      * Provides a specific message related to the Museum Map.
-     * This message includes information about the location of Mona Lisa within the museum.
+     * This message includes information about the {@link Location location} of Mona Lisa within the museum.
      * @return A string containing information about the museum.
      */
     @Override

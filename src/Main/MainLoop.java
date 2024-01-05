@@ -1,6 +1,5 @@
 package Main;
 
-import Characters.NPC;
 import Characters.User;
 import Inventory.AbstractItem;
 import Inventory.IApplicable;
@@ -10,19 +9,19 @@ import static Main.Command.*;
 
 /**
  * This class represents the main loop of the game.
- * which is mainly the process of dealing with the user input, parse them into command and
- * execute corresponding operations based on the command.
+ * This is mainly the process of dealing with the {@link User user} input, parsing it into the {@link Command command} and
+ * executing corresponding operations based on it.
  */
 public class MainLoop {
 
-    /** The location of user */
+    /** The location of the user */
     private Location currentLocation;
 
     /** The player of the game */
     private User user;
 
     /**
-     * Construct a main loop with a specific start {@link Location} and a player {@link User}.
+     * Constructs a main loop with a specific start {@link Location} and a {@link User player}.
      * @param startLocation start location.
      * @param user player.
      */
@@ -33,7 +32,7 @@ public class MainLoop {
     }
 
     /**
-     * Parse user input into command.
+     * Parses user input into command.
      * @param userInput
      * @return corresponding command of user input.
      */
@@ -121,8 +120,8 @@ public class MainLoop {
     }
 
     /**
-     * Execute corresponding operations based on the command.
-     * @param command based on the user input.
+     * Executes corresponding operations based on the {@link Command command}.
+     * @param command based on the {@link User user} input.
      * @param userInput user input.
      */
     public void processCommand(Command command, String userInput) {

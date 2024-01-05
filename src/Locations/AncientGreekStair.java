@@ -1,15 +1,14 @@
 package Locations;
 
 import Inventory.Inventory;
-import Inventory.MuseumMap;
 
 /**
- * This class extends the{@link Location} class, providing a specific setting within the game world.
+ * This class extends the {@link Location} class, providing a specific setting within the game world.
  */
 public class AncientGreekStair extends Location {
 
     /**
-     * Constructs an Ancient Greek Stair location with a specific name, empty inventory and
+     * Constructs an Ancient Greek Stair {@link Location location} with a specific name, empty {@link Inventory inventory}, and
      * description which is a hint about adjacent locations.
      */
     public AncientGreekStair() {
@@ -22,11 +21,10 @@ public class AncientGreekStair extends Location {
     }
 
     /**
-     * Override the original method to provide different messages in different situations.
-     * if the location is not empty, the message mentions the presence of a map at the feet of the statue.
-     * @return A string containing the description of the current location and notable items.
+     * Overrides the original method to provide different messages in different situations.
+     * If the location is not empty the message mentions the presence of a map at the feet of the statue.
+     * @return A string containing the description of the current {@link Location location} and notable items.
      */
-
     @Override
     public String getMessage() {
         message = "You are standing before the headless Goddess of Victory, " +
